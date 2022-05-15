@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="647b1720-5253-4298-a6c0-eb5d22f4c987" name="Changes" comment="First test of our project">
-      <change afterPath="$PROJECT_DIR$/src/Map.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pokemon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PokemonFire.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PokemonGrass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PokemonGround.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PokemonWater.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Settings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
-    </list>
+    <list default="true" id="647b1720-5253-4298-a6c0-eb5d22f4c987" name="Changes" comment="First test of our project" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -113,6 +102,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First test of our project" />
-    <option name="LAST_COMMIT_MESSAGE" value="First test of our project" />
+    <MESSAGE value="Adding a menu and some settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding a menu and some settings" />
   </component>
 </project>
