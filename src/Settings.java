@@ -87,7 +87,6 @@ public class Settings {
         return FirePokemonsOnTheMap = newFirePokemonsOnTheMap;
     }
 
-
     //variable for the count of ground type pokemons on the map, getter and setter for it as well
     int GroundPokemonsOnTheMap = 0, newGroundPokemonsOnTheMap = 0;
     public int getGroundPokemonsOnTheMap() {
@@ -162,7 +161,7 @@ public class Settings {
     /**
      * Method that show us menu to changing settings to our simulation
      */
-    public void changeSettings() {
+    public int changeSettings() {
         while(true) {
             int choiceInSettings;
             System.out.println("Choose which settings you want to change");
@@ -187,26 +186,28 @@ public class Settings {
                 case 5:
                     break;
                 case 6:
-                    break;
+                    System.out.println("Going back to main menu");
+                    return 0;
                 default:
-                    System.out.println("Your input was invalid. Please choose number between 1-6.");
+                    System.out.println("Your input was invalid. Please choose a number between 1-6.");
                     break;
             }
         }
+
     }
 
     /**
      * Method for changing map setting
      */
-    public void changeMapSettings() {
-        int choice;
+    public int changeMapSettings() {
+        int choiceInMapSettings;
         while(true) {
         System.out.println("Choose which setting you want to change");
         System.out.println("1. Size of the map");
         System.out.println("2. % chance of generating pool");
         System.out.println("3. Exit");
-        choice = scanner.nextInt();
-        switch (choice) {
+        choiceInMapSettings = scanner.nextInt();
+        switch (choiceInMapSettings) {
             case 1:
                 System.out.println("Current height is " + getH() + ".");
                 System.out.println("Type your new height: ");
@@ -219,14 +220,15 @@ public class Settings {
                 break;
             case 2:
                 while (true) {
+                    int choiceInPoolSettings;
                     System.out.println("Select what type of field you want to change.");
                     System.out.println("1. Fire");
                     System.out.println("2. Water");
                     System.out.println("3. Ground");
                     System.out.println("4. Grass");
                     System.out.println("5. Exit");
-                    choice = scanner.nextInt();
-                    switch (choice) {
+                    choiceInPoolSettings = scanner.nextInt();
+                    switch (choiceInPoolSettings) {
                         case 1:
                             System.out.println("Current chance of generating fire pool is" + getFireFieldsOnTheMap());
                             System.out.println("Type new chance: ");
@@ -255,7 +257,7 @@ public class Settings {
                             System.out.println("Returning to map settings");
                             changeMapSettings();
                         default:
-                            System.out.println("Your input was invalid. Please choose number between 1-5.");
+                            System.out.println("Your input was invalid. Please choose a number between 1-5.");
                             continue;
                     }
                     break;
@@ -263,9 +265,9 @@ public class Settings {
                 break;
             case 3:
                 System.out.println("Returning to the settings menu");
-                changeSettings();
+                return 0;
             default:
-                System.out.println("Your input was invalid. Please choose number between 1-4.");
+                System.out.println("Your input was invalid. Please choose number between 1-3.");
                 continue;
             }
         }

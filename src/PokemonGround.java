@@ -1,2 +1,2 @@
-public class PokemonGround {
+public class PokemonGround extends Pokemon{
 }

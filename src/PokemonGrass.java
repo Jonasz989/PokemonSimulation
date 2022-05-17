@@ -1,2 +1,2 @@
-public class PokemonGrass {
+public class PokemonGrass extends Pokemon{
 }
