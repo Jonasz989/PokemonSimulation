@@ -1,4 +1,4 @@
-public class Trainer {
+public class Trainer extends Map {
 
     Trainer (String nameOfPokemonsTrainer, float trainersWinningBaseChance, float trainersCriticalHitBaseChance, String typeOfTrainersPokemon) {
         this.nameOfPokemonsTrainer = nameOfPokemonsTrainer;

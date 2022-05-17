@@ -1,4 +1,4 @@
-public class Pool {
+public class Pool extends Map {
 
 Pool () {
 

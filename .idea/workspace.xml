@@ -2,24 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="647b1720-5253-4298-a6c0-eb5d22f4c987" name="Changes" comment="Working on menu and settings">
-      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Simulation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ObjectsUsageDiagram.uml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pokemon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PokemonFire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PokemonFire.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PokemonGrass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PokemonGrass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PokemonGround.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PokemonGround.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PokemonWater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PokemonWater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Trainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Trainer.java" afterDir="false" />
     </list>
-    <list id="a688a1c4-af37-4a84-a986-2b8e36ff044b" name="Changes by marcin" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings.java" afterDir="false" />
-    </list>
+    <list id="a688a1c4-af37-4a84-a986-2b8e36ff044b" name="Changes by marcin" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,54 +36,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Map.java">
-      <ranges>
-        <range start1="1" end1="1" start2="1" end2="26" changelist="647b1720-5253-4298-a6c0-eb5d22f4c987" />
-        <range start1="2" end1="2" start2="27" end2="29" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/Settings.java">
-      <ranges>
-        <range start1="4" end1="4" start2="4" end2="11" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="6" end1="42" start2="13" end2="13" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="52" end1="62" start2="23" end2="23" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="89" end1="90" start2="50" end2="50" changelist="647b1720-5253-4298-a6c0-eb5d22f4c987" />
-        <range start1="140" end1="141" start2="100" end2="101" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="146" end1="147" start2="106" end2="107" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="153" end1="155" start2="113" end2="115" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="164" end1="165" start2="124" end2="125" changelist="647b1720-5253-4298-a6c0-eb5d22f4c987" />
-        <range start1="181" end1="181" start2="141" end2="142" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="189" end1="190" start2="150" end2="152" changelist="647b1720-5253-4298-a6c0-eb5d22f4c987" />
-        <range start1="191" end1="192" start2="153" end2="154" changelist="647b1720-5253-4298-a6c0-eb5d22f4c987" />
-        <range start1="195" end1="195" start2="157" end2="158" changelist="647b1720-5253-4298-a6c0-eb5d22f4c987" />
-        <range start1="200" end1="202" start2="163" end2="165" changelist="647b1720-5253-4298-a6c0-eb5d22f4c987" />
-        <range start1="207" end1="209" start2="170" end2="172" changelist="647b1720-5253-4298-a6c0-eb5d22f4c987" />
-        <range start1="210" end1="211" start2="173" end2="174" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="212" end1="212" start2="175" end2="176" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="213" end1="215" start2="177" end2="179" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="216" end1="216" start2="180" end2="181" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="217" end1="218" start2="182" end2="183" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="221" end1="221" start2="186" end2="187" changelist="647b1720-5253-4298-a6c0-eb5d22f4c987" />
-        <range start1="227" end1="229" start2="193" end2="195" changelist="647b1720-5253-4298-a6c0-eb5d22f4c987" />
-        <range start1="257" end1="258" start2="223" end2="224" changelist="647b1720-5253-4298-a6c0-eb5d22f4c987" />
-        <range start1="265" end1="266" start2="231" end2="232" changelist="647b1720-5253-4298-a6c0-eb5d22f4c987" />
-        <range start1="267" end1="268" start2="233" end2="234" changelist="647b1720-5253-4298-a6c0-eb5d22f4c987" />
-        <range start1="277" end1="277" start2="243" end2="257" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="279" end1="280" start2="259" end2="260" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="281" end1="282" start2="261" end2="262" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="284" end1="285" start2="264" end2="265" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="286" end1="287" start2="266" end2="267" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="288" end1="289" start2="268" end2="269" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="300" end1="301" start2="280" end2="281" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="303" end1="304" start2="283" end2="284" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="306" end1="307" start2="286" end2="287" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="309" end1="310" start2="289" end2="290" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="313" end1="314" start2="293" end2="294" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-        <range start1="321" end1="322" start2="301" end2="338" changelist="a688a1c4-af37-4a84-a986-2b8e36ff044b" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -109,12 +58,18 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
+    "last_opened_file_path": "C:/Users/maryl/Documents/GitHub/PokemonSimulation/src",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\maryl\Documents\GitHub\PokemonSimulation\src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Menu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Menu" />
@@ -145,6 +100,7 @@
       <workItem from="1652637022714" duration="11410000" />
       <workItem from="1652734062380" duration="376000" />
       <workItem from="1652788911677" duration="6215000" />
+      <workItem from="1652808248032" duration="3780000" />
     </task>
     <task id="LOCAL-00001" summary="First test of our project">
       <created>1652121964399</created>

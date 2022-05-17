@@ -1,4 +1,4 @@
-public class Simulation {
+public class Simulation extends Menu {
 
 //create map
 

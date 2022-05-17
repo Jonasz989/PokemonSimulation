@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Settings {
+public class Settings extends Menu {
 
     //initialization of map object and giving the object default values
     Map map = new Map(10, 10);
@@ -11,86 +11,15 @@ public class Settings {
 
     Scanner scanner = new Scanner(System.in);
 
+    Pokemon pokemon = new Pokemon();
 
-    //variable for Base Critical Hit Chance for the other pokemons, getter and setter for it as well
-    float pokemonsCriticalHitBaseChance = 0, newPokemonsCriticalHitBaseChance=0;
-    public float getPokemonsCriticalHitBaseChance() {
-        return pokemonsCriticalHitBaseChance;
-    }
+    PokemonFire pokemonFire = new PokemonFire();
 
-    public float setPokemonsCriticalHitBaseChance(float newTrainersCriticalHitBaseChance) {
-        return pokemonsCriticalHitBaseChance = newPokemonsCriticalHitBaseChance;
-    }
+    PokemonWater pokemonWater = new PokemonWater();
 
-    //variable for the count of pokemons on the map, getter and setter for it as well
-    int CountOfPokemonOnTheMap = 0, newCountOfPokemonOnTheMap=0;
-    public int getCountOfPokemonOnTheMap(){
-        return CountOfPokemonOnTheMap;
-    }
-    public int setCountOfPokemonOnTheMap(int newCountOfPokemonOnTheMap){
-        return CountOfPokemonOnTheMap = newCountOfPokemonOnTheMap;
-    }
-    //variable for the count of water type pokemons on the map, getter and setter for it as well
-    int WaterPokemonsOnTheMap = 0, newWaterPokemonsOnTheMap = 0;
-    public int getWaterPokemonsOnTheMap() {
-        return WaterPokemonsOnTheMap;
-    }
-    public int setWaterPokemonsOnTheMap(int newWaterPokemonsOnTheMap) {
-        return WaterPokemonsOnTheMap = newWaterPokemonsOnTheMap;
-    }
+    PokemonGrass pokemonGrass = new PokemonGrass();
 
-    //variable for the count of fire type pokemons on the map, getter and setter for it as well
-    int FirePokemonsOnTheMap = 0, newFirePokemonsOnTheMap = 0;
-    public int getFirePokemonsOnTheMap(){
-        return FirePokemonsOnTheMap;
-    }
-    public int setFirePokemonsOnTheMap(int newFirePokemonsOnTheMap){
-        return FirePokemonsOnTheMap = newFirePokemonsOnTheMap;
-    }
-
-    //variable for the count of ground type pokemons on the map, getter and setter for it as well
-    int GroundPokemonsOnTheMap = 0, newGroundPokemonsOnTheMap = 0;
-    public int getGroundPokemonsOnTheMap() {
-        return GroundPokemonsOnTheMap;
-    }
-    public int setGroundPokemonsOnTheMap(int newGroundPokemonsOnTheMap) {
-        return GroundPokemonsOnTheMap = newGroundPokemonsOnTheMap;
-    }
-    //variable for the count of grass type pokemons on the map, getter and setter for it as well
-    int GrassPokemonsOnTheMap = 0, newGrassPokemonsOnTheMap = 0;
-
-    //variable for the count of water type fields on the map, getter and setter for it as well
-    int WaterFieldsOnTheMap = 0, newWaterFieldsOnTheMap = 0;
-    public int getWaterFieldsOnTheMap() {
-        return WaterFieldsOnTheMap;
-    }
-    public int setWaterFieldsOnTheMap(int newWaterFieldsOnTheMap) {
-        return WaterFieldsOnTheMap = newWaterFieldsOnTheMap;
-    }
-    //variable for the count of fire type fields on the map, getter and setter for it as well
-    int FireFieldsOnTheMap = 0, newFireFieldsOnTheMap = 0;
-    public int getFireFieldsOnTheMap() {
-        return FireFieldsOnTheMap;
-    }
-    public int setFireFieldsOnTheMap(int newFireFieldsOnTheMap) {
-        return FireFieldsOnTheMap = newFireFieldsOnTheMap;
-    }
-    //variable for the count of ground type fields on the map, getter and setter for it as well
-    int GroundFieldsOnTheMap = 0, newGroundFieldsOnTheMap = 0;
-    public int getGroundFieldsOnTheMap() {
-        return GroundFieldsOnTheMap;
-    }
-    public int setGroundFieldsOnTheMap(int newGroundFieldsOnTheMap) {
-        return GroundFieldsOnTheMap = newGroundFieldsOnTheMap;
-    }
-    //variable for the count of grass type fields on the map, getter and setter for it as well
-    int GrassFieldsOnTheMap = 0, newGrassFieldsOnTheMap = 0;
-    public int getGrassFieldsOnTheMap() {
-        return GrassFieldsOnTheMap;
-    }
-    public int setGrassFieldsOnTheMap(int newGrassFieldsOnTheMap) {
-        return GrassFieldsOnTheMap = newGrassFieldsOnTheMap;
-    }
+    PokemonGround pokemonGround = new PokemonGround();
 
 
     /**
@@ -100,20 +29,20 @@ public class Settings {
 
         System.out.println("1. Size of the map: "+ map.getH() + "x" +map.getW());
         System.out.println("2. Special fields: ");
-        System.out.println("- Fire Type: "+getFireFieldsOnTheMap());
-        System.out.println("- Water Type: "+getWaterFieldsOnTheMap());
-        System.out.println("- Ground Type: "+getGroundFieldsOnTheMap());
-        System.out.println("- Grass Type: "+getGrassFieldsOnTheMap());
+        System.out.println("- Fire Type: "+map.getFireFieldsOnTheMap());
+        System.out.println("- Water Type: "+map.getWaterFieldsOnTheMap());
+        System.out.println("- Ground Type: "+map.getGroundFieldsOnTheMap());
+        System.out.println("- Grass Type: "+map.getGrassFieldsOnTheMap());
         System.out.println("3. Type of trainer's pokemon: " +trainer.getTypeOfTrainersPokemon());
-        System.out.println("4. Count of pokemons on the map: "+getCountOfPokemonOnTheMap());
+        System.out.println("4. Count of pokemons on the map: "+pokemon.getCountOfPokemonOnTheMap());
         System.out.println("5. Types of pokemons on the map: ");
-        System.out.println("- Fire Type: "+getFirePokemonsOnTheMap());
-        System.out.println("- Water Type: "+getWaterPokemonsOnTheMap());
-        System.out.println("- Ground Type: "+getGroundPokemonsOnTheMap());
-        System.out.println("- Grass Type: "+getGrassFieldsOnTheMap());
+        System.out.println("- Fire Type: "+pokemonFire.getFirePokemonsOnTheMap());
+        System.out.println("- Water Type: "+pokemonWater.getWaterPokemonsOnTheMap());
+        System.out.println("- Ground Type: "+pokemonGround.getGroundPokemonsOnTheMap());
+        System.out.println("- Grass Type: "+pokemonGrass.getGrassPokemonsOnTheMap());
         System.out.println("6. Trainer's pokemon's base chance of winning: "+trainer.getTrainersWinningBaseChance());
         System.out.println("7. Trainer's pokemon's base chance of derivation of critical hit: "+trainer.getTrainersCriticalHitBaseChance());
-        System.out.println("8. Pokemons' base chance of derivation of critical hit: "+getPokemonsCriticalHitBaseChance());
+        System.out.println("8. Pokemons' base chance of derivation of critical hit: "+pokemon.getPokemonsCriticalHitBaseChance());
         System.out.println("9. Type of saving the results: ");
         System.out.println("Press enter to continue ");
 
@@ -127,11 +56,10 @@ public class Settings {
             int choiceInSettings;
             System.out.println("Choose which settings you want to change");
             System.out.println("1. Map");
-            System.out.println("2. Trainer");
-            System.out.println("3. Pokemon's");
-            System.out.println("4. Chances");
-            System.out.println("5. Saving options");
-            System.out.println("6. Exit");
+            System.out.println("2. Trainer's");
+            System.out.println("3. Pokemons'");
+            System.out.println("4. Saving options");
+            System.out.println("5. Exit");
 
             choiceInSettings = scanner.nextInt();
             switch(choiceInSettings) {
@@ -139,19 +67,19 @@ public class Settings {
                     changeMapSettings();
                     break;
                 case 2:
-
+                    changeTrainersSettings();
                     break;
                 case 3:
+                    changePokemonsSettings();
                     break;
                 case 4:
+                    //tutaj bedzie ta funkcja ale napiszemy po wykladzie mrozona dopiero
                     break;
                 case 5:
-                    break;
-                case 6:
                     System.out.println("Going back to main menu");
                     return 0;
                 default:
-                    System.out.println("Your input was invalid. Please choose a number between 1-6.");
+                    System.out.println("Your input was invalid. Please choose a number between 1-5.");
                     break;
             }
         }
@@ -194,28 +122,28 @@ public class Settings {
                     choiceInPoolSettings = scanner.nextInt();
                     switch (choiceInPoolSettings) {
                         case 1:
-                            System.out.println("Current chance of generating fire pool is" + getFireFieldsOnTheMap());
+                            System.out.println("Current chance of generating fire pool is" + map. getFireFieldsOnTheMap());
                             System.out.println("Type new chance: ");
-                            newFireFieldsOnTheMap = scanner.nextInt();
-                            setFireFieldsOnTheMap(newFireFieldsOnTheMap);
+                            map.newFireFieldsOnTheMap = scanner.nextInt();
+                            map.setFireFieldsOnTheMap(map.newFireFieldsOnTheMap);
                             break;
                         case 2:
-                            System.out.println("Current chance of generating water pool is" + getWaterFieldsOnTheMap());
+                            System.out.println("Current chance of generating water pool is" + map.getWaterFieldsOnTheMap());
                             System.out.println("Type new chance: ");
-                            newWaterFieldsOnTheMap = scanner.nextInt();
-                            setWaterFieldsOnTheMap(newWaterFieldsOnTheMap);
+                            map.newWaterFieldsOnTheMap = scanner.nextInt();
+                            map.setWaterFieldsOnTheMap(map.newWaterFieldsOnTheMap);
                             break;
                         case 3:
-                            System.out.println("Current chance of generating ground pool is" + getGroundFieldsOnTheMap());
+                            System.out.println("Current chance of generating ground pool is" + map.getGroundFieldsOnTheMap());
                             System.out.println("Type new chance: ");
-                            newGroundFieldsOnTheMap = scanner.nextInt();
-                            setGroundFieldsOnTheMap(newGroundFieldsOnTheMap);
+                            map.newGroundFieldsOnTheMap = scanner.nextInt();
+                            map.setGroundFieldsOnTheMap(map.newGroundFieldsOnTheMap);
                             break;
                         case 4:
-                            System.out.println("Current chance of generating grass pool is" + getGrassFieldsOnTheMap());
+                            System.out.println("Current chance of generating grass pool is" + map.getGrassFieldsOnTheMap());
                             System.out.println("Type new chance: ");
-                            newGrassFieldsOnTheMap = scanner.nextInt();
-                            setGrassFieldsOnTheMap(newGrassFieldsOnTheMap);
+                            map.newGrassFieldsOnTheMap = scanner.nextInt();
+                            map.setGrassFieldsOnTheMap(map.newGrassFieldsOnTheMap);
                             break;
                         case 5:
                             System.out.println("Returning to map settings");
@@ -244,26 +172,18 @@ public class Settings {
     public void changePokemonsTrainersName(){
         System.out.println("To which name would you like to change it?: ");
         String choice;
-        choice =scanner.next();
+        choice = scanner.next();
         trainer.setNameOfPokemonsTrainer(choice);
-    }
-
-    public void changeTrainersPokemonType(){
-        System.out.println("To which type would you like to change it?: ");
-        System.out.println("fire, water, ground, grass ");
-        String choice;
-        choice =scanner.next();
-        trainer.setTypeOfTrainersPokemon(choice);
     }
 
     public void changeTrainersWinningBaseChance() {
         float choice;
-        choice =scanner.nextInt();
+        choice = scanner.nextInt();
         trainer.setTrainersWinningBaseChance(choice);
     }
     public void changeTrainersCriticalHitBaseChance() {
         float choice;
-        choice =scanner.nextInt();
+        choice = scanner.nextInt();
         trainer.setTrainersCriticalHitBaseChance(choice);
     }
     public int changeTypeOfTrainersPokemon() {
@@ -300,7 +220,7 @@ public class Settings {
     }
 
     public int changeTrainersSettings() {
-        while(true) {
+        while (true) {
             System.out.println("Which trainer's settings would you like to change: ");
             System.out.println("1. Trainer's name");
             System.out.println("2. Trainer's pokemon typ");
@@ -308,14 +228,14 @@ public class Settings {
             System.out.println("4. Trainer's critical hit base chance");
             System.out.println("5. Exit");
 
-            int choiceInTrainersSettings=0;
-            choiceInTrainersSettings= scanner.nextInt();
-            switch(choiceInTrainersSettings){
+            int choiceInTrainersSettings = 0;
+            choiceInTrainersSettings = scanner.nextInt();
+            switch (choiceInTrainersSettings) {
                 case 1:
                     changePokemonsTrainersName();
                     break;
                 case 2:
-                    changeTrainersPokemonType();
+                    changeTypeOfTrainersPokemon();
                     break;
                 case 3:
                     changeTrainersWinningBaseChance();
@@ -332,7 +252,60 @@ public class Settings {
                     continue;
             }
         }
-
     }
+        public void changePokemonsCountOnTheMap(){
+            System.out.println("How many should be then?");
+            int choice=0;
+            choice = scanner.nextInt();
+
+        }
+
+
+
+
+
+
+        public int changePokemonsSettings() {
+            while (true) {
+                System.out.println("Which pokemons' settings would you like to change: ");
+                System.out.println("1. Pokemons' count on the map");
+                System.out.println("2. Water type pokemons' count on the map");
+                System.out.println("3. Fire type pokemons' count on the map");
+                System.out.println("4. Ground type pokemons' count on the map");
+                System.out.println("5. Grass type pokemons' count on the map");
+                System.out.println("6. Pokemons' critical base chance");
+                System.out.println("7. Exit");
+
+                int choiceInPokemonsSettings = 0;
+                choiceInPokemonsSettings = scanner.nextInt();
+                switch (choiceInPokemonsSettings) {
+                    case 1:
+                        //nw co tutaj w sensie skoro l jest zwiekszana przy tworzeniu obiektu to nw
+                        break;
+                    case 2:
+                        //nw co tutaj w sensie skoro l jest zwiekszana przy tworzeniu obiektu to nw
+                        break;
+                    case 3:
+                        //nw co tutaj w sensie skoro l jest zwiekszana przy tworzeniu obiektu to nw
+                        break;
+                    case 4:
+                        //nw co tutaj w sensie skoro l jest zwiekszana przy tworzeniu obiektu to nw
+                        break;
+                    case 5:
+                        //nw co tutaj w sensie skoro l jest zwiekszana przy tworzeniu obiektu to nw
+                        break;
+                    case 6:
+                        //nw co tutaj w sensie skoro l jest zwiekszana przy tworzeniu obiektu to nw
+                        break;
+                    case 7:
+                        System.out.println("Leaving");
+                        return 0;
+
+                    default:
+                        System.out.println("Your input was invalid. Please choose number between 1-7.");
+                        continue;
+                }
+            }
+        }
 }
 
