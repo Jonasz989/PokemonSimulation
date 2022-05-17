@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="240.6666666666666" y="88.83333333333331">Settings</node>
+    <node x="84.5" y="-34.5">Pokemon</node>
+    <node x="-21.0" y="-106.5">PokemonFire</node>
+    <node x="175.08333333333331" y="156.66666666666663">Menu</node>
+    <node x="133.5" y="-106.5">PokemonGrass</node>
+    <node x="-193.5" y="-106.5">PokemonGround</node>
+    <node x="98.0" y="21.0">Map</node>
+    <node x="223.0" y="21.0">Pool</node>
+    <node x="-35.0" y="21.0">Trainer</node>
+    <node x="300.0" y="-106.5">PokemonWater</node>
+    <node x="77.5" y="88.83333333333331">Simulation</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Pool" target="Map" relationship="GENERALIZATION">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Settings" target="Menu" relationship="GENERALIZATION">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="PokemonGround" target="Pokemon" relationship="GENERALIZATION">
+      <point x="0.0" y="14.5" />
+      <point x="-114.0" y="-20.0" />
+      <point x="-55.5" y="0.0" />
+    </edge>
+    <edge source="Pokemon" target="Map" relationship="GENERALIZATION">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="PokemonGrass" target="Pokemon" relationship="GENERALIZATION">
+      <point x="0.0" y="14.5" />
+      <point x="206.5" y="-48.0" />
+      <point x="140.0" y="-48.0" />
+      <point x="140.0" y="-20.0" />
+      <point x="55.5" y="0.0" />
+    </edge>
+    <edge source="Trainer" target="Map" relationship="GENERALIZATION">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="PokemonFire" target="Pokemon" relationship="GENERALIZATION">
+      <point x="0.0" y="14.5" />
+      <point x="46.0" y="-56.0" />
+      <point x="101.0" y="-56.0" />
+      <point x="101.0" y="-34.5" />
+      <point x="0.0" y="-14.5" />
+    </edge>
+    <edge source="Simulation" target="Menu" relationship="GENERALIZATION">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="PokemonWater" target="Pokemon" relationship="GENERALIZATION">
+      <point x="0.0" y="14.5" />
+      <point x="374.5" y="-20.0" />
+      <point x="140.0" y="-20.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="Map" target="Simulation" relationship="GENERALIZATION">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="1.5" showDependencies="false" x="146.00000000000003" y="18.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
