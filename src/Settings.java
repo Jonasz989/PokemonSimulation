@@ -2,44 +2,15 @@ import java.util.Scanner;
 
 public class Settings {
 
+    //initialization of map object and giving the object default values
+    Map map = new Map(10, 10);
+
+    //initialization of trainer object and giving the trainer default values
+    Trainer trainer = new Trainer("Ass", 10.0f,0.10f,"fire" );
+
+
     Scanner scanner = new Scanner(System.in);
 
-    //variables for H=height of the map, W=width of the map and getters and setters for them as well
-    private int H = 0, W = 0, newH = 0, newW = 0;
-
-    public int getH() {
-        return H;
-    }
-    public int getW() {
-        return W;
-    }
-    public int setH(int newH) {
-        return H = newH;
-    }
-    public int setW(int newW) {
-        return H = newW;
-    }
-
-    //variable for Base Winning Chance for the trainer, getter and setter for it as well
-    private float trainersWinningBaseChance = 0, newTrainersWinningBaseChance = 0;
-    public float getTrainersWinningBaseChance() {
-        return trainersWinningBaseChance;
-    }
-    public float setTrainersWinningBaseChance(float newTrainersWinningBaseChance) {
-        return trainersWinningBaseChance = newTrainersWinningBaseChance;
-    }
-
-
-    //variable for Base Critical Hit Chance for the trainer, getter and setter for it as well
-    private float trainersCriticalHitBaseChance = 0, newTrainersCriticalHitBaseChance = 0;
-
-    public float getTrainersCriticalHitBaseChance() {
-        return trainersCriticalHitBaseChance;
-    }
-
-    public float setTrainersCriticalHitBaseChance(float newTrainersCriticalHitBaseChance) {
-        return trainersCriticalHitBaseChance = newTrainersCriticalHitBaseChance;
-    }
 
     //variable for Base Critical Hit Chance for the other pokemons, getter and setter for it as well
     float pokemonsCriticalHitBaseChance = 0, newPokemonsCriticalHitBaseChance=0;
@@ -49,16 +20,6 @@ public class Settings {
 
     public float setPokemonsCriticalHitBaseChance(float newTrainersCriticalHitBaseChance) {
         return pokemonsCriticalHitBaseChance = newPokemonsCriticalHitBaseChance;
-    }
-
-
-    //variable for Type of Trainer's Pokemon, getter and setter for it as well
-    String TypeOfTrainersPokemon="fire", newTypeOfTrainersPokemon=" ";
-    public String getTypeOfTrainersPokemon() {
-        return TypeOfTrainersPokemon;
-    }
-    public String setTypeOfTrainersPokemon(String newTypeOfTrainersPokemon) {
-        return TypeOfTrainersPokemon = newTypeOfTrainersPokemon;
     }
 
     //variable for the count of pokemons on the map, getter and setter for it as well
@@ -137,21 +98,21 @@ public class Settings {
      */
     public void printSettings() {
 
-        System.out.println("1. Size of the map: "+ getH() + "x" +getW());
+        System.out.println("1. Size of the map: "+ map.getH() + "x" +map.getW());
         System.out.println("2. Special fields: ");
         System.out.println("- Fire Type: "+getFireFieldsOnTheMap());
         System.out.println("- Water Type: "+getWaterFieldsOnTheMap());
         System.out.println("- Ground Type: "+getGroundFieldsOnTheMap());
         System.out.println("- Grass Type: "+getGrassFieldsOnTheMap());
-        System.out.println("3. Type of trainer's pokemon: " +getTypeOfTrainersPokemon());
+        System.out.println("3. Type of trainer's pokemon: " +trainer.getTypeOfTrainersPokemon());
         System.out.println("4. Count of pokemons on the map: "+getCountOfPokemonOnTheMap());
         System.out.println("5. Types of pokemons on the map: ");
         System.out.println("- Fire Type: "+getFirePokemonsOnTheMap());
         System.out.println("- Water Type: "+getWaterPokemonsOnTheMap());
         System.out.println("- Ground Type: "+getGroundPokemonsOnTheMap());
         System.out.println("- Grass Type: "+getGrassFieldsOnTheMap());
-        System.out.println("6. Trainer's pokemon's base chance of winning: "+getTrainersWinningBaseChance());
-        System.out.println("7. Trainer's pokemon's base chance of derivation of critical hit: "+getTrainersCriticalHitBaseChance());
+        System.out.println("6. Trainer's pokemon's base chance of winning: "+trainer.getTrainersWinningBaseChance());
+        System.out.println("7. Trainer's pokemon's base chance of derivation of critical hit: "+trainer.getTrainersCriticalHitBaseChance());
         System.out.println("8. Pokemons' base chance of derivation of critical hit: "+getPokemonsCriticalHitBaseChance());
         System.out.println("9. Type of saving the results: ");
         System.out.println("Press enter to continue ");
@@ -178,6 +139,7 @@ public class Settings {
                     changeMapSettings();
                     break;
                 case 2:
+
                     break;
                 case 3:
                     break;
@@ -209,14 +171,16 @@ public class Settings {
         choiceInMapSettings = scanner.nextInt();
         switch (choiceInMapSettings) {
             case 1:
-                System.out.println("Current height is " + getH() + ".");
+                System.out.println("Current height is " + map.getH() + ".");
                 System.out.println("Type your new height: ");
+                int newH=0;
                 newH = scanner.nextInt();
-                setH(newH);
-                System.out.println("Current width is " + getW() + ".");
+                map.setH(newH);
+                System.out.println("Current width is " + map.getW() + ".");
                 System.out.println("Type your new width: ");
+                int newW=0;
                 newW = scanner.nextInt();
-                setW(newW);
+                map.setW(newW);
                 break;
             case 2:
                 while (true) {
@@ -277,18 +241,32 @@ public class Settings {
 
 
 
+    public void changePokemonsTrainersName(){
+        System.out.println("To which name would you like to change it?: ");
+        String choice;
+        choice =scanner.next();
+        trainer.setNameOfPokemonsTrainer(choice);
+    }
+
+    public void changeTrainersPokemonType(){
+        System.out.println("To which type would you like to change it?: ");
+        System.out.println("fire, water, ground, grass ");
+        String choice;
+        choice =scanner.next();
+        trainer.setTypeOfTrainersPokemon(choice);
+    }
 
     public void changeTrainersWinningBaseChance() {
-        int choice;
+        float choice;
         choice =scanner.nextInt();
-        //tutaj bedzie setter
+        trainer.setTrainersWinningBaseChance(choice);
     }
     public void changeTrainersCriticalHitBaseChance() {
-        int choice;
+        float choice;
         choice =scanner.nextInt();
-        //tutaj bedzie setter
+        trainer.setTrainersCriticalHitBaseChance(choice);
     }
-    public void changeTypeOfTrainersPokemon() {
+    public int changeTypeOfTrainersPokemon() {
         int choice;
         while (true) {
             System.out.println("You may choose type of the trainer's pokemon from: ");
@@ -300,20 +278,20 @@ public class Settings {
             choice = scanner.nextInt();
             switch (choice) {
             case 1:
-                //setter do fire
+                trainer.setTypeOfTrainersPokemon("fire");
                 break;
             case 2:
-                //setter do water
+                trainer.setTypeOfTrainersPokemon("water");
                 break;
             case 3:
-                //setter do ground
+                trainer.setTypeOfTrainersPokemon("ground");
                 break;
             case 4:
-                //setter do grass
+                trainer.setTypeOfTrainersPokemon("grass");
                 break;
             case 5:
                 System.out.println("Returning to the settings menu");
-                break;
+                return 0;
             default:
                 System.out.println("Your input was invalid. Please choose number between 1-5.");
                 continue;
@@ -321,4 +299,40 @@ public class Settings {
         }
     }
 
+    public int changeTrainersSettings() {
+        while(true) {
+            System.out.println("Which trainer's settings would you like to change: ");
+            System.out.println("1. Trainer's name");
+            System.out.println("2. Trainer's pokemon typ");
+            System.out.println("3. Trainer's winning base chance");
+            System.out.println("4. Trainer's critical hit base chance");
+            System.out.println("5. Exit");
+
+            int choiceInTrainersSettings=0;
+            choiceInTrainersSettings= scanner.nextInt();
+            switch(choiceInTrainersSettings){
+                case 1:
+                    changePokemonsTrainersName();
+                    break;
+                case 2:
+                    changeTrainersPokemonType();
+                    break;
+                case 3:
+                    changeTrainersWinningBaseChance();
+                    break;
+                case 4:
+                    changeTrainersCriticalHitBaseChance();
+                    break;
+                case 5:
+                    System.out.println("Leaving");
+                    return 0;
+
+                default:
+                    System.out.println("Your input was invalid. Please choose number between 1-5.");
+                    continue;
+            }
+        }
+
+    }
 }
+
