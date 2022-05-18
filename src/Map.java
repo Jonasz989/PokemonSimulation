@@ -1,6 +1,7 @@
 public class Map extends Simulation {
     //variables for H=height of the map, W=width of the map and getters and setters for them as well
-    private int H, W;
+    private static int H;
+    private static int W;
     private int[][] tab;
 
 
@@ -12,10 +13,10 @@ Map (int H, int W) {
     /**
      * getters, setters for Height and width
      */
-public int getH() {
+public static int getH() {
         return H;
     }
-    public int getW() {
+    public static int getW() {
         return W;
     }
     public int setH(int newH) {

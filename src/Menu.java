@@ -17,6 +17,8 @@ public class Menu {
             choiceMenu = scanner.nextInt();
             switch (choiceMenu) {
                 case 1:
+                    Simulation essa = new Simulation();
+                    essa.start(essa.flatMap);
                     break;
                 case 2:
                     settings.printSettings();

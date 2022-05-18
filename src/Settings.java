@@ -11,16 +11,6 @@ public class Settings extends Menu {
 
     Scanner scanner = new Scanner(System.in);
 
-    Pokemon pokemon = new Pokemon();
-
-    PokemonFire pokemonFire = new PokemonFire();
-
-    PokemonWater pokemonWater = new PokemonWater();
-
-    PokemonGrass pokemonGrass = new PokemonGrass();
-
-    PokemonGround pokemonGround = new PokemonGround();
-
 
     /**
      * Printing current settings to user
@@ -33,16 +23,16 @@ public class Settings extends Menu {
         System.out.println("- Water Type: "+map.getWaterFieldsOnTheMap());
         System.out.println("- Ground Type: "+map.getGroundFieldsOnTheMap());
         System.out.println("- Grass Type: "+map.getGrassFieldsOnTheMap());
-        System.out.println("3. Type of trainer's pokemon: " +trainer.getTypeOfTrainersPokemon());
-        System.out.println("4. Count of pokemons on the map: "+pokemon.getCountOfPokemonOnTheMap());
+        System.out.println("3. Type of trainer's pokemon: " + Trainer.getTypeOfTrainersPokemon());
+        System.out.println("4. Count of pokemons on the map: "+ Pokemon.getCountOfPokemonOnTheMap());
         System.out.println("5. Types of pokemons on the map: ");
-        System.out.println("- Fire Type: "+pokemonFire.getFirePokemonsOnTheMap());
-        System.out.println("- Water Type: "+pokemonWater.getWaterPokemonsOnTheMap());
-        System.out.println("- Ground Type: "+pokemonGround.getGroundPokemonsOnTheMap());
-        System.out.println("- Grass Type: "+pokemonGrass.getGrassPokemonsOnTheMap());
-        System.out.println("6. Trainer's pokemon's base chance of winning: "+trainer.getTrainersWinningBaseChance());
-        System.out.println("7. Trainer's pokemon's base chance of derivation of critical hit: "+trainer.getTrainersCriticalHitBaseChance());
-        System.out.println("8. Pokemons' base chance of derivation of critical hit: "+pokemon.getPokemonsCriticalHitBaseChance());
+        System.out.println("- Fire Type: " + PokemonFire.getFirePokemonsOnTheMap());
+        System.out.println("- Water Type: " + PokemonWater.getWaterPokemonsOnTheMap());
+        System.out.println("- Ground Type: " + PokemonGround.getGroundPokemonsOnTheMap());
+        System.out.println("- Grass Type: " + PokemonGrass.getGrassPokemonsOnTheMap());
+        System.out.println("6. Trainer's pokemon's base chance of winning: " + Trainer.getTrainersWinningBaseChance());
+        System.out.println("7. Trainer's pokemon's base chance of derivation of critical hit: " + Trainer.getTrainersCriticalHitBaseChance());
+        System.out.println("8. Pokemons' base chance of derivation of critical hit: " + Pokemon.getPokemonsCriticalHitBaseChance());
         System.out.println("9. Type of saving the results: ");
         System.out.println("Press enter to continue ");
 
@@ -198,16 +188,16 @@ public class Settings extends Menu {
             choice = scanner.nextInt();
             switch (choice) {
             case 1:
-                trainer.setTypeOfTrainersPokemon("fire");
+                Trainer.setTypeOfTrainersPokemon("fire");
                 break;
             case 2:
-                trainer.setTypeOfTrainersPokemon("water");
+                Trainer.setTypeOfTrainersPokemon("water");
                 break;
             case 3:
-                trainer.setTypeOfTrainersPokemon("ground");
+                Trainer.setTypeOfTrainersPokemon("ground");
                 break;
             case 4:
-                trainer.setTypeOfTrainersPokemon("grass");
+                Trainer.setTypeOfTrainersPokemon("grass");
                 break;
             case 5:
                 System.out.println("Returning to the settings menu");
@@ -223,7 +213,7 @@ public class Settings extends Menu {
         while (true) {
             System.out.println("Which trainer's settings would you like to change: ");
             System.out.println("1. Trainer's name");
-            System.out.println("2. Trainer's pokemon typ");
+            System.out.println("2. Trainer's pokemon type");
             System.out.println("3. Trainer's winning base chance");
             System.out.println("4. Trainer's critical hit base chance");
             System.out.println("5. Exit");
@@ -268,12 +258,12 @@ public class Settings extends Menu {
         public int changePokemonsSettings() {
             while (true) {
                 System.out.println("Which pokemons' settings would you like to change: ");
-                System.out.println("1. Pokemons' count on the map");
-                System.out.println("2. Water type pokemons' count on the map");
-                System.out.println("3. Fire type pokemons' count on the map");
-                System.out.println("4. Ground type pokemons' count on the map");
-                System.out.println("5. Grass type pokemons' count on the map");
-                System.out.println("6. Pokemons' critical base chance");
+                System.out.println("1. Pokemons count on the map");
+                System.out.println("2. Water type pokemons count on the map");
+                System.out.println("3. Fire type pokemons count on the map");
+                System.out.println("4. Ground type pokemons count on the map");
+                System.out.println("5. Grass type pokemons count on the map");
+                System.out.println("6. Pokemons critical base chance");
                 System.out.println("7. Exit");
 
                 int choiceInPokemonsSettings = 0;

@@ -1,7 +1,7 @@
-public class Pokemon extends Map {
+public class Pokemon {
 
     int level;
-    int CountOfPokemonsOnTheMap = -1;
+    static int CountOfPokemonsOnTheMap = -1;
     Pokemon () {
         level = 1;
         CountOfPokemonsOnTheMap++;
@@ -12,8 +12,9 @@ public class Pokemon extends Map {
     }
 
     //variable for Base Critical Hit Chance for the other pokemons, getter and setter for it as well
-    float pokemonsCriticalHitBaseChance = 0, newPokemonsCriticalHitBaseChance=0;
-    public float getPokemonsCriticalHitBaseChance() {
+    static float pokemonsCriticalHitBaseChance = 0;
+    float newPokemonsCriticalHitBaseChance=0;
+    public static float getPokemonsCriticalHitBaseChance() {
         return pokemonsCriticalHitBaseChance;
     }
     public float setPokemonsCriticalHitBaseChance(float newPokemonsCriticalHitBaseChance) {
@@ -21,7 +22,7 @@ public class Pokemon extends Map {
     }
 
     //variable for the count of pokemons on the map, getter and setter for it as well
-    public int getCountOfPokemonOnTheMap(){
+    public static int getCountOfPokemonOnTheMap(){
         return CountOfPokemonsOnTheMap;
     }
 }
