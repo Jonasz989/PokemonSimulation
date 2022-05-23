@@ -1,5 +1,7 @@
 
 public class Simulation extends Menu {
+    public void createMap() {
+    }
 
     Field[][] flatMap = new Field[Map.getH()][Map.getW()];
 
@@ -38,6 +40,5 @@ public class Simulation extends Menu {
 
 
 //generating trainer and pokemons
-
 
 }
