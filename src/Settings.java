@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Settings extends Menu {
+public class Settings{
 
     //initialization of trainer object and giving the trainer default values
     Trainer trainer = new Trainer("Ass", 10.0f,0.10f,"fire" );

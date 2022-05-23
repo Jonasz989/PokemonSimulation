@@ -1,5 +1,5 @@
 
-public class Simulation extends Menu {
+public class Simulation {
     public void createMap() {
     }
 

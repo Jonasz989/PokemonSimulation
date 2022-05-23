@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="647b1720-5253-4298-a6c0-eb5d22f4c987" name="Changes" comment="Working on menu and settings">
+    <list default="true" id="647b1720-5253-4298-a6c0-eb5d22f4c987" name="Changes" comment="Added input protection mechanisms">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation.java" afterDir="false" />
     </list>
     <list id="a688a1c4-af37-4a84-a986-2b8e36ff044b" name="Changes by marcin" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +92,8 @@
       <workItem from="1652734062380" duration="376000" />
       <workItem from="1652788911677" duration="6215000" />
       <workItem from="1652808248032" duration="3780000" />
-      <workItem from="1653327310430" duration="3896000" />
+      <workItem from="1653327310430" duration="7949000" />
+      <workItem from="1653343243772" duration="711000" />
     </task>
     <task id="LOCAL-00001" summary="First test of our project">
       <created>1652121964399</created>
@@ -107,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652652292711</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added input protection mechanisms">
+      <created>1653331316896</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1653331316896</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,6 +138,7 @@
     <MESSAGE value="Adding a menu and some settings" />
     <MESSAGE value="Adding a menu and some settings to master" />
     <MESSAGE value="Working on menu and settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on menu and settings" />
+    <MESSAGE value="Added input protection mechanisms" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added input protection mechanisms" />
   </component>
 </project>

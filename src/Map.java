@@ -1,4 +1,4 @@
-public class Map extends Simulation {
+public class Map {
     //variables for H=height of the map, W=width of the map and getters and setters for them as well
     private static int H;
     private static int W;
