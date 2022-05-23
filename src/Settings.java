@@ -14,23 +14,24 @@ public class Settings extends Menu {
      */
     public void printSettings() {
 
-        System.out.println("1. Size of the map: "+ Map.getH() + "x" + Map.getW());
-        System.out.println("2. Special fields: ");
+        System.out.println("1. Pokemons trainer's name: "+ trainer.getNameOfPokemonsTrainer());
+        System.out.println("2. Size of the map: "+ Map.getH() + "x" + Map.getW());
+        System.out.println("3. Special fields: ");
         System.out.println("- Fire Type: " + Map.getFireFieldsOnTheMap());
         System.out.println("- Water Type: " + Map.getWaterFieldsOnTheMap());
         System.out.println("- Ground Type: " + Map.getGroundFieldsOnTheMap());
         System.out.println("- Grass Type: " + Map.getGrassFieldsOnTheMap());
-        System.out.println("3. Type of trainer's pokemon: " + Trainer.getTypeOfTrainersPokemon());
-        System.out.println("4. Count of pokemons on the map: "+ Pokemon.getCountOfPokemonOnTheMap());
-        System.out.println("5. Types of pokemons on the map: ");
+        System.out.println("4. Type of trainer's pokemon: " + Trainer.getTypeOfTrainersPokemon());
+        System.out.println("5. Count of pokemons on the map: "+ Pokemon.getCountOfPokemonOnTheMap());
+        System.out.println("6. Types of pokemons on the map: ");
         System.out.println("- Fire Type: " + PokemonFire.getFirePokemonsOnTheMap());
         System.out.println("- Water Type: " + PokemonWater.getWaterPokemonsOnTheMap());
         System.out.println("- Ground Type: " + PokemonGround.getGroundPokemonsOnTheMap());
         System.out.println("- Grass Type: " + PokemonGrass.getGrassPokemonsOnTheMap());
-        System.out.println("6. Trainer's pokemon's base chance of winning: " + Trainer.getTrainersWinningBaseChance());
-        System.out.println("7. Trainer's pokemon's base chance of derivation of critical hit: " + Trainer.getTrainersCriticalHitBaseChance());
-        System.out.println("8. Pokemons' base chance of derivation of critical hit: " + Pokemon.getPokemonsCriticalHitBaseChance());
-        System.out.println("9. Type of saving the results: work in progress");
+        System.out.println("7. Trainer's pokemon's base chance of winning: " + Trainer.getTrainersWinningBaseChance());
+        System.out.println("8. Trainer's pokemon's base chance of derivation of critical hit: " + Trainer.getTrainersCriticalHitBaseChance());
+        System.out.println("9. Pokemons' base chance of derivation of critical hit: " + Pokemon.getPokemonsCriticalHitBaseChance());
+        System.out.println("10. Type of saving the results: work in progress");
         System.out.println("Press enter to continue ");
 
     }
@@ -41,14 +42,28 @@ public class Settings extends Menu {
     public int changeSettings() {
         while(true) {
             int choiceInSettings;
-            System.out.println("Choose which settings you want to change");
-            System.out.println("1. Map");
-            System.out.println("2. Trainer's");
-            System.out.println("3. Pokemons'");
-            System.out.println("4. Saving options");
-            System.out.println("5. Exit");
 
-            choiceInSettings = scanner.nextInt();
+            while(true){
+                System.out.println("Choose which settings you want to change");
+                System.out.println("1. Map");
+                System.out.println("2. Trainer's");
+                System.out.println("3. Pokemons'");
+                System.out.println("4. Saving options");
+                System.out.println("5. Exit");
+                boolean test = scanner.hasNextInt();
+                if(test){
+                    choiceInSettings = scanner.nextInt();
+                    break;
+                }
+                else{
+                    System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                    System.out.println(" ");
+                }
+                scanner.nextLine();
+
+            }
+
+
             switch(choiceInSettings) {
                 case 1:
                     changeMapSettings();
@@ -79,11 +94,23 @@ public class Settings extends Menu {
     public int changeMapSettings() {
         int choiceInMapSettings;
         while(true) {
-        System.out.println("Choose which setting you want to change");
-        System.out.println("1. Size of the map");
-        System.out.println("2. % chance of generating pool");
-        System.out.println("3. Exit");
-        choiceInMapSettings = scanner.nextInt();
+            while(true){
+                System.out.println("Choose which setting you want to change");
+                System.out.println("1. Size of the map");
+                System.out.println("2. % chance of generating pool");
+                System.out.println("3. Exit");
+                boolean test = scanner.hasNextInt();
+                if(test){
+                    choiceInMapSettings = scanner.nextInt();
+                    break;
+                }
+                else{
+                    System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                    System.out.println(" ");
+                }
+                scanner.nextLine();
+
+            }
             switch (choiceInMapSettings) {
                 case 1:
                     changeSizeOfTheMap();
@@ -119,28 +146,40 @@ public class Settings extends Menu {
 
     int changeFieldSettings() {
         while (true) {
-            String choiceInPoolSettings;
-            System.out.println("Select what type of field you want to change.");
-            System.out.println("1. Fire");
-            System.out.println("2. Water");
-            System.out.println("3. Ground");
-            System.out.println("4. Grass");
-            System.out.println("5. Exit");
-            choiceInPoolSettings = scanner.next();
+            int choiceInPoolSettings;
+            while(true){
+                System.out.println("Select what type of field you want to change.");
+                System.out.println("1. Fire");
+                System.out.println("2. Water");
+                System.out.println("3. Ground");
+                System.out.println("4. Grass");
+                System.out.println("5. Exit");
+                boolean test = scanner.hasNextInt();
+                if(test){
+                    choiceInPoolSettings = scanner.nextInt();
+                    break;
+                }
+                else{
+                    System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                    System.out.println(" ");
+                }
+                scanner.nextLine();
+
+            }
             switch (choiceInPoolSettings) {
-                case "1":
+                case 1:
                     changeChanceOfGeneratingFireField();
                     break;
-                case "2":
+                case 2:
                     changeChanceOfGeneratingWaterPool();
                     break;
-                case "3":
+                case 3:
                     changeChanceOfGeneratingGroundPool();
                     break;
-                case "4":
+                case 4:
                     changeChanceOfGeneratingGrassPool();
                     break;
-                case "5":
+                case 5:
                     System.out.println("Returning to map settings");
                     return 0;
                 default:
@@ -184,15 +223,30 @@ public class Settings extends Menu {
 
     public int changeTrainersSettings() {
         while (true) {
-            System.out.println("Which trainer's settings would you like to change: ");
-            System.out.println("1. Trainer's name");
-            System.out.println("2. Trainer's pokemon type");
-            System.out.println("3. Trainer's winning base chance");
-            System.out.println("4. Trainer's critical hit base chance");
-            System.out.println("5. Exit");
 
             int choiceInTrainersSettings = 0;
-            choiceInTrainersSettings = scanner.nextInt();
+
+            while(true){
+                System.out.println("Which trainer's settings would you like to change: ");
+                System.out.println("1. Trainer's name");
+                System.out.println("2. Trainer's pokemon type");
+                System.out.println("3. Trainer's winning base chance");
+                System.out.println("4. Trainer's critical hit base chance");
+                System.out.println("5. Exit");
+                boolean test = scanner.hasNextInt();
+                if(test){
+                    choiceInTrainersSettings = scanner.nextInt();
+                    break;
+                }
+                else{
+                    System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                    System.out.println(" ");
+                }
+                scanner.nextLine();
+
+            }
+
+
             switch (choiceInTrainersSettings) {
                 case 1:
                     changePokemonsTrainersName();
@@ -209,7 +263,6 @@ public class Settings extends Menu {
                 case 5:
                     System.out.println("Leaving");
                     return 0;
-
                 default:
                     System.out.println("Your input was invalid. Please choose number between 1-5.");
                     continue;
@@ -218,10 +271,18 @@ public class Settings extends Menu {
     }
     //METHODS FOR TRAINERS SETTING//////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void changePokemonsTrainersName(){
+        while(true){
         System.out.println("To which name would you like to change it?: ");
         String choice;
-        choice = scanner.next();
-        trainer.setNameOfPokemonsTrainer(choice);
+        boolean test = scanner.hasNext();
+        if(test){
+            choice = scanner.next();
+            trainer.setNameOfPokemonsTrainer(choice);
+            break;}
+        else{
+            System.out.println("You've entered something else rather than a String so please try again.");
+        }
+        }
     }
 
     public void changeTrainersWinningBaseChance() {
@@ -244,26 +305,37 @@ public class Settings extends Menu {
     public int changeTypeOfTrainersPokemon() {
         int choice;
         while (true) {
-            System.out.println("You may choose type of the trainer's pokemon from: ");
-            System.out.println("1. Fire");
-            System.out.println("2. Water");
-            System.out.println("3. Ground");
-            System.out.println("4. Grass");
-            System.out.println("5. Exit");
-            choice = scanner.nextInt();
+            while(true){
+                System.out.println("You may choose type of the trainer's pokemon from: ");
+                System.out.println("1. Fire");
+                System.out.println("2. Water");
+                System.out.println("3. Ground");
+                System.out.println("4. Grass");
+                System.out.println("5. Exit");
+                boolean test = scanner.hasNextInt();
+                if(test){
+                    choice = scanner.nextInt();
+                    break;
+                }
+                else{
+                    System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                    System.out.println(" ");
+                }
+                scanner.nextLine();
+            }
             switch (choice) {
                 case 1:
                     Trainer.setTypeOfTrainersPokemon("fire");
-                    break;
+                    return 0;
                 case 2:
                     Trainer.setTypeOfTrainersPokemon("water");
-                    break;
+                    return 0;
                 case 3:
                     Trainer.setTypeOfTrainersPokemon("ground");
-                    break;
+                    return 0;
                 case 4:
                     Trainer.setTypeOfTrainersPokemon("grass");
-                    break;
+                    return 0;
                 case 5:
                     System.out.println("Returning to the settings menu");
                     return 0;
@@ -279,17 +351,28 @@ public class Settings extends Menu {
 
         public int changePokemonsSettings() {
             while (true) {
-                System.out.println("Which pokemons' settings would you like to change: ");
-                System.out.println("1. Pokemons count on the map");
-                System.out.println("2. Water type pokemons count on the map");
-                System.out.println("3. Fire type pokemons count on the map");
-                System.out.println("4. Ground type pokemons count on the map");
-                System.out.println("5. Grass type pokemons count on the map");
-                System.out.println("6. Pokemons critical base chance");
-                System.out.println("7. Exit");
 
                 int choiceInPokemonsSettings = 0;
-                choiceInPokemonsSettings = scanner.nextInt();
+                while(true){
+                    System.out.println("Which pokemons' settings would you like to change: ");
+                    System.out.println("1. Pokemons count on the map");
+                    System.out.println("2. Water type pokemons count on the map");
+                    System.out.println("3. Fire type pokemons count on the map");
+                    System.out.println("4. Ground type pokemons count on the map");
+                    System.out.println("5. Grass type pokemons count on the map");
+                    System.out.println("6. Pokemons critical base chance");
+                    System.out.println("7. Exit");
+                    boolean test = scanner.hasNextInt();
+                    if(test){
+                        choiceInPokemonsSettings = scanner.nextInt();
+                        break;
+                    }
+                    else{
+                        System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                        System.out.println(" ");
+                    }
+                    scanner.nextLine();
+                }
                 switch (choiceInPokemonsSettings) {
                     case 1:
                         //nw co tutaj w sensie skoro l jest zwiekszana przy tworzeniu obiektu to nw
@@ -319,5 +402,6 @@ public class Settings extends Menu {
                 }
             }
         }
+
 }
 
