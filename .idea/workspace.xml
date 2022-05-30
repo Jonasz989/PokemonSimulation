@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="647b1720-5253-4298-a6c0-eb5d22f4c987" name="Changes" comment="Added input protection mechanisms">
+    <list default="true" id="647b1720-5253-4298-a6c0-eb5d22f4c987" name="Changes" comment="adjusting settings and classes to use static methods and repairing map settings">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
     </list>
     <list id="a688a1c4-af37-4a84-a986-2b8e36ff044b" name="Changes by marcin" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -42,25 +50,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/maryl/Documents/GitHub/PokemonSimulation/src&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "last_opened_file_path": "C:/Users/Damian/Documents/GitHub/PokemonSimulation",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\maryl\Documents\GitHub\PokemonSimulation\src" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Menu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Menu" />
@@ -91,9 +94,10 @@
       <workItem from="1652637022714" duration="11410000" />
       <workItem from="1652734062380" duration="376000" />
       <workItem from="1652788911677" duration="6215000" />
-      <workItem from="1652808248032" duration="3780000" />
-      <workItem from="1653327310430" duration="7949000" />
-      <workItem from="1653343243772" duration="711000" />
+      <workItem from="1652821781602" duration="5777000" />
+      <workItem from="1652874623540" duration="4171000" />
+      <workItem from="1653942053732" duration="474000" />
+      <workItem from="1653942590732" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="First test of our project">
       <created>1652121964399</created>
@@ -109,12 +113,12 @@
       <option name="project" value="LOCAL" />
       <updated>1652652292711</updated>
     </task>
-    <task id="LOCAL-00003" summary="Added input protection mechanisms">
-      <created>1653331316896</created>
+    <task id="LOCAL-00003" summary="Few changes to static + starting to prepare simulation">
+      <created>1652832094407</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1653331316896</updated>
+      <updated>1652832094407</updated>
     </task>
     <option name="localTasksCounter" value="4" />
     <servers />
@@ -138,7 +142,11 @@
     <MESSAGE value="Adding a menu and some settings" />
     <MESSAGE value="Adding a menu and some settings to master" />
     <MESSAGE value="Working on menu and settings" />
-    <MESSAGE value="Added input protection mechanisms" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added input protection mechanisms" />
+    <MESSAGE value="Few changes to static + starting to prepare simulation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Few changes to static + starting to prepare simulation" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
