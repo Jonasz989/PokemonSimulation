@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="647b1720-5253-4298-a6c0-eb5d22f4c987" name="Changes" comment="adjusting settings and classes to use static methods and repairing map settings">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
+    <list default="true" id="647b1720-5253-4298-a6c0-eb5d22f4c987" name="Changes" comment="Changing to gradle">
+      <change beforePath="$PROJECT_DIR$/src/Field.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Map.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ObjectsAndMethodsUsage.uml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ObjectsDiagram.uml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pokemon.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PokemonFire.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PokemonGrass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PokemonGround.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PokemonWater.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Trainer.java" beforeDir="false" />
     </list>
     <list id="a688a1c4-af37-4a84-a986-2b8e36ff044b" name="Changes by marcin" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +106,7 @@
       <workItem from="1652821781602" duration="5777000" />
       <workItem from="1652874623540" duration="4171000" />
       <workItem from="1653942053732" duration="474000" />
-      <workItem from="1653942590732" duration="13000" />
+      <workItem from="1653942590732" duration="314000" />
     </task>
     <task id="LOCAL-00001" summary="First test of our project">
       <created>1652121964399</created>
@@ -120,7 +129,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652832094407</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Changing to gradle">
+      <created>1653942756980</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1653942756980</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Changing to gradle">
+      <created>1653942813195</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1653942813195</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,7 +166,8 @@
     <MESSAGE value="Adding a menu and some settings to master" />
     <MESSAGE value="Working on menu and settings" />
     <MESSAGE value="Few changes to static + starting to prepare simulation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Few changes to static + starting to prepare simulation" />
+    <MESSAGE value="Changing to gradle" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changing to gradle" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
