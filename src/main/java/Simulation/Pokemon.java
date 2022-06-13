@@ -3,10 +3,14 @@ package Simulation;
 public abstract class Pokemon {
 
     int level;
-    static int CountOfPokemonsOnTheMap = -1;
+
+    public static int ID = 1;
+    static int CountOfPokemonsOnTheMap = 0;
     Pokemon () {
+        this.ID = ID;
         level = 1;
         CountOfPokemonsOnTheMap++;
+        ID++;
     }
 
     Pokemon (int level) {

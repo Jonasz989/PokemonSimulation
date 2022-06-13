@@ -2,21 +2,22 @@ package Simulation;
 
 import java.util.Scanner;
 
+
 public class Settings{
 
     //initialization of trainer object and giving the trainer default values
     Trainer trainer = new Trainer("Ass", 10.0f,0.10f,"fire" );
 
 
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
 
     /**
      * Printing current settings to user
      */
-    public void printSettings() {
+    public static void printSettings() {
 
-        System.out.println("1. Pokemons trainer's name: "+ trainer.getNameOfPokemonsTrainer());
+        System.out.println("1. Pokemons trainer's name: "+ Trainer.getNameOfPokemonsTrainer());
         System.out.println("2. Size of the map: "+ Map.getH() + "x" + Map.getW());
         System.out.println("3. Special fields: ");
         System.out.println("- Fire Type: " + Map.getFireFieldsOnTheMap());
@@ -62,10 +63,7 @@ public class Settings{
                     System.out.println(" ");
                 }
                 scanner.nextLine();
-
             }
-
-
             switch(choiceInSettings) {
                 case 1:
                     changeMapSettings();
@@ -87,7 +85,6 @@ public class Settings{
                     break;
             }
         }
-
     }
 
     /**
@@ -101,8 +98,8 @@ public class Settings{
                 System.out.println("1. Size of the map");
                 System.out.println("2. % chance of generating pool");
                 System.out.println("3. Exit");
-                boolean test = scanner.hasNextInt();
-                if(test){
+                boolean isOutputProper = scanner.hasNextInt();
+                if(isOutputProper){
                     choiceInMapSettings = scanner.nextInt();
                     break;
                 }
@@ -125,7 +122,7 @@ public class Settings{
                     return 0;
                 default:
                     System.out.println("Your input was invalid. Please choose number between 1-3.");
-                    continue;
+                    break;
             }
         }
     }
@@ -135,13 +132,11 @@ public class Settings{
     void changeSizeOfTheMap() {
         System.out.println("Current height is " + Map.getH() + ".");
         System.out.println("Type your new height: ");
-        int newH=0;
-        newH = scanner.nextInt();
+        int newH = scanner.nextInt();
         Map.setH(newH);
         System.out.println("Current width is " + Map.getW() + ".");
         System.out.println("Type your new width: ");
-        int newW=0;
-        newW = scanner.nextInt();
+        int newW = scanner.nextInt();
         Map.setW(newW);
     }
 
@@ -194,29 +189,29 @@ public class Settings{
     void changeChanceOfGeneratingFireField() {
         System.out.println("Current chance of generating fire pool is" + Map. getFireFieldsOnTheMap());
         System.out.println("Type new chance: ");
-        Map.newFireFieldsOnTheMap = scanner.nextInt();
-        Map.setFireFieldsOnTheMap(Map.newFireFieldsOnTheMap);
+        int newFireFieldsOnTheMap = scanner.nextInt();
+        Map.setFireFieldsOnTheMap(newFireFieldsOnTheMap);
     }
 
     void changeChanceOfGeneratingWaterPool() {
         System.out.println("Current chance of generating water pool is" + Map.getWaterFieldsOnTheMap());
         System.out.println("Type new chance: ");
-        Map.newWaterFieldsOnTheMap = scanner.nextInt();
-        Map.setWaterFieldsOnTheMap(Map.newWaterFieldsOnTheMap);
+        int newWaterFieldsOnTheMap = scanner.nextInt();
+        Map.setWaterFieldsOnTheMap(newWaterFieldsOnTheMap);
     }
 
     void changeChanceOfGeneratingGroundPool() {
         System.out.println("Current chance of generating ground pool is" + Map.getGroundFieldsOnTheMap());
         System.out.println("Type new chance: ");
-        Map.newGroundFieldsOnTheMap = scanner.nextInt();
-        Map.setGroundFieldsOnTheMap(Map.newGroundFieldsOnTheMap);
+        int newGroundFieldsOnTheMap = scanner.nextInt();
+        Map.setGroundFieldsOnTheMap(newGroundFieldsOnTheMap);
     }
 
     void changeChanceOfGeneratingGrassPool() {
         System.out.println("Current chance of generating grass pool is" + Map.getGrassFieldsOnTheMap());
         System.out.println("Type new chance: ");
-        Map.newGrassFieldsOnTheMap = scanner.nextInt();
-        Map.setGrassFieldsOnTheMap(Map.newGrassFieldsOnTheMap);
+        int newGrassFieldsOnTheMap = scanner.nextInt();
+        Map.setGrassFieldsOnTheMap(newGrassFieldsOnTheMap);
     }
 
     //END OF METHODS FOR MAP SETTINGS/////////////////////////////////////////////////////////////////////////////////////////
@@ -267,7 +262,7 @@ public class Settings{
                     return 0;
                 default:
                     System.out.println("Your input was invalid. Please choose number between 1-5.");
-                    continue;
+                    break;
             }
         }
     }
@@ -299,9 +294,7 @@ public class Settings{
     }
     public void changePokemonsCountOnTheMap(){
         System.out.println("How many should be then?");
-        int choice=0;
-        choice = scanner.nextInt();
-
+        int choice = scanner.nextInt();
     }
 
     public int changeTypeOfTrainersPokemon() {
@@ -343,7 +336,7 @@ public class Settings{
                     return 0;
                 default:
                     System.out.println("Your input was invalid. Please choose number between 1-5.");
-                    continue;
+                    break;
             }
         }
     }
@@ -400,7 +393,7 @@ public class Settings{
 
                 default:
                     System.out.println("Your input was invalid. Please choose number between 1-7.");
-                    continue;
+                    break;
             }
         }
     }

@@ -15,7 +15,7 @@ public class Menu {
             System.out.println("1. Start simulation");
             System.out.println("2. Show current settings");
             System.out.println("3. Change existing settings");
-            System.out.println("4. Exit");
+            System.out.println("0. Exit");
             choiceMenu = scanner.nextInt();
             switch (choiceMenu) {
                 case 1:
@@ -28,10 +28,10 @@ public class Menu {
                 case 3:
                     settings.changeSettings();
                     break;
-                case 4:
+                case 0:
                     System.exit(0);
                 default:
-                    System.out.println("Your input was invalid. Please choose number 1-4.");
+                    System.out.println("Your input was invalid. Please choose number 0-3.");
                     break;
 
             }
