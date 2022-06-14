@@ -35,8 +35,8 @@ public class Map {
     static int getFireFieldsOnTheMap() {
         return FireFieldsOnTheMap;
     }
-    static int setFireFieldsOnTheMap(int newFireFieldsOnTheMap) {
-        return FireFieldsOnTheMap = newFireFieldsOnTheMap;
+    static void setFireFieldsOnTheMap(int newFireFieldsOnTheMap) {
+        FireFieldsOnTheMap = newFireFieldsOnTheMap;
     }
 
     //variable for the count of ground type fields on the map, getter and setter for it as well
@@ -57,7 +57,7 @@ public class Map {
     }
 
     public static int getSumOfSpecialFields() {
-        return getFireFieldsOnTheMap() + getGroundFieldsOnTheMap() + getFireFieldsOnTheMap() + getWaterFieldsOnTheMap();
+        return getFireFieldsOnTheMap() + getGroundFieldsOnTheMap() + getGrassFieldsOnTheMap() + getWaterFieldsOnTheMap();
     }
 
 

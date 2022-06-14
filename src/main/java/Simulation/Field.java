@@ -9,11 +9,31 @@ public class Field {
         this.fieldType = fieldType;
     }
 
+    public boolean isOccupied() {
+        return isOccupied;
+    }
+
+    public void setOccupied(boolean occupied) {
+        isOccupied = occupied;
+    }
+
+    public boolean isOccupiedByTrainer() {
+        return isOccupied;
+    }
+
+    public void setOccupiedByTrainer(boolean occupied) {
+        isOccupiedByTrainer = occupied;
+    }
+
+    boolean isOccupied;
+    boolean isOccupiedByTrainer;
     String fieldType;
     String NORMAL = ".";
 
     Field () {
         fieldType = NORMAL;
+        isOccupied = false;
+        isOccupiedByTrainer = false;
     }
 
     Field (String typeOfPool) {

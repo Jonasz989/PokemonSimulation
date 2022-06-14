@@ -6,8 +6,6 @@ import java.util.Scanner;
 public class Settings{
 
     //initialization of trainer object and giving the trainer default values
-    Trainer trainer = new Trainer("Ass", 10.0f,0.10f,"fire" );
-
 
     static Scanner scanner = new Scanner(System.in);
 
@@ -42,7 +40,7 @@ public class Settings{
     /**
      * Method that show us menu to changing settings to our simulation
      */
-    public int changeSettings() {
+    public static int changeSettings() {
         while(true) {
             int choiceInSettings;
 
@@ -52,7 +50,7 @@ public class Settings{
                 System.out.println("2. Trainer's");
                 System.out.println("3. Pokemons'");
                 System.out.println("4. Saving options");
-                System.out.println("5. Exit");
+                System.out.println("0. Exit");
                 boolean test = scanner.hasNextInt();
                 if(test){
                     choiceInSettings = scanner.nextInt();
@@ -66,22 +64,23 @@ public class Settings{
             }
             switch(choiceInSettings) {
                 case 1:
-                    changeMapSettings();
+                    Settings.changeMapSettings();
                     break;
                 case 2:
-                    changeTrainersSettings();
+                    Settings.changeTrainersSettings();
                     break;
                 case 3:
-                    changePokemonsSettings();
+                    Settings.changePokemonsSettings();
                     break;
                 case 4:
+                    System.out.println("Not done yet.");
                     //tutaj bedzie ta funkcja ale napiszemy po wykladzie mrozona dopiero
                     break;
-                case 5:
+                case 0:
                     System.out.println("Going back to main menu");
                     return 0;
                 default:
-                    System.out.println("Your input was invalid. Please choose a number between 1-5.");
+                    System.out.println("Your input was invalid. Please choose a number between 0-4.");
                     break;
             }
         }
@@ -90,14 +89,14 @@ public class Settings{
     /**
      * Method for changing map setting
      */
-    public int changeMapSettings() {
+    public static int changeMapSettings() {
         int choiceInMapSettings;
         while(true) {
             while(true){
                 System.out.println("Choose which setting you want to change");
                 System.out.println("1. Size of the map");
                 System.out.println("2. % chance of generating pool");
-                System.out.println("3. Exit");
+                System.out.println("0. Exit");
                 boolean isOutputProper = scanner.hasNextInt();
                 if(isOutputProper){
                     choiceInMapSettings = scanner.nextInt();
@@ -117,11 +116,11 @@ public class Settings{
                 case 2:
                     changeFieldSettings();
                     break;
-                case 3:
+                case 0:
                     System.out.println("Returning to the settings menu");
                     return 0;
                 default:
-                    System.out.println("Your input was invalid. Please choose number between 1-3.");
+                    System.out.println("Your input was invalid. Please choose number between 0-2.");
                     break;
             }
         }
@@ -129,7 +128,7 @@ public class Settings{
 
     //METHODS FOR MAP SETTINGS/////////////////////////////////////////////////////////////////////////////////////////
 
-    void changeSizeOfTheMap() {
+    static void changeSizeOfTheMap() {
         System.out.println("Current height is " + Map.getH() + ".");
         System.out.println("Type your new height: ");
         int newH = scanner.nextInt();
@@ -141,7 +140,7 @@ public class Settings{
     }
 
 
-    int changeFieldSettings() {
+    static int changeFieldSettings() {
         while (true) {
             int choiceInPoolSettings;
             while(true){
@@ -150,7 +149,7 @@ public class Settings{
                 System.out.println("2. Water");
                 System.out.println("3. Ground");
                 System.out.println("4. Grass");
-                System.out.println("5. Exit");
+                System.out.println("0. Exit");
                 boolean test = scanner.hasNextInt();
                 if(test){
                     choiceInPoolSettings = scanner.nextInt();
@@ -161,7 +160,6 @@ public class Settings{
                     System.out.println(" ");
                 }
                 scanner.nextLine();
-
             }
             switch (choiceInPoolSettings) {
                 case 1:
@@ -176,38 +174,38 @@ public class Settings{
                 case 4:
                     changeChanceOfGeneratingGrassPool();
                     break;
-                case 5:
+                case 0:
                     System.out.println("Returning to map settings");
                     return 0;
                 default:
-                    System.out.println("Your input was invalid. Please choose a number between 1-5.");
+                    System.out.println("Your input was invalid. Please choose a number between 0-4.");
                     break;
             }
         }
     }
 
-    void changeChanceOfGeneratingFireField() {
+    static void changeChanceOfGeneratingFireField() {
         System.out.println("Current chance of generating fire pool is" + Map. getFireFieldsOnTheMap());
         System.out.println("Type new chance: ");
         int newFireFieldsOnTheMap = scanner.nextInt();
         Map.setFireFieldsOnTheMap(newFireFieldsOnTheMap);
     }
 
-    void changeChanceOfGeneratingWaterPool() {
+    static void changeChanceOfGeneratingWaterPool() {
         System.out.println("Current chance of generating water pool is" + Map.getWaterFieldsOnTheMap());
         System.out.println("Type new chance: ");
         int newWaterFieldsOnTheMap = scanner.nextInt();
         Map.setWaterFieldsOnTheMap(newWaterFieldsOnTheMap);
     }
 
-    void changeChanceOfGeneratingGroundPool() {
+    static void changeChanceOfGeneratingGroundPool() {
         System.out.println("Current chance of generating ground pool is" + Map.getGroundFieldsOnTheMap());
         System.out.println("Type new chance: ");
         int newGroundFieldsOnTheMap = scanner.nextInt();
         Map.setGroundFieldsOnTheMap(newGroundFieldsOnTheMap);
     }
 
-    void changeChanceOfGeneratingGrassPool() {
+    static void changeChanceOfGeneratingGrassPool() {
         System.out.println("Current chance of generating grass pool is" + Map.getGrassFieldsOnTheMap());
         System.out.println("Type new chance: ");
         int newGrassFieldsOnTheMap = scanner.nextInt();
@@ -218,7 +216,7 @@ public class Settings{
 
     //changing trainers settings
 
-    public int changeTrainersSettings() {
+    public static int changeTrainersSettings() {
         while (true) {
 
             int choiceInTrainersSettings = 0;
@@ -229,7 +227,7 @@ public class Settings{
                 System.out.println("2. Trainer's pokemon type");
                 System.out.println("3. Trainer's winning base chance");
                 System.out.println("4. Trainer's critical hit base chance");
-                System.out.println("5. Exit");
+                System.out.println("0. Exit");
                 boolean test = scanner.hasNextInt();
                 if(test){
                     choiceInTrainersSettings = scanner.nextInt();
@@ -257,24 +255,24 @@ public class Settings{
                 case 4:
                     changeTrainersCriticalHitBaseChance();
                     break;
-                case 5:
+                case 0:
                     System.out.println("Leaving");
                     return 0;
                 default:
-                    System.out.println("Your input was invalid. Please choose number between 1-5.");
+                    System.out.println("Your input was invalid. Please choose number between 0-4.");
                     break;
             }
         }
     }
     //METHODS FOR TRAINERS SETTING//////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void changePokemonsTrainersName(){
+    public static void changePokemonsTrainersName(){
         while(true){
             System.out.println("To which name would you like to change it?: ");
             String choice;
             boolean test = scanner.hasNext();
             if(test){
                 choice = scanner.next();
-                trainer.setNameOfPokemonsTrainer(choice);
+                Trainer.setNameOfPokemonsTrainer(choice);
                 break;}
             else{
                 System.out.println("You've entered something else rather than a String so please try again.");
@@ -282,22 +280,24 @@ public class Settings{
         }
     }
 
-    public void changeTrainersWinningBaseChance() {
+    public static void changeTrainersWinningBaseChance() {
         float choice;
         choice = scanner.nextInt();
-        trainer.setTrainersWinningBaseChance(choice);
+        Trainer.setTrainersWinningBaseChance(choice);
     }
-    public void changeTrainersCriticalHitBaseChance() {
+    public static void changeTrainersCriticalHitBaseChance() {
         float choice;
         choice = scanner.nextInt();
-        trainer.setTrainersCriticalHitBaseChance(choice);
+        Trainer.setTrainersCriticalHitBaseChance(choice);
     }
-    public void changePokemonsCountOnTheMap(){
+    public void changeHowMAnyPokemonsShouldBeOnTheMap(){
         System.out.println("How many should be then?");
         int choice = scanner.nextInt();
+
+
     }
 
-    public int changeTypeOfTrainersPokemon() {
+    public static int changeTypeOfTrainersPokemon() {
         int choice;
         while (true) {
             while(true){
@@ -306,7 +306,7 @@ public class Settings{
                 System.out.println("2. Water");
                 System.out.println("3. Ground");
                 System.out.println("4. Grass");
-                System.out.println("5. Exit");
+                System.out.println("0. Exit");
                 boolean test = scanner.hasNextInt();
                 if(test){
                     choice = scanner.nextInt();
@@ -331,20 +331,20 @@ public class Settings{
                 case 4:
                     Trainer.setTypeOfTrainersPokemon("grass");
                     return 0;
-                case 5:
+                case 0:
                     System.out.println("Returning to the settings menu");
                     return 0;
                 default:
-                    System.out.println("Your input was invalid. Please choose number between 1-5.");
+                    System.out.println("Your input was invalid. Please choose number between 0-4.");
                     break;
             }
         }
     }
 
-    //END OF METHODS FOR TRAINERS SETTINGS///////////////////////////////////////////////////////////////////////////////////////////////////
+    //END OF METHODS FOR POKEMONS SETTINGS///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    public int changePokemonsSettings() {
+    public static int changePokemonsSettings() {
         while (true) {
 
             int choiceInPokemonsSettings = 0;
@@ -356,7 +356,7 @@ public class Settings{
                 System.out.println("4. Ground type pokemons count on the map");
                 System.out.println("5. Grass type pokemons count on the map");
                 System.out.println("6. Pokemons critical base chance");
-                System.out.println("7. Exit");
+                System.out.println("0. Exit");
                 boolean test = scanner.hasNextInt();
                 if(test){
                     choiceInPokemonsSettings = scanner.nextInt();
@@ -387,12 +387,12 @@ public class Settings{
                 case 6:
                     //nw co tutaj w sensie skoro l jest zwiekszana przy tworzeniu obiektu to nw
                     break;
-                case 7:
+                case 0:
                     System.out.println("Leaving");
                     return 0;
 
                 default:
-                    System.out.println("Your input was invalid. Please choose number between 1-7.");
+                    System.out.println("Your input was invalid. Please choose number between 0-6.");
                     break;
             }
         }

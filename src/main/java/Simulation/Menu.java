@@ -9,26 +9,25 @@ public class Menu {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        int choiceMenu;
-        Settings settings = new Settings();
+        String choiceMenu;
         while(true) {
             System.out.println("1. Start simulation");
             System.out.println("2. Show current settings");
             System.out.println("3. Change existing settings");
             System.out.println("0. Exit");
-            choiceMenu = scanner.nextInt();
+            choiceMenu = scanner.next();
             switch (choiceMenu) {
-                case 1:
+                case "1":
                     Simulation essa = new Simulation();
                     essa.start(essa.flatMap);
                     break;
-                case 2:
-                    settings.printSettings();
+                case "2":
+                    Settings.printSettings();
                     break;
-                case 3:
-                    settings.changeSettings();
+                case "3":
+                    Settings.changeSettings();
                     break;
-                case 0:
+                case "0":
                     System.exit(0);
                 default:
                     System.out.println("Your input was invalid. Please choose number 0-3.");
