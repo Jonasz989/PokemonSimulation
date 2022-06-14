@@ -14,11 +14,11 @@ public class Map {
     public static int getW() {
         return W;
     }
-    public static int setH(int newH) {
-        return H = newH;
+    public static void setH(int newH) {
+         H = newH;
     }
-    public static int setW(int newW) {
-        return W = newW;
+    public static void setW(int newW) {
+         W = newW;
     }
 
 
@@ -27,8 +27,8 @@ public class Map {
     public static int getWaterFieldsOnTheMap() {
         return WaterFieldsOnTheMap;
     }
-    public static int setWaterFieldsOnTheMap(int newWaterFieldsOnTheMap) {
-        return WaterFieldsOnTheMap = newWaterFieldsOnTheMap;
+    public static void setWaterFieldsOnTheMap(int newWaterFieldsOnTheMap) {
+        WaterFieldsOnTheMap = newWaterFieldsOnTheMap;
     }
     //variable for the count of fire type fields on the map, getter and setter for it as well
     static int FireFieldsOnTheMap = 5;
@@ -44,16 +44,16 @@ public class Map {
     static int getGroundFieldsOnTheMap() {
         return GroundFieldsOnTheMap;
     }
-    static int setGroundFieldsOnTheMap(int newGroundFieldsOnTheMap) {
-        return GroundFieldsOnTheMap = newGroundFieldsOnTheMap;
+    static void setGroundFieldsOnTheMap(int newGroundFieldsOnTheMap) {
+        GroundFieldsOnTheMap = newGroundFieldsOnTheMap;
     }
     //variable for the count of grass type fields on the map, getter and setter for it as well
     static int GrassFieldsOnTheMap = 5;
     static int getGrassFieldsOnTheMap() {
         return GrassFieldsOnTheMap;
     }
-    static int setGrassFieldsOnTheMap(int newGrassFieldsOnTheMap) {
-        return GrassFieldsOnTheMap = newGrassFieldsOnTheMap;
+    static void setGrassFieldsOnTheMap(int newGrassFieldsOnTheMap) {
+         GrassFieldsOnTheMap = newGrassFieldsOnTheMap;
     }
 
     public static int getSumOfSpecialFields() {

@@ -1,7 +1,10 @@
 package Simulation;
 
-public abstract class Pokemon {
+import java.util.ArrayList;
+import java.util.Random;
 
+public abstract class Pokemon {
+    Random rand = new Random();
     int level;
 
     public static int getHowManyPokemonsShouldBeOnTheMap() {
@@ -64,8 +67,8 @@ public abstract class Pokemon {
     public static float getPokemonsCriticalHitBaseChance() {
         return pokemonsCriticalHitBaseChance;
     }
-    public float setPokemonsCriticalHitBaseChance(float newPokemonsCriticalHitBaseChance) {
-        return pokemonsCriticalHitBaseChance = newPokemonsCriticalHitBaseChance;
+    public static void setPokemonsCriticalHitBaseChance(float newPokemonsCriticalHitBaseChance) {
+        pokemonsCriticalHitBaseChance = newPokemonsCriticalHitBaseChance;
     }
 
     //variable for the count of pokemons on the map, getter and setter for it as well

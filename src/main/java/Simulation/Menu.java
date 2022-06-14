@@ -1,6 +1,6 @@
 package Simulation;
 
-/**
+/*
  This program let us simulate a career of young Pokemon trainer
  In menu we can choose 1. Start simulation, 2. Setting 3. Exit*
  */

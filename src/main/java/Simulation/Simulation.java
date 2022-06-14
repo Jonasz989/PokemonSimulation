@@ -1,4 +1,5 @@
 package Simulation;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Simulation {
@@ -10,7 +11,6 @@ public class Simulation {
     String FIRE = "F";
     String GROUND = "G";
     String GRASS = "g";
-
 
     Field[][] flatMap = new Field[Map.getH()][Map.getW()];
     Trainer trainer = new Trainer(Trainer.getNameOfPokemonsTrainer(), Trainer.getTrainersWinningBaseChance(), Trainer.getTrainersCriticalHitBaseChance(), Trainer.getTypeOfTrainersPokemon(), Trainer.getIDofPokemonTrainer(), Trainer.getLevelofPokemonTrainer(), Trainer.getHowManyPokemonsKilled(), Trainer.getXposition(), Trainer.getYposition());
@@ -79,8 +79,7 @@ public class Simulation {
         int actualNumberOfFireFields = Map.getFireFieldsOnTheMap();
         int actualNumberOfGroundFields = Map.getGroundFieldsOnTheMap();
         int actualNumberOfGrassFields = Map.getGrassFieldsOnTheMap();
-
-        for (int z = 0; z < Map.getSumOfSpecialFields();) {
+        for (int z = 0; z < zmienna; ) {
             while (actualNumberOfFireFields != 0) {
                 int generatedI;
                 int generatedJ;
@@ -102,7 +101,7 @@ public class Simulation {
                     generatedJ = rand.nextInt(Map.getW());
                 } while (!flatMap[generatedI][generatedJ].fieldType.equals("."));
 
-                if(flatMap[generatedI][generatedJ].fieldType.equals(".")) {
+                if (flatMap[generatedI][generatedJ].fieldType.equals(".")) {
                     flatMap[generatedI][generatedJ].setFieldType(WATER);
                     z++;
                     actualNumberOfWaterFields--;
@@ -117,7 +116,7 @@ public class Simulation {
                     generatedJ = rand.nextInt(Map.getW());
                 } while (!flatMap[generatedI][generatedJ].fieldType.equals("."));
 
-                if(flatMap[generatedI][generatedJ].fieldType.equals(".")) {
+                if (flatMap[generatedI][generatedJ].fieldType.equals(".")) {
                     flatMap[generatedI][generatedJ].setFieldType(GROUND);
                     z++;
                     actualNumberOfGroundFields--;
@@ -132,7 +131,7 @@ public class Simulation {
                     generatedJ = rand.nextInt(Map.getW());
                 } while (!flatMap[generatedI][generatedJ].fieldType.equals("."));
 
-                if(flatMap[generatedI][generatedJ].fieldType.equals(".")) {
+                if (flatMap[generatedI][generatedJ].fieldType.equals(".")) {
                     flatMap[generatedI][generatedJ].setFieldType(GRASS);
                     z++;
                     actualNumberOfGrassFields--;
@@ -195,6 +194,9 @@ public class Simulation {
         trainer.setYposition(generatedI);
         flatMap[generatedI][generatedJ].setOccupiedByTrainer(true);
     }
+
+
+
 
 
 }
