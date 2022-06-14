@@ -26,7 +26,10 @@ public class Settings{
         System.out.println("7. Trainer's pokemon's base chance of winning: " + Trainer.getTrainersWinningBaseChance());
         System.out.println("8. Trainer's pokemon's base chance of derivation of critical hit: " + Trainer.getTrainersCriticalHitBaseChance());
         System.out.println("9. Pokemons' base chance of derivation of critical hit: " + Pokemon.getPokemonsCriticalHitBaseChance());
-        System.out.println("10. Type of saving the results: work in progress");
+        System.out.println("10. Trainer's exp to get 2. level: " + Trainer.getExpFor2Level());
+        System.out.println("11. Trainer's exp to get 3. level: " + Trainer.getExpFor3Level());
+        System.out.println("12. Trainer's exp to get 4. level: " + Trainer.getExpFor4Level());
+        System.out.println("14. Type of saving the results: work in progress");
         System.out.println("Press enter to continue ");
 
     }
@@ -293,6 +296,10 @@ public class Settings{
                 System.out.println("2. Trainer's pokemon type");
                 System.out.println("3. Trainer's winning base chance");
                 System.out.println("4. Trainer's critical hit base chance");
+                System.out.println("5. Trainer's exp to get 2. level");
+                System.out.println("6. Trainer's exp to get 3. level");
+                System.out.println("7. Trainer's exp to get 4. level");
+                System.out.println("8. Save exp's choices");
                 System.out.println("0. Exit");
                 boolean test = scanner.hasNextInt();
                 if(test){
@@ -318,6 +325,18 @@ public class Settings{
                     break;
                 case 4:
                     changeTrainersCriticalHitBaseChance();
+                    break;
+                case 5:
+                    changeTrainersExpToGet2Level();
+                    break;
+                case 6:
+                    changeTrainersExpToGet3Level();
+                    break;
+                case 7:
+                    changeTrainersExpToGet4Level();
+                    break;
+                case 8:
+                    savingExpChoices();
                     break;
                 case 0:
                     System.out.println("Leaving");
@@ -424,6 +443,85 @@ public class Settings{
                     System.out.println("Your input was invalid. Please choose number between 0-4.");
                     break;
             }
+        }
+    }
+
+    static int expChoice1 = -1, expChoice2 = -1, expChoice3 = -1;
+
+    public static void savingExpChoices (){
+        if (expChoice1==-1) expChoice1 = Trainer.getExpFor2Level();
+        if (expChoice2==-1) expChoice2 = Trainer.getExpFor3Level();
+        if (expChoice3==-1) expChoice3 = Trainer.getExpFor4Level();
+
+        if (expChoice1<expChoice2 && expChoice2<expChoice3 && expChoice1<expChoice3){
+            Trainer.setExpFor2Level(expChoice1);
+            Trainer.setExpFor3Level(expChoice2);
+            Trainer.setExpFor4Level(expChoice3);
+            System.out.println("Saved properly.");
+        }
+        else{
+            System.out.println("Exp's choices are wrong. You cannot assign higher or equal value than next level's to a lower level.");
+        }
+
+    }
+
+    public static void changeTrainersExpToGet2Level (){
+        while(true) {
+            System.out.println("Current Trainer's exp to get 2. level: " + Trainer.getExpFor2Level());
+            System.out.println("To which value would you like to change it? :");
+            boolean test = scanner.hasNextInt();
+            if (test) {
+                expChoice1 = scanner.nextInt();
+                if(expChoice1<0){
+                    expChoice1 = -1;
+                    System.out.println("You can't choose negative number");
+                }
+                break;
+            } else {
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
+        }
+    }
+
+    public static void changeTrainersExpToGet3Level (){
+        while(true) {
+            System.out.println("Current Trainer's exp to get 3. level: " + Trainer.getExpFor3Level());
+            System.out.println("To which value would you like to change it? :");
+            boolean test = scanner.hasNextInt();
+            if (test) {
+                expChoice2 = scanner.nextInt();
+                if(expChoice2<0){
+                    expChoice2 = -1;
+                    System.out.println("You can't choose negative number");
+                }
+                break;
+            } else {
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
+        }
+    }
+
+    public static void changeTrainersExpToGet4Level (){
+        while(true) {
+            System.out.println("Current Trainer's exp to get 4. level: " + Trainer.getExpFor4Level());
+            System.out.println("To which value would you like to change it? :");
+            boolean test = scanner.hasNextInt();
+            if (test) {
+                expChoice3 = scanner.nextInt();
+                if(expChoice3<0){
+                    expChoice3 = -1;
+                    System.out.println("You can't choose negative number");
+                }
+                break;
+            } else {
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
         }
     }
 

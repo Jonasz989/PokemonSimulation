@@ -54,10 +54,7 @@ public class Simulation {
             }
 
             printCurrentSimulationState(flatMap);
-        } while (!trainer.checkingProgress() || !(arrayOfPokemons.isEmpty()));
-
-
-
+        } while (trainer.checkingProgress() && !(arrayOfPokemons.isEmpty()));
 
 
     }
