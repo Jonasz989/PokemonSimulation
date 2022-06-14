@@ -15,9 +15,9 @@ public class Trainer {
     public static void setLevelOfPokemonTrainer(int level) {Trainer.level=level;}
 
 
-    private static int HowManyBattlesLost=0;
-    public static int getHowManyBattlesLost() {return HowManyBattlesLost;}
-    public static void setHowManyBattlesLost(int howManyBattlesLost) {HowManyBattlesLost = howManyBattlesLost;}
+    private int HowManyBattlesLost=0;
+    public int getHowManyBattlesLost() {return HowManyBattlesLost;}
+    public void setHowManyBattlesLost(int howManyBattlesLost) {HowManyBattlesLost = howManyBattlesLost;}
 
 
 
@@ -36,7 +36,7 @@ public class Trainer {
 
 
     //variable, getter and setter for trainer's winning base chance
-    private static float trainersWinningBaseChance = 0.5f;
+    private static float trainersWinningBaseChance = 1f;
     public static float getTrainersWinningBaseChance() {
         return trainersWinningBaseChance;
     }
@@ -104,17 +104,6 @@ public class Trainer {
         }
     }
 
-    public void fightWithPokemon(Field[][] flatMap, ArrayList<Pokemon> arrayOfPokemons) {
-        int zmiennaDoWalki = rand.nextInt(2);
-
-        if (zmiennaDoWalki == 1) {
-            //wygrana
-
-        } else {
-            //przegrana
-        }
-    }
-
 
     //checking trainer's distance to the nearest pokemon
      public int[] checkDistance(ArrayList<Pokemon> arrayOfPokemons) {
@@ -138,31 +127,20 @@ public class Trainer {
         return (Math.abs(y - aimedY) + Math.abs(x - aimedX));
     }
 
-    public boolean isPokemonClose(Field[][] flatMap) {
-        int Xtrainer = this.getXposition();
-        int Ytrainer = this.getYposition();
-
-        for(int i = -1; i < 2; i++) {
-            for (int j = -1; j < 2; j++) {
-                try {
-                    if(flatMap[Ytrainer + i][Xtrainer + j].isOccupied()) {
-                        return true;
-                    }
-                } catch (IndexOutOfBoundsException e) {
-                }
-
-            }
-        }
-        return false;
+    public static int getChanceOfCatchingPokemon() {
+        return chanceOfCatchingPokemon;
     }
 
-
+    public static void setChanceOfCatchingPokemon(int chanceOfCatchingPokemon) {
+        Trainer.chanceOfCatchingPokemon = chanceOfCatchingPokemon;
+    }
     static int chanceOfCatchingPokemon = 2;
+
     //method checking is pokemon is catched - true if is, false if is not
     public boolean catchPokemon(int levelOfPokemon){
         if(level > levelOfPokemon) {
             int chance = rand.nextInt(100)+1;
-            if (chance <= chanceOfCatchingPokemon){
+            if (chance <= getChanceOfCatchingPokemon()){
                 return true;
             }
         }
@@ -170,42 +148,62 @@ public class Trainer {
         return false;
     }
 
+    public void giveExperience(int howMany) {
+        setHowManyPokemonsKilled(getHowManyPokemonsKilled() + howMany);
+    }
+
+    private static int expFor2Level = 3;
+    public static int getExpFor2Level () {return expFor2Level;}
+    public static void setExpFor2Level (int expFor2Level) {Trainer.expFor2Level=expFor2Level;}
+    private static int expFor3Level = 5;
+    public static int getExpFor3Level () {return expFor3Level;}
+    public static void setExpFor3Level (int expFor3Level) {Trainer.expFor3Level=expFor3Level;}
+    private static int expFor4Level = 7;
+    public static int getExpFor4Level () {return expFor4Level;}
+    public static void setExpFor4Level (int expFor4Level) {Trainer.expFor4Level=expFor4Level;}
+
+    public void levelUp() {
+        if(getHowManyPokemonsKilled() >= expFor4Level) {
+            setLevelOfPokemonTrainer(4);
+        } else if (getHowManyPokemonsKilled() >= expFor3Level) {
+            setLevelOfPokemonTrainer(3);
+        } else if (getHowManyPokemonsKilled() >= expFor2Level) {
+            setLevelOfPokemonTrainer(2);
+        }
+
+    }
 
     //method checking if the trainer should get a level up, if he won or lost
     public boolean checkingProgress(){
-        int level2 = 3;
-        int level3 = 5;
-        int level4 = 7;
-        if (HowManyBattlesLost>=3){
+
+        if (getHowManyBattlesLost() >= 3){
             System.out.println("Simulation ended. Trainer lost.");
             return false;
         }
-        if (getHowManyPokemonsKilled()>=level2) setLevelOfPokemonTrainer(2);
-        if (getHowManyPokemonsKilled()>=level3) setLevelOfPokemonTrainer(3);
-        if (this.getHowManyPokemonsKilled()>=level4){
+
+        if (getLevelOfPokemonTrainer() == 4){
             System.out.println("Simulation ended. Trainer won.");
             return false;
         }
         return true;
     }
 
-    /*public boolean fight(Field[][] flatMap, Trainer trainer, ArrayList<Pokemon> arrayOfPokemons) {
+    public boolean fight(int level, String typeOfEnemyPokemon) {
 
-        float trainerWinningChance = this.getTrainersWinningBaseChance() + this.getTrainersCriticalHitBaseChance() - Pokemon.getPokemonsCriticalHitBaseChance() + Pokemon.theDifferenceInLevels(Trainer.getLevelOfPokemonTrainer(), Simulation.getLevelOfDeletedPokemon()) +Pokemon.theDifferenceInPokemonType(trainer);
+        float trainerWinningChance = (getTrainersWinningBaseChance() + getTrainersCriticalHitBaseChance()) * 100;
 
         float generatedNumberWhoWon = rand.nextFloat() * 100;
 
 
         if(generatedNumberWhoWon <= trainerWinningChance) {
-            //trener wygryw
-            trainer.setHowManyPokemonsKilled(trainer.getHowManyPokemonsKilled()+1);
-            trainer.checkingProgress();
             return true;
         } else {
-            //pokemon wygrywa
-            trainer.setHowManyBattlesLost(trainer.getHowManyBattlesLost()+1);
-            trainer.checkingProgress();
             return false;
         }
-        */
+    }
+
+    public float theDifferenceInPokemonType(Pokemon pox) {
+        return 0;
+    }
+
 }

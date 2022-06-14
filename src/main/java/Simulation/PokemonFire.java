@@ -1,7 +1,7 @@
 package Simulation;
 
 public class PokemonFire extends Pokemon{
-    private static int howManyFirePokemonsOnTheMap = 2;
+    private static int howManyFirePokemonsOnTheMap = 4;
     final private String pokemonType;
 
 

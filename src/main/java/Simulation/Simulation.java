@@ -7,6 +7,8 @@ public class Simulation {
     public static ArrayList<Pokemon> arrayOfPokemons = new ArrayList<>();
 
     static int levelOfDeletedPokemon = 0;
+
+    static String typeOfDeletedPokemon;
     static Random rand = new Random();
     static String WATER = "W";
     static String FIRE = "F";
@@ -32,18 +34,24 @@ public class Simulation {
 
             if(pokemonRemover(flatMap, trainer)){
                 if (trainer.catchPokemon(getLevelOfDeletedPokemon())){
-                    trainer.setHowManyPokemonsKilled(trainer.getHowManyPokemonsKilled()+2);
+                    trainer.giveExperience(2);
+                    System.out.println("zlkapany poks");
                 }
-                else {
-
+                else if(trainer.fight(getLevelOfDeletedPokemon(), getTypeOfDeletedPokemon())) {
+                    trainer.giveExperience(1);
+                    System.out.println("zabity poks");
+                } else {
+                    trainer.setHowManyBattlesLost(trainer.getHowManyBattlesLost() + 1);
+                    System.out.println("przegrana");
                 }
             }
+            trainer.levelUp();
 
             for(Pokemon pox : arrayOfPokemons) {
                 pox.movePokemon(flatMap, trainer);
             }
 
-            if(pokemonRemover(flatMap, trainer)){
+            /*if(pokemonRemover(flatMap, trainer)){
                 if (trainer.catchPokemon(getLevelOfDeletedPokemon())){
                     trainer.setHowManyPokemonsKilled(trainer.getHowManyPokemonsKilled()+2);
                 }
@@ -51,7 +59,7 @@ public class Simulation {
 
                 }
 
-            }
+            }*/
 
             printCurrentSimulationState(flatMap);
         } while (trainer.checkingProgress() && !(arrayOfPokemons.isEmpty()));
@@ -64,6 +72,7 @@ public class Simulation {
             if (arrayOfPokemons.get(i).getYposition() == trainer.getYposition() && arrayOfPokemons.get(i).getXposition() == trainer.getXposition()) {
                 flatMap[arrayOfPokemons.get(i).getYposition()][arrayOfPokemons.get(i).getXposition()].setOccupied(false);
                 setLevelOfDeletedPokemon(arrayOfPokemons.get(i).getLevel());
+
                 arrayOfPokemons.get(i).setYposition(-100);
                 arrayOfPokemons.get(i).setXposition(-100);
                 arrayOfPokemons.remove(i);
@@ -284,5 +293,13 @@ public class Simulation {
 
     public static void setLevelOfDeletedPokemon(int levelOfDeletedPokemon) {
         Simulation.levelOfDeletedPokemon = levelOfDeletedPokemon;
+    }
+
+    public static String getTypeOfDeletedPokemon() {
+        return typeOfDeletedPokemon;
+    }
+
+    public static void setTypeOfDeletedPokemon(String typeOfDeletedPokemon) {
+        Simulation.typeOfDeletedPokemon = typeOfDeletedPokemon;
     }
 }

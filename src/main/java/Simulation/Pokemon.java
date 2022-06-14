@@ -18,7 +18,7 @@ public abstract class Pokemon implements PokemonMethods{
     boolean isAlive = true;
 
 
-    static int howManyPokemonsShouldBeOnTheMap = 10;
+    static int howManyPokemonsShouldBeOnTheMap = 12;
     public static int ID = 1;
     public int pokemonID;
 
@@ -139,27 +139,6 @@ public abstract class Pokemon implements PokemonMethods{
 
     }
 
-    public boolean fight(Field[][] flatMap, Trainer trainer, ArrayList<Pokemon> arrayOfPokemons) {
-
-        float trainerWinningChance = trainer.getTrainersWinningBaseChance() + trainer.getTrainersCriticalHitBaseChance() - this.getPokemonsCriticalHitBaseChance() + theDifferenceInLevels(trainer.getLevelOfPokemonTrainer(), this.getLevel()) + theDifferenceInPokemonType(trainer);
-
-        float generatedNumberWhoWon = rand.nextFloat() * 100;
-
-
-        if(generatedNumberWhoWon <= trainerWinningChance) {
-            //trener wygrywa
-            trainer.setHowManyPokemonsKilled(trainer.getHowManyPokemonsKilled()+1);
-            trainer.checkingProgress();
-            return true;
-        } else {
-            //pokemon wygrywa
-            trainer.setHowManyBattlesLost(trainer.getHowManyBattlesLost()+1);
-            trainer.checkingProgress();
-            return false;
-        }
-
-
-    }
 
     public static float theDifferenceInLevels(int trainerLevel, int pokemonLevel) {
         if (trainerLevel > pokemonLevel) {
@@ -180,15 +159,14 @@ public abstract class Pokemon implements PokemonMethods{
         return 0;
     }
 
-    public float theDifferenceInPokemonType(Trainer trainer) {
-        String trainerPokemonType = trainer.getTypeOfTrainersPokemon();
+    public float theDifferenceInPokemonType(String trainerType) {
         String pokemonEnemyType = this.getPokemonType();
 
-        if (trainerPokemonType.equals(pokemonEnemyType)) {
+        if (trainerType.equals(pokemonEnemyType)) {
             return 0;
         }
 
-        if (trainerPokemonType.equals("F")) {
+        if (trainerType.equals("F")) {
             if (pokemonEnemyType.equals("W")) {
                 return -5;
             }
@@ -197,7 +175,7 @@ public abstract class Pokemon implements PokemonMethods{
             }
         }
 
-        if (trainerPokemonType.equals("W")) {
+        if (trainerType.equals("W")) {
             if (pokemonEnemyType.equals("G")) {
                 return -5;
             }
@@ -206,7 +184,7 @@ public abstract class Pokemon implements PokemonMethods{
             }
         }
 
-        if (trainerPokemonType.equals("G")) {
+        if (trainerType.equals("G")) {
             if (pokemonEnemyType.equals("g")) {
                 return -5;
             }
@@ -215,7 +193,7 @@ public abstract class Pokemon implements PokemonMethods{
             }
         }
 
-        if (trainerPokemonType.equals("g")) {
+        if (trainerType.equals("g")) {
             if (pokemonEnemyType.equals("F")) {
                 return -5;
             }
