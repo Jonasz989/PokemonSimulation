@@ -38,7 +38,7 @@ public class Settings{
 
             while(true){
                 System.out.println("Choose which settings you want to change");
-                System.out.println("1. Map");
+                System.out.println("1. Map's");
                 System.out.println("2. Trainer's");
                 System.out.println("3. Pokemons'");
                 System.out.println("4. Saving options");
@@ -120,14 +120,38 @@ public class Settings{
 
     //method that allows user to change size of the map
     static void changeSizeOfTheMap() {
-        System.out.println("Current height is " + Map.getH() + ".");
-        System.out.println("Type your new height: ");
-        int newH = scanner.nextInt();
-        Map.setH(newH);
-        System.out.println("Current width is " + Map.getW() + ".");
-        System.out.println("Type your new width: ");
-        int newW = scanner.nextInt();
-        Map.setW(newW);
+        while(true) {
+            System.out.println("Current height is " + Map.getH() + ".");
+            System.out.println("Type your new height: ");
+            boolean test = scanner.hasNextInt();
+            int newH;
+            if(test) {
+                newH = scanner.nextInt();
+                Map.setH(newH);
+                break;
+            }
+            else{
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
+        }
+        while(true) {
+            System.out.println("Current width is " + Map.getW() + ".");
+            System.out.println("Type your new width: ");
+            boolean test = scanner.hasNextInt();
+            int newW;
+            if(test){
+                newW = scanner.nextInt();
+                Map.setW(newW);
+                break;
+            }
+            else{
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
+        }
     }
 
     //method that allows user to change field settings
@@ -177,34 +201,83 @@ public class Settings{
 
     //method that allows user to change chance for generating fire fields
     static void changeChanceOfGeneratingFireField() {
-        System.out.println("Current chance of generating fire pool is" + Map. getFireFieldsOnTheMap());
-        System.out.println("Type new chance: ");
-        int newFireFieldsOnTheMap = scanner.nextInt();
-        Map.setFireFieldsOnTheMap(newFireFieldsOnTheMap);
+        while(true) {
+            System.out.println("Current chance of generating fire pool is" + Map.getFireFieldsOnTheMap());
+            System.out.println("Type new chance: ");
+            int newFireFieldsOnTheMap;
+            boolean test = scanner.hasNextInt();
+            if(test){
+                newFireFieldsOnTheMap = scanner.nextInt();
+                Map.setFireFieldsOnTheMap(newFireFieldsOnTheMap);
+                break;
+            }
+            else{
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
+        }
     }
 
     //method that allows user to change chance for generating water fields
     static void changeChanceOfGeneratingWaterPool() {
-        System.out.println("Current chance of generating water pool is" + Map.getWaterFieldsOnTheMap());
-        System.out.println("Type new chance: ");
-        int newWaterFieldsOnTheMap = scanner.nextInt();
-        Map.setWaterFieldsOnTheMap(newWaterFieldsOnTheMap);
+        while(true) {
+            System.out.println("Current chance of generating water pool is" + Map.getWaterFieldsOnTheMap());
+            System.out.println("Type new chance: ");
+            int newWaterFieldsOnTheMap;
+            boolean test = scanner.hasNextInt();
+            if(test){
+                newWaterFieldsOnTheMap = scanner.nextInt();
+                Map.setWaterFieldsOnTheMap(newWaterFieldsOnTheMap);
+                break;
+            }
+            else{
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
+        }
     }
 
     //method that allows user to change chance for generating ground fields
     static void changeChanceOfGeneratingGroundPool() {
-        System.out.println("Current chance of generating ground pool is" + Map.getGroundFieldsOnTheMap());
-        System.out.println("Type new chance: ");
-        int newGroundFieldsOnTheMap = scanner.nextInt();
-        Map.setGroundFieldsOnTheMap(newGroundFieldsOnTheMap);
+        while(true) {
+            System.out.println("Current chance of generating ground pool is" + Map.getGroundFieldsOnTheMap());
+            System.out.println("Type new chance: ");
+            int newGroundFieldsOnTheMap;
+            boolean test = scanner.hasNextInt();
+            if (test){
+                newGroundFieldsOnTheMap = scanner.nextInt();
+                Map.setGroundFieldsOnTheMap(newGroundFieldsOnTheMap);
+                break;
+            }
+            else{
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
+        }
     }
 
     //method that allows user to change chance for generating grass fields
     static void changeChanceOfGeneratingGrassPool() {
+        while(true){
         System.out.println("Current chance of generating grass pool is" + Map.getGrassFieldsOnTheMap());
         System.out.println("Type new chance: ");
-        int newGrassFieldsOnTheMap = scanner.nextInt();
-        Map.setGrassFieldsOnTheMap(newGrassFieldsOnTheMap);
+        int newGrassFieldsOnTheMap;
+        boolean test = scanner.hasNextInt();
+            if (test){
+                newGrassFieldsOnTheMap = scanner.nextInt();
+                Map.setGrassFieldsOnTheMap(newGrassFieldsOnTheMap);
+                break;
+            }
+            else{
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
+
+        }
     }
     //END OF METHODS FOR THE MAP'S SETTINGS////////////////////////////
 
@@ -277,15 +350,36 @@ public class Settings{
     //method that allows user to change trainer's winning base chance
     public static void changeTrainersWinningBaseChance() {
         float choice;
-        choice = scanner.nextInt();
-        Trainer.setTrainersWinningBaseChance(choice);
+        while(true) {
+            boolean test = scanner.hasNextFloat();
+            if(test) {
+                choice = scanner.nextFloat();
+                Trainer.setTrainersWinningBaseChance(choice);
+                break;
+            }
+            else{
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+        }
     }
 
     //method that allows user to change trainer's critical hit base chance
     public static void changeTrainersCriticalHitBaseChance() {
         float choice;
-        choice = scanner.nextInt();
-        Trainer.setTrainersCriticalHitBaseChance(choice);
+        while(true) {
+            boolean test = scanner.hasNextFloat();
+            if(test) {
+                choice = scanner.nextFloat();
+                Trainer.setTrainersCriticalHitBaseChance(choice);
+                break;
+            }
+            else{
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
+        }
     }
 
     //method that allows user to change trainer pokemon's type
@@ -348,7 +442,8 @@ public class Settings{
                 System.out.println("3. Fire type pokemons count on the map");
                 System.out.println("4. Ground type pokemons count on the map");
                 System.out.println("5. Grass type pokemons count on the map");
-                System.out.println("6. Pokemons critical base chance");
+                System.out.println("6. Pokemons' critical base chance");
+                System.out.println("7. Save");
                 System.out.println("0. Exit");
                 boolean test = scanner.hasNextInt();
                 if(test){
@@ -363,27 +458,29 @@ public class Settings{
             }
             switch (choiceInPokemonsSettings) {
                 case 1:
-                    //nw co tutaj w sensie skoro l jest zwiekszana przy tworzeniu obiektu to nw
+                    changeHowManyPokemonsShouldBeOnTheMap();
                     break;
                 case 2:
-                    //nw co tutaj w sensie skoro l jest zwiekszana przy tworzeniu obiektu to nw
+                    changeHowManyWaterPokemonsShouldBeOnTheMap();
                     break;
                 case 3:
-                    //nw co tutaj w sensie skoro l jest zwiekszana przy tworzeniu obiektu to nw
+                    changeHowManyFirePokemonsShouldBeOnTheMap();
                     break;
                 case 4:
-                    //nw co tutaj w sensie skoro l jest zwiekszana przy tworzeniu obiektu to nw
+                    changeHowManyGroundPokemonsShouldBeOnTheMap();
                     break;
                 case 5:
-                    //nw co tutaj w sensie skoro l jest zwiekszana przy tworzeniu obiektu to nw
+                    changeHowManyGrassPokemonsShouldBeOnTheMap();
                     break;
                 case 6:
-                    //nw co tutaj w sensie skoro l jest zwiekszana przy tworzeniu obiektu to nw
+                    changePokemonsCriticalHitBaseChance();
+                    break;
+                case 7:
+                    savingPokemonsSettings();
                     break;
                 case 0:
                     System.out.println("Leaving");
-                    return 0;
-
+                    return;
                 default:
                     System.out.println("Your input was invalid. Please choose number between 0-6.");
                     break;
@@ -391,12 +488,172 @@ public class Settings{
         }
     }
 
-    //method that allows user to change how many pokemons should be on the map
-    public void changeHowMAnyPokemonsShouldBeOnTheMap(){
-        System.out.println("How many should be then?");
-        int choice = scanner.nextInt();
+    //method that saves pokemons' settings if possible
+    static int choice0=-1, choice1=-1, choice2=-1, choice3=-1, choice4=-1, choice5;
+    public static void savingPokemonsSettings (){
+        if (choice0==-1) choice0 = Pokemon.getHowManyPokemonsShouldBeOnTheMap();
+        if (choice1==-1) choice1 = PokemonWater.getHowManyWaterPokemonsOnTheMap();
+        if (choice2==-1) choice2 = PokemonFire.getHowManyFirePokemonsOnTheMap();
+        if (choice3==-1) choice3 = PokemonGround.getHowManyGroundPokemonsOnTheMap();
+        if (choice4==-1) choice4 = PokemonGrass.getHowManyGrassPokemonsOnTheMap();
+
+
+        if (choice0 ==  choice1 + choice2 + choice3+ choice4 ){
+            Pokemon.setHowManyPokemonsShouldBeOnTheMap(choice0);
+            PokemonWater.setHowManyWaterPokemonsOnTheMap(choice1);
+            PokemonFire.setHowManyFirePokemonsOnTheMap(choice2);
+            PokemonGrass.setHowManyGrassPokemonsOnTheMap(choice3);
+            PokemonGround.setHowManyGroundPokemonsOnTheMap(choice4);
+            System.out.println("Saved properly.");
+        }
+        else{
+            int sum = choice1+choice2+choice3+choice4;
+            System.out.println("Sorry, but the count of how many pokemons should be on the map is not equal to the sum of pokemons of each type");
+            System.out.println("The count of how many pokemons on the map: " + choice0);
+            System.out.println("The sum of pokemons of each type: " + sum);
+            System.out.println("Please adjust your preferences accordingly.");
+        }
     }
 
+
+
+    //method that allows user to change how many pokemons should be on the map
+    public static void changeHowManyPokemonsShouldBeOnTheMap(){
+        while(true) {
+            System.out.println("Pokemons on the map: " + Pokemon.getHowManyPokemonsShouldBeOnTheMap());
+            System.out.println("How many should be then?");
+            boolean test = scanner.hasNextInt();
+            if(test) {
+                choice0 = scanner.nextInt();
+                if (choice0 < 0) {
+                    choice0 = -1;
+                    System.out.println("You can't choose negative number");
+                }
+                break;
+            }
+            else{
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
+        }
+    }
+
+
+    //method that allows user to change how many water pokemons should be on the map
+    public static void changeHowManyWaterPokemonsShouldBeOnTheMap(){
+        while(true) {
+            System.out.println("Water pokemons on the map: " + PokemonWater.getHowManyWaterPokemonsOnTheMap());
+            System.out.println("How many should be then?");
+            boolean test = scanner.hasNextInt();
+            if(test) {
+                choice1 = scanner.nextInt();
+                if (choice1 < 0) {
+                    choice1 = -1;
+                    System.out.println("You can't choose negative number");
+                }
+                break;
+            }
+            else{
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
+        }
+    }
+
+
+    //method that allows user to change how many fire pokemons should be on the map
+    public static void changeHowManyFirePokemonsShouldBeOnTheMap(){
+        while(true) {
+            System.out.println("Fire pokemons on the map: " + PokemonFire.getHowManyFirePokemonsOnTheMap());
+            System.out.println("How many should be then?");
+            boolean test = scanner.hasNextInt();
+            if(test) {
+                choice2 = scanner.nextInt();
+                if (choice2 < 0) {
+                    choice2 = -1;
+                    System.out.println("You can't choose negative number");
+                }
+                break;
+            }
+            else{
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
+        }
+    }
+
+
+    //method that allows user to change how many ground pokemons should be on the map
+    public static void changeHowManyGroundPokemonsShouldBeOnTheMap(){
+        while(true) {
+            System.out.println("Ground pokemons on the map: " + PokemonGround.getHowManyGroundPokemonsOnTheMap());
+            System.out.println("How many should be then?");
+            boolean test = scanner.hasNextInt();
+            if(test) {
+                choice3 = scanner.nextInt();
+                if (choice3 < 0) {
+                    choice3 = -1;
+                    System.out.println("You can't choose negative number");
+                }
+                break;
+            }
+            else{
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
+        }
+    }
+
+
+    //method that allows user to change how many grass pokemons should be on the map
+    public static void changeHowManyGrassPokemonsShouldBeOnTheMap(){
+        while(true) {
+            System.out.println("Grass pokemons on the map: " + PokemonGrass.getHowManyGrassPokemonsOnTheMap());
+            System.out.println("How many should be then?");
+            boolean test = scanner.hasNextInt();
+            if(test) {
+                choice4 = scanner.nextInt();
+                if (choice4 < 0) {
+                    choice4 = -1;
+                    System.out.println("You can't choose negative number");
+                }
+                break;
+            }
+            else{
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
+        }
+    }
+
+
+    //method that allows user to change pokemons' critical hit base chance
+    public static void changePokemonsCriticalHitBaseChance(){
+        while(true) {
+            System.out.println("Pokemons' critical hit base chance: " + Pokemon.getPokemonsCriticalHitBaseChance());
+            System.out.println("How many should be then?");
+            boolean test = scanner.hasNextInt();
+            if(test) {
+                choice5 = scanner.nextInt();
+                if (choice5 > 0) {
+                    Pokemon.setPokemonsCriticalHitBaseChance(choice5);
+                } else {
+                    System.out.println("You can't choose negative number. Please try again.");
+                }
+                break;
+            }
+            else{
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+            scanner.nextLine();
+        }
+    }
 }
 
 

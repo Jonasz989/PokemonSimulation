@@ -2,7 +2,7 @@ package Simulation;
 
 public class PokemonGrass extends Pokemon{
     static int howManyGrassPokemonsOnTheMap = 2;
-    private String pokemonType;
+    final private String pokemonType;
 
     //constructor for creating PokemonGrass
     PokemonGrass (int level, int currentX, int currentY, String pokemonType) {
