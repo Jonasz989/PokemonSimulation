@@ -13,17 +13,18 @@ public class Simulation {
     static String GRASS = "g";
 
 
-
+    //starting the simulation
     public static void start(Field[][] flatMap, Trainer trainer) {
-
-
         fillMap(flatMap);
-        //printMap(flatMap);
+        System.out.println("Empty map:");
+        printMap(flatMap);
         generateMapFields(flatMap);
-        //printMap(flatMap);
+        System.out.println("Where are the special fields on the map:");
+        printMap(flatMap);
+        System.out.println("Placing trainer on the map...");
         generatingTrainerOnTheMap(flatMap, trainer);
         printCurrentSimulationState(flatMap);
-        System.out.println("Generowanie pokemonow");
+        System.out.println("Placing pokemons on the map..");
         generatingPokemons(flatMap);
         printCurrentSimulationState(flatMap);
 
@@ -33,16 +34,13 @@ public class Simulation {
                 pox.movePokemon(flatMap, trainer);
             }
             printCurrentSimulationState(flatMap);
-
         }
-
     }
 
 
-
-
+    //printing empty map
     public static void printMap(Field[][] flatMap) {
-        System.out.println("\nACTUAL MAP");
+        //System.out.println("\nACTUAL MAP3");
         for (int i = 0; i < Map.getH(); i++) {
             for (int j = 0; j < Map.getW(); j++) {
                 System.out.print(flatMap[i][j].fieldType + " ");
@@ -51,6 +49,7 @@ public class Simulation {
         }
     }
 
+    //printing current state of the simulation
     public static void printCurrentSimulationState(Field[][] flatMap) {
         System.out.println("\nCURRENT STATE");
         for (int i = 0; i < Map.getH(); i++) {
@@ -67,6 +66,7 @@ public class Simulation {
         }
     }
 
+    //filling map with normal fields
     public static void fillMap(Field[][] flatMap) {
         for (int i = 0; i < Map.getH(); i++) {
             for (int j = 0; j < Map.getW(); j++) {
@@ -75,6 +75,7 @@ public class Simulation {
         }
     }
 
+    //filling map with special fields
     public static void generateMapFields(Field[][] flatMap) {
         int zmienna = Map.getSumOfSpecialFields();
         int actualNumberOfWaterFields = Map.getWaterFieldsOnTheMap();
@@ -142,6 +143,7 @@ public class Simulation {
         }
     }
 
+    //generating pokemons on the map
     public static void generatingPokemons(Field[][] flatMap) {
         for (; Pokemon.getCountOfPokemonOnTheMap() < Pokemon.getHowManyPokemonsShouldBeOnTheMap();){
             int fire = PokemonFire.getHowManyFirePokemonsOnTheMap();
@@ -183,6 +185,7 @@ public class Simulation {
         }
     }
 
+    //generating trainer on the map
     public static void generatingTrainerOnTheMap(Field[][] flatMap, Trainer trainer) {
         int generatedI;
         int generatedJ;

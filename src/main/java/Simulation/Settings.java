@@ -4,15 +4,9 @@ import java.util.Scanner;
 
 
 public class Settings{
-
-    //initialization of trainer object and giving the trainer default values
-
     static Scanner scanner = new Scanner(System.in);
 
-
-    /**
-     * Printing current settings to user
-     */
+    //printing current settings for the user
     public static void printSettings() {
 
         System.out.println("1. Pokemons trainer's name: "+ Trainer.getNameOfPokemonsTrainer());
@@ -37,9 +31,7 @@ public class Settings{
 
     }
 
-    /**
-     * Method that show us menu to changing settings to our simulation
-     */
+    //method that allows user to choose which settings to change
     public static int changeSettings() {
         while(true) {
             int choiceInSettings;
@@ -86,9 +78,7 @@ public class Settings{
         }
     }
 
-    /**
-     * Method for changing map setting
-     */
+    //method that allows user to change map settings
     public static int changeMapSettings() {
         int choiceInMapSettings;
         while(true) {
@@ -126,8 +116,9 @@ public class Settings{
         }
     }
 
-    //METHODS FOR MAP SETTINGS/////////////////////////////////////////////////////////////////////////////////////////
+    //START OF METHODS FOR THE MAP'S SETTINGS////////////////////////////
 
+    //method that allows user to change size of the map
     static void changeSizeOfTheMap() {
         System.out.println("Current height is " + Map.getH() + ".");
         System.out.println("Type your new height: ");
@@ -139,7 +130,7 @@ public class Settings{
         Map.setW(newW);
     }
 
-
+    //method that allows user to change field settings
     static int changeFieldSettings() {
         while (true) {
             int choiceInPoolSettings;
@@ -184,6 +175,7 @@ public class Settings{
         }
     }
 
+    //method that allows user to change chance for generating fire fields
     static void changeChanceOfGeneratingFireField() {
         System.out.println("Current chance of generating fire pool is" + Map. getFireFieldsOnTheMap());
         System.out.println("Type new chance: ");
@@ -191,6 +183,7 @@ public class Settings{
         Map.setFireFieldsOnTheMap(newFireFieldsOnTheMap);
     }
 
+    //method that allows user to change chance for generating water fields
     static void changeChanceOfGeneratingWaterPool() {
         System.out.println("Current chance of generating water pool is" + Map.getWaterFieldsOnTheMap());
         System.out.println("Type new chance: ");
@@ -198,6 +191,7 @@ public class Settings{
         Map.setWaterFieldsOnTheMap(newWaterFieldsOnTheMap);
     }
 
+    //method that allows user to change chance for generating ground fields
     static void changeChanceOfGeneratingGroundPool() {
         System.out.println("Current chance of generating ground pool is" + Map.getGroundFieldsOnTheMap());
         System.out.println("Type new chance: ");
@@ -205,20 +199,19 @@ public class Settings{
         Map.setGroundFieldsOnTheMap(newGroundFieldsOnTheMap);
     }
 
+    //method that allows user to change chance for generating grass fields
     static void changeChanceOfGeneratingGrassPool() {
         System.out.println("Current chance of generating grass pool is" + Map.getGrassFieldsOnTheMap());
         System.out.println("Type new chance: ");
         int newGrassFieldsOnTheMap = scanner.nextInt();
         Map.setGrassFieldsOnTheMap(newGrassFieldsOnTheMap);
     }
+    //END OF METHODS FOR THE MAP'S SETTINGS////////////////////////////
 
-    //END OF METHODS FOR MAP SETTINGS/////////////////////////////////////////////////////////////////////////////////////////
 
-    //changing trainers settings
-
+    //method that allows user to change trainer's settings
     public static int changeTrainersSettings() {
         while (true) {
-
             int choiceInTrainersSettings = 0;
 
             while(true){
@@ -240,8 +233,6 @@ public class Settings{
                 scanner.nextLine();
 
             }
-
-
             switch (choiceInTrainersSettings) {
                 case 1:
                     changePokemonsTrainersName();
@@ -264,7 +255,10 @@ public class Settings{
             }
         }
     }
-    //METHODS FOR TRAINERS SETTING//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //START OF METHODS FOR THE TRAINERS'S SETTINGS////////////////////////////
+
+    //method that allows user to change trainer's name
     public static void changePokemonsTrainersName(){
         while(true){
             System.out.println("To which name would you like to change it?: ");
@@ -280,23 +274,21 @@ public class Settings{
         }
     }
 
+    //method that allows user to change trainer's winning base chance
     public static void changeTrainersWinningBaseChance() {
         float choice;
         choice = scanner.nextInt();
         Trainer.setTrainersWinningBaseChance(choice);
     }
+
+    //method that allows user to change trainer's critical hit base chance
     public static void changeTrainersCriticalHitBaseChance() {
         float choice;
         choice = scanner.nextInt();
         Trainer.setTrainersCriticalHitBaseChance(choice);
     }
-    public void changeHowMAnyPokemonsShouldBeOnTheMap(){
-        System.out.println("How many should be then?");
-        int choice = scanner.nextInt();
 
-
-    }
-
+    //method that allows user to change trainer pokemon's type
     public static int changeTypeOfTrainersPokemon() {
         int choice;
         while (true) {
@@ -341,9 +333,10 @@ public class Settings{
         }
     }
 
-    //END OF METHODS FOR POKEMONS SETTINGS///////////////////////////////////////////////////////////////////////////////////////////////////
+    //END OF METHODS FOR THE TRAINERS'S SETTINGS////////////////////////////
 
 
+    //method that allows user to change pokemons' settings
     public static int changePokemonsSettings() {
         while (true) {
 
@@ -396,6 +389,12 @@ public class Settings{
                     break;
             }
         }
+    }
+
+    //method that allows user to change how many pokemons should be on the map
+    public void changeHowMAnyPokemonsShouldBeOnTheMap(){
+        System.out.println("How many should be then?");
+        int choice = scanner.nextInt();
     }
 
 }
