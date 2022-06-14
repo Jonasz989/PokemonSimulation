@@ -29,8 +29,11 @@ public class Field {
     boolean isOccupiedByTrainer;
     String fieldType;
     String NORMAL = ".";
+    int poolID;
+    static int staticPoolID = 0;
 
     Field () {
+        poolID = staticPoolID++;
         fieldType = NORMAL;
         isOccupied = false;
         isOccupiedByTrainer = false;

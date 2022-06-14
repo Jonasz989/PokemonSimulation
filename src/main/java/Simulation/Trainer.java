@@ -1,20 +1,21 @@
 package Simulation;
 import java.util.ArrayList;
 import java.util.Random;
+import java.lang.Math;
 public class Trainer {
 
     static Random rand = new Random();
 
-    Trainer (String nameOfPokemonsTrainer, float trainersWinningBaseChance, float trainersCriticalHitBaseChance, String typeOfTrainersPokemon, int ID, int level, int HowManyPokemonsKilled, int Xposition, int Yposition) {
+    Trainer (String nameOfPokemonsTrainer, float trainersWinningBaseChance, float trainersCriticalHitBaseChance, String typeOfTrainersPokemon) {
         this.nameOfPokemonsTrainer = nameOfPokemonsTrainer;
         this.trainersWinningBaseChance = trainersWinningBaseChance;
         this.trainersCriticalHitBaseChance = trainersCriticalHitBaseChance;
         this.typeOfTrainersPokemon = typeOfTrainersPokemon;
-        this.ID=ID;
-        this.level=level;
-        this.HowManyPokemonsKilled=HowManyPokemonsKilled;
-        this.Xposition=Xposition;
-        this.Yposition=Yposition;
+        this.ID = 0;
+        this.level = 1;
+        this.HowManyPokemonsKilled = 0;
+        int Xposition;
+        int Yposition;
     }
 
     //variable for Base Winning Chance for the trainer, getter and setter for it as well
@@ -58,106 +59,61 @@ public class Trainer {
     public static int getIDofPokemonTrainer (){return ID;}
 
     private static int level = 0;
-    public static int getLevelofPokemonTrainer (){return level;}
+    public static int getLevelOfPokemonTrainer (){return level;}
 
-    private static int HowManyPokemonsKilled = 0;
-    public static int getHowManyPokemonsKilled(){
+    private int HowManyPokemonsKilled = 0;
+    public int getHowManyPokemonsKilled(){
         return HowManyPokemonsKilled;
     }
-    public static void setHowManyPokemonsKilled(int newHowManyPokemonsKilled){
+    public void setHowManyPokemonsKilled(int newHowManyPokemonsKilled){
         HowManyPokemonsKilled = newHowManyPokemonsKilled;
     }
 
-    private static int Xposition = 0;
-    public static int getXposition(){return Xposition;}
+    private int Xposition = 0;
+    public int getXposition(){return Xposition;}
 
-    public static void setXposition(int newXposition){
+    public void setXposition(int newXposition){
         Xposition = newXposition;
     }
 
-    private static int Yposition = 0;
-    public static int getYposition(){return Yposition;}
+    private int Yposition = 0;
+    public int getYposition(){return Yposition;}
 
-    public static void setYposition(int newYposition){
+    public void setYposition(int newYposition){
         Yposition = newYposition;
     }
 
-
-
-
-
-
-    public void killingPokemon() {
-        for (Pokemon pokemon : Simulation.arrayOfPokemons) {
-            if(pokemon.getXposition()==Trainer.getXposition() && pokemon.getYposition()==Trainer.getYposition()){
-                pokemon.setXposition(-1);
-                pokemon.setYposition(-1);
+    public void moveTrainer(Field[][] flatMap, Trainer trainer, ArrayList<Pokemon> arrayOfPokemons) {
+        int[] pairOfXY = checkDistance(trainer, arrayOfPokemons);
+        if (pairOfXY[0] == this.getXposition() + 1 || pairOfXY[0] == this.getXposition() - 1 || pairOfXY[1] == this.getXposition() - 1 || pairOfXY[1] == this.getXposition() + 1) {
+            flatMap[this.getXposition()][this.getYposition()].setOccupiedByTrainer(false);
+            this.setXposition(pairOfXY[0]);
+            this.setYposition(pairOfXY[1]);
+            flatMap[this.getXposition()][this.getYposition()].setOccupiedByTrainer(true);
+            if (flatMap[this.getXposition()][this.getYposition()].isOccupied) {
+                System.out.println("NAPIERDALAMY SIE");
             }
         }
-        Trainer.setHowManyPokemonsKilled(Trainer.getHowManyPokemonsKilled()+1);
     }
 
-    /*int howManyPokemonsKilledFor2Level = 2;
-    public void levelUp2() {
-        trainer.level=2;
-    }
-    int howManyPokemonsKilledFor3Level = 4;
-    public void levelUp3 (){
-        trainer.level=3;
-    }*/
+     public int[] checkDistance(Trainer trainer, ArrayList<Pokemon> arrayOfPokemons) {
+        int xForTrainer = trainer.getXposition();
+        int yForTrainer = trainer.getYposition();
+        int smallestDistance = Map.getH() + Map.getW();
+        int xForSmallestDistance = 0;
+        int yForSmallestDistance = 0;
+        for (Pokemon pox : arrayOfPokemons) {
+            if(smallestDistance > calculatingDistance(yForTrainer, xForTrainer, pox.getYposition(), pox.getXposition())) {
+                smallestDistance = (int) calculatingDistance(yForTrainer, xForTrainer, pox.getYposition(), pox.getXposition());
+                xForSmallestDistance = pox.getXposition();
+                yForSmallestDistance = pox.getYposition();
+            }
+        }
+        return new int[] {xForSmallestDistance, yForSmallestDistance};
+     }
 
+     public double calculatingDistance(int y, int x, int aimedY, int aimedX) {
+        return Math.sqrt(Math.pow((Math.abs(y-aimedY)), 2) + Math.pow((Math.abs(x-aimedX)), 2));
+     }
 
 }
-
-
-
-
-
-
-
-
-
-    /*public void movingTrainerThroughTheMap(Field[][] flatMap){
-        //1-right, 2-left, 3-top, 4-bottom
-        int[]directions = {1,2,3,4};
-        int generateDirection = rand.nextInt(directions.length + 1);
-        switch (generateDirection){
-            case 1:
-                if (Trainer.getXposition()<Map.getW()) {
-                    flatMap[Trainer.getYposition()][Trainer.getXposition()].setOccupiedByTrainer(false);
-                    Trainer.setXposition(Trainer.getXposition() + 1);
-                    if(flatMap[Trainer.getYposition()][Trainer.getXposition()].isOccupied()) {
-                        if (!fight()) {
-                            flatMap[Trainer.getYposition()][Trainer.getXposition()].setOccupiedByTrainer(true);
-                            flatMap[Trainer.getYposition()][Trainer.getXposition()].setOccupied(false);
-                            //kasujemy poka
-                        }
-                        else{
-                            Trainer.setXposition(Trainer.getXposition() -1);
-                            flatMap[Trainer.getYposition()][Trainer.getXposition()].setOccupiedByTrainer(true);
-                        }
-                    }
-                    else{
-                        flatMap[Trainer.getYposition()][Trainer.getXposition()].setOccupiedByTrainer(true);
-                    }
-                }
-            case 2:
-                if (Trainer.getXposition()>0 && !flatMap[Trainer.getYposition()][Trainer.getXposition()-1].isOccupied()){
-                    flatMap[Trainer.getYposition()][Trainer.getXposition()].setOccupiedByTrainer(false);
-                    Trainer.setXposition(Trainer.getXposition()-1);
-                    flatMap[Trainer.getYposition()][Trainer.getXposition()].setOccupiedByTrainer(true);
-                }
-            case 3:
-                if (Trainer.getYposition()>0 && !flatMap[Trainer.getYposition()-1][Trainer.getXposition()].isOccupied()){
-                    flatMap[Trainer.getYposition()][Trainer.getXposition()].setOccupiedByTrainer(false);
-                    Trainer.setYposition(Trainer.getYposition()-1);
-                    flatMap[Trainer.getYposition()][Trainer.getXposition()].setOccupiedByTrainer(true);
-                }
-            case 4:
-                if (Trainer.getYposition()<Map.getH() && !flatMap[Trainer.getYposition()+1][Trainer.getXposition()].isOccupied()){
-                    flatMap[Trainer.getYposition()][Trainer.getXposition()].setOccupiedByTrainer(false);
-                    Trainer.setYposition(Trainer.getYposition()+1);
-                    flatMap[Trainer.getYposition()][Trainer.getXposition()].setOccupiedByTrainer(true);
-                }
-        }
-    }*/

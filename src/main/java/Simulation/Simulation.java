@@ -6,40 +6,42 @@ public class Simulation {
 
     public static ArrayList<Pokemon> arrayOfPokemons = new ArrayList<>();
 
-    Random rand = new Random();
-    String WATER = "W";
-    String FIRE = "F";
-    String GROUND = "G";
-    String GRASS = "g";
-
-    Field[][] flatMap = new Field[Map.getH()][Map.getW()];
-    Trainer trainer = new Trainer(Trainer.getNameOfPokemonsTrainer(), Trainer.getTrainersWinningBaseChance(), Trainer.getTrainersCriticalHitBaseChance(), Trainer.getTypeOfTrainersPokemon(), Trainer.getIDofPokemonTrainer(), Trainer.getLevelofPokemonTrainer(), Trainer.getHowManyPokemonsKilled(), Trainer.getXposition(), Trainer.getYposition());
+    static Random rand = new Random();
+    static String WATER = "W";
+    static String FIRE = "F";
+    static String GROUND = "G";
+    static String GRASS = "g";
 
 
-    public void start(Field[][] flatMap) {
+
+    public static void start(Field[][] flatMap, Trainer trainer) {
+
 
         fillMap(flatMap);
         //printMap(flatMap);
         generateMapFields(flatMap);
         //printMap(flatMap);
-        generatingTrainerOnTheMap(flatMap);
-        System.out.println("dupa1");
+        generatingTrainerOnTheMap(flatMap, trainer);
         printCurrentSimulationState(flatMap);
+        System.out.println("Generowanie pokemonow");
         generatingPokemons(flatMap);
-        System.out.println("dupa2");
         printCurrentSimulationState(flatMap);
-        System.out.println("przed symulacja");
-        for(int i = 0; i < 1; i++) {
-            //trainer.movingTrainerThroughTheMap(flatMap);
-            for(Pokemon poks: arrayOfPokemons) {
-                poks.movePokemon(flatMap, trainer);
+
+        for (int i = 0; i < 5; i++) {
+            trainer.moveTrainer(flatMap, trainer, arrayOfPokemons);
+            for(Pokemon pox : arrayOfPokemons) {
+                pox.movePokemon(flatMap, trainer);
             }
             printCurrentSimulationState(flatMap);
+
         }
+
     }
 
 
-    public void printMap(Field[][] flatMap) {
+
+
+    public static void printMap(Field[][] flatMap) {
         System.out.println("\nACTUAL MAP");
         for (int i = 0; i < Map.getH(); i++) {
             for (int j = 0; j < Map.getW(); j++) {
@@ -49,7 +51,7 @@ public class Simulation {
         }
     }
 
-    public void printCurrentSimulationState(Field[][] flatMap) {
+    public static void printCurrentSimulationState(Field[][] flatMap) {
         System.out.println("\nCURRENT STATE");
         for (int i = 0; i < Map.getH(); i++) {
             for (int j = 0; j < Map.getW(); j++) {
@@ -65,7 +67,7 @@ public class Simulation {
         }
     }
 
-    public void fillMap(Field[][] flatMap) {
+    public static void fillMap(Field[][] flatMap) {
         for (int i = 0; i < Map.getH(); i++) {
             for (int j = 0; j < Map.getW(); j++) {
                 flatMap[i][j] = new Field();
@@ -73,7 +75,7 @@ public class Simulation {
         }
     }
 
-    public void generateMapFields(Field[][] flatMap) {
+    public static void generateMapFields(Field[][] flatMap) {
         int zmienna = Map.getSumOfSpecialFields();
         int actualNumberOfWaterFields = Map.getWaterFieldsOnTheMap();
         int actualNumberOfFireFields = Map.getFireFieldsOnTheMap();
@@ -140,35 +142,31 @@ public class Simulation {
         }
     }
 
-    public void generatingPokemons(Field[][] flatMap) {
-        for (int i=0; i < Pokemon.getHowManyPokemonsShouldBeOnTheMap();){
-            int fire = PokemonFire.getFirePokemonsOnTheMap();
+    public static void generatingPokemons(Field[][] flatMap) {
+        for (; Pokemon.getCountOfPokemonOnTheMap() < Pokemon.getHowManyPokemonsShouldBeOnTheMap();){
+            int fire = PokemonFire.getHowManyFirePokemonsOnTheMap();
             while (fire!=0){
-                PokemonFire poks = new PokemonFire(rand.nextInt(2)+1, -1, -1, "F");
+                PokemonFire poks = new PokemonFire(rand.nextInt(3)+1, -1, -1, "F");
                 arrayOfPokemons.add(poks);
                 fire--;
-                i++;
             }
-            int water = PokemonWater.getWaterPokemonsOnTheMap();
+            int water = PokemonWater.getHowManyWaterPokemonsOnTheMap();
             while (water!=0){
-                PokemonWater poks = new PokemonWater(rand.nextInt(2)+1, -1, -1, "W");
+                PokemonWater poks = new PokemonWater(rand.nextInt(3)+1, -1, -1, "W");
                 arrayOfPokemons.add(poks);
                 water--;
-                i++;
             }
-            int ground = PokemonGround.getGroundPokemonsOnTheMap();
+            int ground = PokemonGround.getHowManyGroundPokemonsOnTheMap();
             while (ground!=0){
-                PokemonGround poks = new PokemonGround(rand.nextInt(2)+1, -1, -1, "G");
+                PokemonGround poks = new PokemonGround(rand.nextInt(3)+1, -1, -1, "G");
                 arrayOfPokemons.add(poks);
                 ground--;
-                i++;
             }
-            int grass = PokemonGrass.getGrassPokemonsOnTheMap();
+            int grass = PokemonGrass.getHowManyGrassPokemonsOnTheMap();
             while (grass!=0){
-                PokemonGrass poks = new PokemonGrass(rand.nextInt(2)+1, -1, -1, "g");
+                PokemonGrass poks = new PokemonGrass(rand.nextInt(3)+1, -1, -1, "g");
                 arrayOfPokemons.add(poks);
                 grass--;
-                i++;
             }
         }
         int generatedI;
@@ -178,14 +176,14 @@ public class Simulation {
                 generatedI = rand.nextInt(Map.getH());
                 generatedJ = rand.nextInt(Map.getW());
             }
-            while(flatMap[generatedI][generatedJ].isOccupied && !flatMap[generatedI][generatedJ].isOccupiedByTrainer);
+            while(flatMap[generatedI][generatedJ].isOccupied || flatMap[generatedI][generatedJ].isOccupiedByTrainer);
             flatMap[generatedI][generatedJ].setOccupied(true);
             pokemon.setXposition(generatedJ);
             pokemon.setYposition(generatedI);
         }
     }
 
-    public void generatingTrainerOnTheMap(Field[][] flatMap) {
+    public static void generatingTrainerOnTheMap(Field[][] flatMap, Trainer trainer) {
         int generatedI;
         int generatedJ;
         generatedI = rand.nextInt(Map.getH());

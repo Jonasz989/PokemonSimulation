@@ -1,10 +1,7 @@
 package Simulation;
 
-/*
- This program let us simulate a career of young Pokemon trainer
- In menu we can choose 1. Start simulation, 2. Setting 3. Exit*
- */
 import java.util.Scanner;
+import java.lang.*;
 public class Menu {
     public static void main(String[] args) {
 
@@ -18,8 +15,9 @@ public class Menu {
             choiceMenu = scanner.next();
             switch (choiceMenu) {
                 case "1":
-                    Simulation essa = new Simulation();
-                    essa.start(essa.flatMap);
+                    Field[][] flatMap = new Field[Map.getH()][Map.getW()];
+                    Trainer trainer = new Trainer(Trainer.getNameOfPokemonsTrainer(), Trainer.getTrainersWinningBaseChance(), Trainer.getTrainersCriticalHitBaseChance(), Trainer.getTypeOfTrainersPokemon());
+                    Simulation.start(flatMap, trainer);
                     break;
                 case "2":
                     Settings.printSettings();
@@ -32,7 +30,6 @@ public class Menu {
                 default:
                     System.out.println("Your input was invalid. Please choose number 0-3.");
                     break;
-
             }
         }
     }

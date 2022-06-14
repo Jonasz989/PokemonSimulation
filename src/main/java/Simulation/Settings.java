@@ -25,10 +25,10 @@ public class Settings{
         System.out.println("4. Type of trainer's pokemon: " + Trainer.getTypeOfTrainersPokemon());
         System.out.println("5. Count of pokemons on the map: "+ Pokemon.getCountOfPokemonOnTheMap());
         System.out.println("6. Types of pokemons on the map: ");
-        System.out.println("- Fire Type: " + PokemonFire.getFirePokemonsOnTheMap());
-        System.out.println("- Water Type: " + PokemonWater.getWaterPokemonsOnTheMap());
-        System.out.println("- Ground Type: " + PokemonGround.getGroundPokemonsOnTheMap());
-        System.out.println("- Grass Type: " + PokemonGrass.getGrassPokemonsOnTheMap());
+        System.out.println("- Fire Type: " + PokemonFire.getHowManyFirePokemonsOnTheMap());
+        System.out.println("- Water Type: " + PokemonWater.getHowManyWaterPokemonsOnTheMap());
+        System.out.println("- Ground Type: " + PokemonGround.getHowManyGroundPokemonsOnTheMap());
+        System.out.println("- Grass Type: " + PokemonGrass.getHowManyGrassPokemonsOnTheMap());
         System.out.println("7. Trainer's pokemon's base chance of winning: " + Trainer.getTrainersWinningBaseChance());
         System.out.println("8. Trainer's pokemon's base chance of derivation of critical hit: " + Trainer.getTrainersCriticalHitBaseChance());
         System.out.println("9. Pokemons' base chance of derivation of critical hit: " + Pokemon.getPokemonsCriticalHitBaseChance());
