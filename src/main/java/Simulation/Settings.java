@@ -17,7 +17,7 @@ public class Settings{
         System.out.println("- Ground Type: " + Map.getGroundFieldsOnTheMap());
         System.out.println("- Grass Type: " + Map.getGrassFieldsOnTheMap());
         System.out.println("4. Type of trainer's pokemon: " + Trainer.getTypeOfTrainersPokemon());
-        System.out.println("5. Count of pokemons on the map: "+ Pokemon.getCountOfPokemonOnTheMap());
+        System.out.println("5. Count of pokemons on the map: "+ Pokemon.getHowManyPokemonsShouldBeOnTheMap());
         System.out.println("6. Types of pokemons on the map: ");
         System.out.println("- Fire Type: " + PokemonFire.getHowManyFirePokemonsOnTheMap());
         System.out.println("- Water Type: " + PokemonWater.getHowManyWaterPokemonsOnTheMap());
@@ -32,7 +32,7 @@ public class Settings{
     }
 
     //method that allows user to choose which settings to change
-    public static int changeSettings() {
+    public static void changeSettings() {
         while(true) {
             int choiceInSettings;
 
@@ -70,7 +70,7 @@ public class Settings{
                     break;
                 case 0:
                     System.out.println("Going back to main menu");
-                    return 0;
+                    return;
                 default:
                     System.out.println("Your input was invalid. Please choose a number between 0-4.");
                     break;
@@ -79,7 +79,7 @@ public class Settings{
     }
 
     //method that allows user to change map settings
-    public static int changeMapSettings() {
+    public static void changeMapSettings() {
         int choiceInMapSettings;
         while(true) {
             while(true){
@@ -108,7 +108,7 @@ public class Settings{
                     break;
                 case 0:
                     System.out.println("Returning to the settings menu");
-                    return 0;
+                    return;
                 default:
                     System.out.println("Your input was invalid. Please choose number between 0-2.");
                     break;
@@ -131,7 +131,7 @@ public class Settings{
     }
 
     //method that allows user to change field settings
-    static int changeFieldSettings() {
+    static void changeFieldSettings() {
         while (true) {
             int choiceInPoolSettings;
             while(true){
@@ -167,7 +167,7 @@ public class Settings{
                     break;
                 case 0:
                     System.out.println("Returning to map settings");
-                    return 0;
+                    return;
                 default:
                     System.out.println("Your input was invalid. Please choose a number between 0-4.");
                     break;
@@ -210,9 +210,9 @@ public class Settings{
 
 
     //method that allows user to change trainer's settings
-    public static int changeTrainersSettings() {
+    public static void changeTrainersSettings() {
         while (true) {
-            int choiceInTrainersSettings = 0;
+            int choiceInTrainersSettings;
 
             while(true){
                 System.out.println("Which trainer's settings would you like to change: ");
@@ -248,7 +248,7 @@ public class Settings{
                     break;
                 case 0:
                     System.out.println("Leaving");
-                    return 0;
+                    return;
                 default:
                     System.out.println("Your input was invalid. Please choose number between 0-4.");
                     break;
@@ -289,7 +289,7 @@ public class Settings{
     }
 
     //method that allows user to change trainer pokemon's type
-    public static int changeTypeOfTrainersPokemon() {
+    public static void changeTypeOfTrainersPokemon() {
         int choice;
         while (true) {
             while(true){
@@ -313,19 +313,19 @@ public class Settings{
             switch (choice) {
                 case 1:
                     Trainer.setTypeOfTrainersPokemon("fire");
-                    return 0;
+                    return;
                 case 2:
                     Trainer.setTypeOfTrainersPokemon("water");
-                    return 0;
+                    return;
                 case 3:
                     Trainer.setTypeOfTrainersPokemon("ground");
-                    return 0;
+                    return;
                 case 4:
                     Trainer.setTypeOfTrainersPokemon("grass");
-                    return 0;
+                    return;
                 case 0:
                     System.out.println("Returning to the settings menu");
-                    return 0;
+                    return;
                 default:
                     System.out.println("Your input was invalid. Please choose number between 0-4.");
                     break;
@@ -337,10 +337,10 @@ public class Settings{
 
 
     //method that allows user to change pokemons' settings
-    public static int changePokemonsSettings() {
+    public static void changePokemonsSettings() {
         while (true) {
 
-            int choiceInPokemonsSettings = 0;
+            int choiceInPokemonsSettings;
             while(true){
                 System.out.println("Which pokemons' settings would you like to change: ");
                 System.out.println("1. Pokemons count on the map");

@@ -9,6 +9,7 @@ public class PokemonFire extends Pokemon{
     PokemonFire (int level, int currentX, int currentY, String pokemonType) {
         super(level, currentX, currentY);
         this.pokemonType = pokemonType;
+        Pokemon.setCountOfPokemonsOnTheMap(getCountOfPokemonsOnTheMap() + 1);
     }
 
 

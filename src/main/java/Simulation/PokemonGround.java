@@ -2,12 +2,13 @@ package Simulation;
 
 public class PokemonGround extends Pokemon{
     static int howManyGroundPokemonsOnTheMap = 2;
-    private String pokemonType = "GROUND";
+    final private String pokemonType;
 
     //constructor for creating PokemonGround
     PokemonGround (int level, int currentX, int currentY, String pokemonType) {
         super(level, currentX, currentY);
         this.pokemonType = pokemonType;
+        Pokemon.setCountOfPokemonsOnTheMap(getCountOfPokemonsOnTheMap() + 1);
     }
 
     //getter and setter for the count of ground pokemons on the map

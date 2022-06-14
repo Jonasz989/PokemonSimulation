@@ -6,10 +6,25 @@ import java.util.Random;
 public abstract class Pokemon implements PokemonMethods{
     Random rand = new Random();
     int level;
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean alive) {
+        isAlive = alive;
+    }
+
+    boolean isAlive = true;
+
+
     static int howManyPokemonsShouldBeOnTheMap = 10;
     public static int ID = 1;
     public int pokemonID;
+
     private static int CountOfPokemonsOnTheMap = 0;
+
+
     int currentX;
     int currentY;
     String pokemonType;
@@ -24,8 +39,8 @@ public abstract class Pokemon implements PokemonMethods{
         this.level = level;
         this.currentX = currentX;
         this.currentY = currentY;
+        this.isAlive = false;
         pokemonID = ID++;
-        CountOfPokemonsOnTheMap++;
     }
 
 
@@ -33,7 +48,12 @@ public abstract class Pokemon implements PokemonMethods{
     public static int getHowManyPokemonsShouldBeOnTheMap() {
         return howManyPokemonsShouldBeOnTheMap;
     }
-    public static void setHowManyPokemonsShouldBeOnTheMap(int howManyPokemonsShouldBeOnTheMap) {howManyPokemonsShouldBeOnTheMap = howManyPokemonsShouldBeOnTheMap;}
+
+    public static void setHowManyPokemonsShouldBeOnTheMap(int howManyPokemonsShouldBeOnTheMap) {
+        Pokemon.howManyPokemonsShouldBeOnTheMap = howManyPokemonsShouldBeOnTheMap;
+    }
+
+
 
 
     //getter and setter for the pokemon's id
@@ -75,41 +95,147 @@ public abstract class Pokemon implements PokemonMethods{
 
 
     //getter for the count of pokemons on the map
-    public static int getCountOfPokemonOnTheMap(){
+
+    public static int getCountOfPokemonsOnTheMap() {
         return CountOfPokemonsOnTheMap;
     }
 
+    public static void setCountOfPokemonsOnTheMap(int countOfPokemonsOnTheMap) {
+        CountOfPokemonsOnTheMap = countOfPokemonsOnTheMap;
+    }
 
     //method for the pokemons' movement
     public void movePokemon(Field[][] flatMap, Trainer trainer) {
         int verticalMove;
         int horizontalMove;
 
-        if(this.getPokemonType() == flatMap[this.getYposition()][this.getXposition()].getFieldType()) {
-            System.out.println("Staying (he's already on his special field");
+
+
+        if(this.getPokemonType().equals(flatMap[this.getYposition()][this.getXposition()].getFieldType())) {
+            System.out.println("Staying (he's already on his special field)\n");
             return;
         }
-        else{
+
             do {
                 verticalMove = rand.nextInt(3) - 1;
                 horizontalMove = rand.nextInt(3) - 1;
             }
-            while (this.getXposition() + horizontalMove > Map.getW() - 1 || this.getXposition() + horizontalMove < 0 || this.getYposition() + verticalMove > Map.getH() - 1 || this.getYposition() + verticalMove < 0);
+            while (this.getXposition() + horizontalMove > Map.getW() - 1 || (this.getXposition() + horizontalMove) <= 0 || (this.getYposition() + verticalMove) > Map.getH() - 1 || (this.getYposition() + verticalMove) <= 0 || flatMap[this.getYposition() + verticalMove][this.getXposition() + horizontalMove].isOccupied());
 
-            if (flatMap[this.getXposition() + horizontalMove][this.getYposition() + verticalMove].isOccupied()) {
-                System.out.println("No movement because chosen field was occupied");
+
+            if ((this.getXposition() + horizontalMove) == trainer.getXposition() && (this.getYposition() + verticalMove) == trainer.getYposition()) {
+                flatMap[this.getYposition()][this.getXposition()].setOccupied(false);
+
+                System.out.print("Pokemon's fight with the trainer\n");
+
+
                 return;
             }
 
-            if ((this.getXposition() + horizontalMove) == trainer.getXposition() && (this.getYposition() + verticalMove) == trainer.getYposition()) {
-                System.out.print("Pokemon's fight with the trainer");
-            }
-            else {
                 flatMap[this.getYposition()][this.getXposition()].setOccupied(false);
                 this.setXposition(this.getXposition() + horizontalMove);
                 this.setYposition(this.getYposition() + verticalMove);
                 flatMap[this.getYposition()][this.getXposition()].setOccupied(true);
+
+    }
+
+    public boolean fight(Field[][] flatMap, Trainer trainer, ArrayList<Pokemon> arrayOfPokemons) {
+
+        float trainerWinningChance = trainer.getTrainersWinningBaseChance() + trainer.getTrainersCriticalHitBaseChance() - this.getPokemonsCriticalHitBaseChance() + theDifferenceInLevels(trainer.getLevelOfPokemonTrainer(), this.getLevel()) + theDifferenceInPokemonType(trainer);
+
+        float generatedNumberWhoWon = rand.nextFloat() * 100;
+
+
+        if(generatedNumberWhoWon <= trainerWinningChance) {
+            //trener wygrywa
+            trainer.setHowManyPokemonsKilled(trainer.getHowManyPokemonsKilled()+1);
+            trainer.checkingProgress();
+            return true;
+        } else {
+            //pokemon wygrywa
+            trainer.setHowManyBattlesLost(trainer.getHowManyBattlesLost()+1);
+            trainer.checkingProgress();
+            return false;
+        }
+
+
+    }
+
+    public static float theDifferenceInLevels(int trainerLevel, int pokemonLevel) {
+        if (trainerLevel > pokemonLevel) {
+            return (trainerLevel - pokemonLevel) * 10;
+        }
+
+        if (trainerLevel < pokemonLevel) {
+            return (trainerLevel  - pokemonLevel) * 10;
+        }
+        return 0;
+    }
+
+    public float theDifferenceInFieldType(Field[][] flatMap, Trainer trainer) {
+        String trainerFieldType = flatMap[trainer.getYposition()][trainer.getXposition()].getFieldType();
+        String pokemonFieldType = flatMap[this.getYposition()][this.getXposition()].getFieldType();
+
+
+        return 0;
+    }
+
+    public float theDifferenceInPokemonType(Trainer trainer) {
+        String trainerPokemonType = trainer.getTypeOfTrainersPokemon();
+        String pokemonEnemyType = this.getPokemonType();
+
+        if (trainerPokemonType.equals(pokemonEnemyType)) {
+            return 0;
+        }
+
+        if (trainerPokemonType.equals("F")) {
+            if (pokemonEnemyType.equals("W")) {
+                return -5;
+            }
+            if (pokemonEnemyType.equals("g")) {
+                return 5;
             }
         }
+
+        if (trainerPokemonType.equals("W")) {
+            if (pokemonEnemyType.equals("G")) {
+                return -5;
+            }
+            if (pokemonEnemyType.equals("F")) {
+                return 5;
+            }
+        }
+
+        if (trainerPokemonType.equals("G")) {
+            if (pokemonEnemyType.equals("g")) {
+                return -5;
+            }
+            if (pokemonEnemyType.equals("W")) {
+                return 5;
+            }
+        }
+
+        if (trainerPokemonType.equals("g")) {
+            if (pokemonEnemyType.equals("F")) {
+                return -5;
+            }
+            if (pokemonEnemyType.equals("G")) {
+                return 5;
+            }
+        }
+        return 0;
     }
+
+
+    public void pokemonGettingKilled(Field[][] flatMap) {
+        this.setYposition(-1);
+        this.setXposition(-1);
+
+    }
+
+
+    public static int getSumOfHowManyPokemonsThereShouldBe() {
+        return PokemonGrass.getHowManyGrassPokemonsOnTheMap() + PokemonGround.getHowManyGroundPokemonsOnTheMap() + PokemonFire.getHowManyFirePokemonsOnTheMap() + PokemonWater.getHowManyWaterPokemonsOnTheMap();
+    }
+
 }

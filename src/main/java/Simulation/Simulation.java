@@ -6,6 +6,7 @@ public class Simulation {
 
     public static ArrayList<Pokemon> arrayOfPokemons = new ArrayList<>();
 
+    static int levelOfDeletedPokemon = 0;
     static Random rand = new Random();
     static String WATER = "W";
     static String FIRE = "F";
@@ -15,28 +16,77 @@ public class Simulation {
 
     //starting the simulation
     public static void start(Field[][] flatMap, Trainer trainer) {
+        arrayOfPokemons.clear();
         fillMap(flatMap);
-        System.out.println("Empty map:");
-        printMap(flatMap);
+        zerowanieMapyITrenera(flatMap,trainer);
         generateMapFields(flatMap);
         System.out.println("Where are the special fields on the map:");
         printMap(flatMap);
-        System.out.println("Placing trainer on the map...");
         generatingTrainerOnTheMap(flatMap, trainer);
-        printCurrentSimulationState(flatMap);
-        System.out.println("Placing pokemons on the map..");
         generatingPokemons(flatMap);
         printCurrentSimulationState(flatMap);
 
-        for (int i = 0; i < 5; i++) {
-            trainer.moveTrainer(flatMap, trainer, arrayOfPokemons);
+
+        do{
+            trainer.moveTrainer(flatMap, arrayOfPokemons);
+
+            if(pokemonRemover(flatMap, trainer)){
+                if (trainer.catchPokemon(getLevelOfDeletedPokemon())){
+                    trainer.setHowManyPokemonsKilled(trainer.getHowManyPokemonsKilled()+2);
+                }
+                else {
+
+                }
+            }
+
             for(Pokemon pox : arrayOfPokemons) {
                 pox.movePokemon(flatMap, trainer);
             }
+
+            if(pokemonRemover(flatMap, trainer)){
+                if (trainer.catchPokemon(getLevelOfDeletedPokemon())){
+                    trainer.setHowManyPokemonsKilled(trainer.getHowManyPokemonsKilled()+2);
+                }
+                else{
+
+                }
+
+            }
+
             printCurrentSimulationState(flatMap);
+        } while (!trainer.checkingProgress() || !(arrayOfPokemons.isEmpty()));
+
+
+
+
+
+    }
+
+    public static boolean pokemonRemover(Field[][] flatMap, Trainer trainer) {
+        for (int i = 0; i < arrayOfPokemons.size(); i++) {
+            if (arrayOfPokemons.get(i).getYposition() == trainer.getYposition() && arrayOfPokemons.get(i).getXposition() == trainer.getXposition()) {
+                flatMap[arrayOfPokemons.get(i).getYposition()][arrayOfPokemons.get(i).getXposition()].setOccupied(false);
+                setLevelOfDeletedPokemon(arrayOfPokemons.get(i).getLevel());
+                arrayOfPokemons.get(i).setYposition(-100);
+                arrayOfPokemons.get(i).setXposition(-100);
+                arrayOfPokemons.remove(i);
+                return true;
+            }
         }
     }
 
+
+    public static void zerowanieMapyITrenera(Field[][] flatMap, Trainer trainer) {
+        for (int i = 0; i < Map.getH(); i++) {
+            for (int j = 0; j < Map.getW(); j++) {
+                flatMap[i][j].setFieldType(".");
+                flatMap[i][j].setOccupied(false);
+                flatMap[i][j].setOccupiedByTrainer(false);
+            }
+            trainer.setXposition(0);
+            trainer.setYposition(0);
+        }
+    }
 
     //printing empty map
     public static void printMap(Field[][] flatMap) {
@@ -54,12 +104,15 @@ public class Simulation {
         System.out.println("\nCURRENT STATE");
         for (int i = 0; i < Map.getH(); i++) {
             for (int j = 0; j < Map.getW(); j++) {
-                if (flatMap[i][j].isOccupiedByTrainer) {
+                if (flatMap[i][j].isOccupiedByTrainer() && flatMap[i][j].isOccupied()) {
+                    System.out.print("D ");
+                } else
+                if (flatMap[i][j].isOccupiedByTrainer() && !flatMap[i][j].isOccupied()) {
                     System.out.print("T ");
-                } else if(!(flatMap[i][j].isOccupied)) {
-                    System.out.print(". ");
-                } else {
+                } else if(flatMap[i][j].isOccupied() && !flatMap[i][j].isOccupiedByTrainer()) {
                     System.out.print("P ");
+                } else {
+                    System.out.print(". ");
                 }
             }
             System.out.println();
@@ -145,43 +198,73 @@ public class Simulation {
 
     //generating pokemons on the map
     public static void generatingPokemons(Field[][] flatMap) {
-        for (; Pokemon.getCountOfPokemonOnTheMap() < Pokemon.getHowManyPokemonsShouldBeOnTheMap();){
-            int fire = PokemonFire.getHowManyFirePokemonsOnTheMap();
-            while (fire!=0){
-                PokemonFire poks = new PokemonFire(rand.nextInt(3)+1, -1, -1, "F");
+        int howManyPokemons = Pokemon.getSumOfHowManyPokemonsThereShouldBe();
+        int createdPokemons = 0;
+        int actualNumberOfWaterPokemons = PokemonWater.getHowManyWaterPokemonsOnTheMap();
+        int actualNumberOfFirePokemons = PokemonFire.getHowManyFirePokemonsOnTheMap();
+        int actualNumberOfGroundPokemons = PokemonGround.getHowManyGroundPokemonsOnTheMap();
+        int actualNumberOfGrassPokemons = PokemonGrass.getHowManyGrassPokemonsOnTheMap();
+        while (createdPokemons < howManyPokemons) {
+            while (actualNumberOfWaterPokemons > 0) {
+                int generatedI;
+                int generatedJ;
+                do{
+                    generatedI = rand.nextInt(Map.getH());
+                    generatedJ = rand.nextInt(Map.getW());
+                }
+                while(flatMap[generatedI][generatedJ].isOccupied() || flatMap[generatedI][generatedJ].isOccupiedByTrainer());
+                Pokemon poks = new PokemonWater(rand.nextInt(3)+1, generatedJ, generatedI, "W");
+                flatMap[generatedI][generatedJ].setOccupied(true);
                 arrayOfPokemons.add(poks);
-                fire--;
+                createdPokemons++;
+                actualNumberOfWaterPokemons--;
             }
-            int water = PokemonWater.getHowManyWaterPokemonsOnTheMap();
-            while (water!=0){
-                PokemonWater poks = new PokemonWater(rand.nextInt(3)+1, -1, -1, "W");
+
+            while (actualNumberOfFirePokemons > 0) {
+                int generatedI;
+                int generatedJ;
+                do{
+                    generatedI = rand.nextInt(Map.getH());
+                    generatedJ = rand.nextInt(Map.getW());
+                }
+                while(flatMap[generatedI][generatedJ].isOccupied() || flatMap[generatedI][generatedJ].isOccupiedByTrainer());
+                Pokemon poks = new PokemonFire(rand.nextInt(3)+1, generatedJ, generatedI, "W");
+                flatMap[generatedI][generatedJ].setOccupied(true);
                 arrayOfPokemons.add(poks);
-                water--;
+                createdPokemons++;
+                actualNumberOfFirePokemons--;
             }
-            int ground = PokemonGround.getHowManyGroundPokemonsOnTheMap();
-            while (ground!=0){
-                PokemonGround poks = new PokemonGround(rand.nextInt(3)+1, -1, -1, "G");
+
+            while (actualNumberOfGroundPokemons > 0) {
+                int generatedI;
+                int generatedJ;
+                do{
+                    generatedI = rand.nextInt(Map.getH());
+                    generatedJ = rand.nextInt(Map.getW());
+                }
+                while(flatMap[generatedI][generatedJ].isOccupied() || flatMap[generatedI][generatedJ].isOccupiedByTrainer());
+                Pokemon poks = new PokemonGround(rand.nextInt(3)+1, generatedJ, generatedI, "G");
+                flatMap[generatedI][generatedJ].setOccupied(true);
                 arrayOfPokemons.add(poks);
-                ground--;
+                createdPokemons++;
+                actualNumberOfGroundPokemons--;
             }
-            int grass = PokemonGrass.getHowManyGrassPokemonsOnTheMap();
-            while (grass!=0){
-                PokemonGrass poks = new PokemonGrass(rand.nextInt(3)+1, -1, -1, "g");
+
+            while (actualNumberOfGrassPokemons > 0) {
+                int generatedI;
+                int generatedJ;
+                do{
+                    generatedI = rand.nextInt(Map.getH());
+                    generatedJ = rand.nextInt(Map.getW());
+                }
+                while(flatMap[generatedI][generatedJ].isOccupied() || flatMap[generatedI][generatedJ].isOccupiedByTrainer());
+                Pokemon poks = new PokemonGrass(rand.nextInt(3)+1, generatedJ, generatedI, "g");
+                flatMap[generatedI][generatedJ].setOccupied(true);
                 arrayOfPokemons.add(poks);
-                grass--;
+                createdPokemons++;
+                actualNumberOfGrassPokemons--;
             }
-        }
-        int generatedI;
-        int generatedJ;
-        for (Pokemon pokemon:arrayOfPokemons){
-            do{
-                generatedI = rand.nextInt(Map.getH());
-                generatedJ = rand.nextInt(Map.getW());
-            }
-            while(flatMap[generatedI][generatedJ].isOccupied || flatMap[generatedI][generatedJ].isOccupiedByTrainer);
-            flatMap[generatedI][generatedJ].setOccupied(true);
-            pokemon.setXposition(generatedJ);
-            pokemon.setYposition(generatedI);
+
         }
     }
 
@@ -197,8 +280,11 @@ public class Simulation {
     }
 
 
+    public static int getLevelOfDeletedPokemon() {
+        return levelOfDeletedPokemon;
+    }
 
-
-
+    public static void setLevelOfDeletedPokemon(int levelOfDeletedPokemon) {
+        Simulation.levelOfDeletedPokemon = levelOfDeletedPokemon;
+    }
 }
-

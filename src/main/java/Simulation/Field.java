@@ -1,10 +1,10 @@
 package Simulation;
 
 public class Field {
-    boolean isOccupied;
-    boolean isOccupiedByTrainer;
+    boolean Occupied;
+    boolean OccupiedByTrainer;
     String fieldType;
-    String NORMAL = ".";
+
     int poolID;
     static int staticPoolID = 0;
 
@@ -12,9 +12,9 @@ public class Field {
     //constructor for the field
     Field () {
         poolID = staticPoolID++;
-        fieldType = NORMAL;
-        isOccupied = false;
-        isOccupiedByTrainer = false;
+        fieldType = ".";
+        Occupied = false;
+        OccupiedByTrainer = false;
     }
 
 
@@ -29,26 +29,22 @@ public class Field {
 
     //checking if the field is occupied by the pokemon
     public boolean isOccupied() {
-        return isOccupied;
+        return Occupied;
     }
     //setting the field to be occupied by the pokemon
     public void setOccupied(boolean occupied) {
-        isOccupied = occupied;
+        Occupied = occupied;
     }
 
 
     //checking if the field is occupied by the pokemons trainer
     public boolean isOccupiedByTrainer() {
-        return isOccupied;
+        return OccupiedByTrainer;
     }
     //setting the field to be occupied by the pokemons trainer
     public void setOccupiedByTrainer(boolean occupied) {
-        isOccupiedByTrainer = occupied;
+        OccupiedByTrainer = occupied;
     }
 
-
-    Field (String typeOfPool) {
-        fieldType = typeOfPool;
-    }
 
 }

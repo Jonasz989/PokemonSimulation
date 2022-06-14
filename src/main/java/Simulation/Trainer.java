@@ -8,21 +8,30 @@ public class Trainer {
     //trainer's id and level
     private static int ID = 0;
     public static int getIDofPokemonTrainer (){return ID;}
-    private static int level = 0;
-    public static int getLevelOfPokemonTrainer (){return level;}
+
+
+    private static int level = 1;
+    public static int getLevelOfPokemonTrainer() {return level;}
+    public static void setLevelOfPokemonTrainer(int level) {Trainer.level=level;}
+
+
+    private static int HowManyBattlesLost=0;
+    public static int getHowManyBattlesLost() {return HowManyBattlesLost;}
+    public static void setHowManyBattlesLost(int howManyBattlesLost) {HowManyBattlesLost = howManyBattlesLost;}
+
 
 
     //constructor for the trainer
     Trainer (String nameOfPokemonsTrainer, float trainersWinningBaseChance, float trainersCriticalHitBaseChance, String typeOfTrainersPokemon) {
-        this.nameOfPokemonsTrainer = nameOfPokemonsTrainer;
-        this.trainersWinningBaseChance = trainersWinningBaseChance;
-        this.trainersCriticalHitBaseChance = trainersCriticalHitBaseChance;
-        this.typeOfTrainersPokemon = typeOfTrainersPokemon;
-        this.ID = 0;
-        this.level = 1;
-        this.HowManyPokemonsKilled = 0;
-        int Xposition;
-        int Yposition;
+        Trainer.nameOfPokemonsTrainer = nameOfPokemonsTrainer;
+        Trainer.trainersWinningBaseChance = trainersWinningBaseChance;
+        Trainer.trainersCriticalHitBaseChance = trainersCriticalHitBaseChance;
+        Trainer.typeOfTrainersPokemon = typeOfTrainersPokemon;
+        ID = 0;
+        level = 1;
+        HowManyPokemonsKilled = 0;
+        HowManyBattlesLost = 0;
+
     }
 
 
@@ -68,29 +77,55 @@ public class Trainer {
 
 
     //moving trainer through the map
-    public void moveTrainer(Field[][] flatMap, Trainer trainer, ArrayList<Pokemon> arrayOfPokemons) {
-        int[] pairOfXY = checkDistance(trainer, arrayOfPokemons);
-        if (pairOfXY[0] == this.getXposition() + 1 || pairOfXY[0] == this.getXposition() - 1 || pairOfXY[1] == this.getXposition() - 1 || pairOfXY[1] == this.getXposition() + 1) {
-            flatMap[this.getXposition()][this.getYposition()].setOccupiedByTrainer(false);
+    public void moveTrainer(Field[][] flatMap, ArrayList<Pokemon> arrayOfPokemons) {
+        int[] pairOfXY = checkDistance(arrayOfPokemons);
+        if ((pairOfXY[0] == this.getXposition() + 1 || pairOfXY[0] == this.getXposition() - 1) && (this.getYposition() - pairOfXY[1] < 2 && this.getYposition() - pairOfXY[1] > -2) || ((pairOfXY[1] == this.getYposition() - 1 || pairOfXY[1] == this.getYposition() + 1)) && (this.getXposition() - pairOfXY[0] < 2 && this.getXposition() - pairOfXY[0] > -2)) {
+            flatMap[this.getYposition()][this.getXposition()].setOccupiedByTrainer(false);
             this.setXposition(pairOfXY[0]);
             this.setYposition(pairOfXY[1]);
-            flatMap[this.getXposition()][this.getYposition()].setOccupiedByTrainer(true);
-            if (flatMap[this.getXposition()][this.getYposition()].isOccupied) {
+            flatMap[this.getYposition()][this.getXposition()].setOccupiedByTrainer(true);
+            if (flatMap[this.getYposition()][this.getXposition()].isOccupied()) {
                 System.out.println("Trainer's fighting with another pokemon");
             }
+        } else {
+            int verticalMove;
+            int horizontalMove;
+
+            do {
+                verticalMove = rand.nextInt(3) - 1;
+                horizontalMove = rand.nextInt(3) - 1;
+            }
+            while (this.getXposition() + horizontalMove > Map.getW() - 1 || this.getXposition() + horizontalMove < 0 || this.getYposition() + verticalMove > Map.getH() - 1 || this.getYposition() + verticalMove < 0);
+
+            flatMap[this.getYposition()][this.getXposition()].setOccupiedByTrainer(false);
+            this.setXposition(this.getXposition() + horizontalMove);
+            this.setYposition(this.getYposition() + verticalMove);
+            flatMap[this.getYposition()][this.getXposition()].setOccupiedByTrainer(true);
         }
     }
 
+    public void fightWithPokemon(Field[][] flatMap, ArrayList<Pokemon> arrayOfPokemons) {
+        int zmiennaDoWalki = rand.nextInt(2);
+
+        if (zmiennaDoWalki == 1) {
+            //wygrana
+
+        } else {
+            //przegrana
+        }
+    }
+
+
     //checking trainer's distance to the nearest pokemon
-     public int[] checkDistance(Trainer trainer, ArrayList<Pokemon> arrayOfPokemons) {
-        int xForTrainer = trainer.getXposition();
-        int yForTrainer = trainer.getYposition();
-        int smallestDistance = Map.getH() + Map.getW();
+     public int[] checkDistance(ArrayList<Pokemon> arrayOfPokemons) {
+        int xForTrainer = this.getXposition();
+        int yForTrainer = this.getYposition();
+        int smallestDistance = Map.getH() * Map.getW();
         int xForSmallestDistance = 0;
         int yForSmallestDistance = 0;
         for (Pokemon pox : arrayOfPokemons) {
             if(smallestDistance > calculatingDistance(yForTrainer, xForTrainer, pox.getYposition(), pox.getXposition())) {
-                smallestDistance = (int) calculatingDistance(yForTrainer, xForTrainer, pox.getYposition(), pox.getXposition());
+                smallestDistance = calculatingDistance(yForTrainer, xForTrainer, pox.getYposition(), pox.getXposition());
                 xForSmallestDistance = pox.getXposition();
                 yForSmallestDistance = pox.getYposition();
             }
@@ -99,8 +134,78 @@ public class Trainer {
      }
 
     //calculating trainer's distance to the nearest pokemon
-     public double calculatingDistance(int y, int x, int aimedY, int aimedX) {
-        return Math.sqrt(Math.pow((Math.abs(y-aimedY)), 2) + Math.pow((Math.abs(x-aimedX)), 2));
-     }
+    public int calculatingDistance(int y, int x, int aimedY, int aimedX) {
+        return (Math.abs(y - aimedY) + Math.abs(x - aimedX));
+    }
 
+    public boolean isPokemonClose(Field[][] flatMap) {
+        int Xtrainer = this.getXposition();
+        int Ytrainer = this.getYposition();
+
+        for(int i = -1; i < 2; i++) {
+            for (int j = -1; j < 2; j++) {
+                try {
+                    if(flatMap[Ytrainer + i][Xtrainer + j].isOccupied()) {
+                        return true;
+                    }
+                } catch (IndexOutOfBoundsException e) {
+                }
+
+            }
+        }
+        return false;
+    }
+
+
+    static int chanceOfCatchingPokemon = 2;
+    //method checking is pokemon is catched - true if is, false if is not
+    public boolean catchPokemon(int levelOfPokemon){
+        if(level > levelOfPokemon) {
+            int chance = rand.nextInt(100)+1;
+            if (chance <= chanceOfCatchingPokemon){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    //method checking if the trainer should get a level up, if he won or lost
+    public boolean checkingProgress(){
+        int level2 = 3;
+        int level3 = 5;
+        int level4 = 7;
+        if (HowManyBattlesLost>=3){
+            System.out.println("Simulation ended. Trainer lost.");
+            return false;
+        }
+        if (getHowManyPokemonsKilled()>=level2) setLevelOfPokemonTrainer(2);
+        if (getHowManyPokemonsKilled()>=level3) setLevelOfPokemonTrainer(3);
+        if (this.getHowManyPokemonsKilled()>=level4){
+            System.out.println("Simulation ended. Trainer won.");
+            return false;
+        }
+        return true;
+    }
+
+    /*public boolean fight(Field[][] flatMap, Trainer trainer, ArrayList<Pokemon> arrayOfPokemons) {
+
+        float trainerWinningChance = this.getTrainersWinningBaseChance() + this.getTrainersCriticalHitBaseChance() - Pokemon.getPokemonsCriticalHitBaseChance() + Pokemon.theDifferenceInLevels(Trainer.getLevelOfPokemonTrainer(), Simulation.getLevelOfDeletedPokemon()) +Pokemon.theDifferenceInPokemonType(trainer);
+
+        float generatedNumberWhoWon = rand.nextFloat() * 100;
+
+
+        if(generatedNumberWhoWon <= trainerWinningChance) {
+            //trener wygryw
+            trainer.setHowManyPokemonsKilled(trainer.getHowManyPokemonsKilled()+1);
+            trainer.checkingProgress();
+            return true;
+        } else {
+            //pokemon wygrywa
+            trainer.setHowManyBattlesLost(trainer.getHowManyBattlesLost()+1);
+            trainer.checkingProgress();
+            return false;
+        }
+        */
 }

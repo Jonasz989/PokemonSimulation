@@ -57,7 +57,7 @@ public class Map {
     }
 
 
-    //the sum of fields fileds on the map
+    //the sum of fields on the map
     public static int getSumOfSpecialFields() {
         return getFireFieldsOnTheMap() + getGroundFieldsOnTheMap() + getGrassFieldsOnTheMap() + getWaterFieldsOnTheMap();
     }
