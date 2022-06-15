@@ -19,6 +19,9 @@ public class Trainer {
     private int Xposition = 0;
     private int Yposition = 0;
     static int chanceOfCatchingPokemon = 2;
+    private static int expFor2Level = 3;
+    private static int expFor3Level = 5;
+    private static int expFor4Level = 7;
 
 
     Trainer (String nameOfPokemonsTrainer, float trainersWinningBaseChance, float trainersCriticalHitBaseChance, String typeOfTrainersPokemon) {
@@ -62,8 +65,7 @@ public class Trainer {
         }
     }
 
-
-    //checking trainer's distance to the nearest pokemon
+     //checking trainer's distance to the nearest pokemon
      public int[] checkDistance(ArrayList<Pokemon> arrayOfPokemons) {
         int xForTrainer = this.getXposition();
         int yForTrainer = this.getYposition();
@@ -85,32 +87,17 @@ public class Trainer {
         return (Math.abs(y - aimedY) + Math.abs(x - aimedX));
     }
 
-
-
-
     //method checking is pokemon is catched - true if is, false if is not
     public boolean catchPokemon(int levelOfPokemon){
         if(level > levelOfPokemon) {
             int chance = rand.nextInt(100)+1;
-            if (chance <= getChanceOfCatchingPokemon()){ return true; }
+            return chance <= getChanceOfCatchingPokemon();
         }
         return false;
     }
-
     public void giveExperience(int howMany) {
         setHowManyPokemonsKilled(getHowManyPokemonsKilled() + howMany);
     }
-
-    private static int expFor2Level = 3;
-    public static int getExpFor2Level () {return expFor2Level;}
-    public static void setExpFor2Level (int expFor2Level) {Trainer.expFor2Level=expFor2Level;}
-    private static int expFor3Level = 5;
-    public static int getExpFor3Level () {return expFor3Level;}
-    public static void setExpFor3Level (int expFor3Level) {Trainer.expFor3Level=expFor3Level;}
-    private static int expFor4Level = 7;
-    public static int getExpFor4Level () {return expFor4Level;}
-    public static void setExpFor4Level (int expFor4Level) {Trainer.expFor4Level=expFor4Level;}
-
     public void levelUp() {
         if(getHowManyPokemonsKilled() >= expFor4Level) {
             setLevelOfPokemonTrainer(4);
@@ -121,15 +108,12 @@ public class Trainer {
         }
 
     }
-
-    //method checking if the trainer should get a level up, if he won or lost
+    //method checking if the trainer should get a level up
     public boolean checkingProgress(){
-
         if (getHowManyBattlesLost() >= 3){
             System.out.println("Simulation ended. Trainer lost.");
             return false;
         }
-
         if (getLevelOfPokemonTrainer() == 4){
             System.out.println("Simulation ended. Trainer won.");
             return false;
@@ -138,17 +122,9 @@ public class Trainer {
     }
 
     public boolean fight(int level, String typeOfEnemyPokemon) {
-
         float trainerWinningChance = (getTrainersWinningBaseChance() + getTrainersCriticalHitBaseChance()) * 100;
-
         float generatedNumberWhoWon = rand.nextFloat() * 100;
-
-
-        if(generatedNumberWhoWon <= trainerWinningChance) {
-            return true;
-        } else {
-            return false;
-        }
+        return generatedNumberWhoWon <= trainerWinningChance;
     }
 
     public float theDifferenceInPokemonType(Pokemon pox) {
@@ -179,5 +155,11 @@ public class Trainer {
     public void setYposition(int newYposition){Yposition = newYposition;}
     public static int getChanceOfCatchingPokemon() { return chanceOfCatchingPokemon;}
     public static void setChanceOfCatchingPokemon(int chanceOfCatchingPokemon) { Trainer.chanceOfCatchingPokemon = chanceOfCatchingPokemon;}
+    public static int getExpFor2Level () {return expFor2Level;}
+    public static void setExpFor2Level (int expFor2Level) {Trainer.expFor2Level=expFor2Level;}
+    public static int getExpFor3Level () {return expFor3Level;}
+    public static void setExpFor3Level (int expFor3Level) {Trainer.expFor3Level=expFor3Level;}
+    public static int getExpFor4Level () {return expFor4Level;}
+    public static void setExpFor4Level (int expFor4Level) {Trainer.expFor4Level=expFor4Level;}
 
 }
