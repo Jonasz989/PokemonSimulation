@@ -41,6 +41,7 @@ public class Settings{
         System.out.println("10. Trainer's exp to get 2. level: " + Trainer.getExpFor2Level());
         System.out.println("11. Trainer's exp to get 3. level: " + Trainer.getExpFor3Level());
         System.out.println("12. Trainer's exp to get 4. level: " + Trainer.getExpFor4Level());
+        System.out.println("13. Trainer's chance of catching pokemon: " + Trainer.getChanceOfCatchingPokemon());
         System.out.println("14. Type of saving the results: work in progress");
         System.out.println("Press enter to continue ");
 
@@ -312,6 +313,7 @@ public class Settings{
                 System.out.println("6. Trainer's exp to get 3. level");
                 System.out.println("7. Trainer's exp to get 4. level");
                 System.out.println("8. Save exp's choices");
+                System.out.println("9. Trainer's chance of catching pokemon");
                 System.out.println("0. Exit");
                 scanner.nextLine();
                 boolean test = scanner.hasNextInt();
@@ -349,6 +351,9 @@ public class Settings{
                     break;
                 case 8:
                     savingExpChoices();
+                    break;
+                case 9:
+                    changeTrainersChanceOfCatchingPokemon();
                     break;
                 case 0:
                     System.out.println("Leaving");
@@ -389,6 +394,25 @@ public class Settings{
             if(test2) {
                 choice = scanner.nextFloat();
                 Trainer.setTrainersWinningBaseChance(choice);
+                break;
+            }
+            else{
+                System.out.println("You've entered a String variable instead of an Integer. Please try again.");
+                System.out.println(" ");
+            }
+        }
+    }
+
+    //method that allows user to change trainer's chance of catching pokemon
+    public static void changeTrainersChanceOfCatchingPokemon(){
+        while (true) {
+            System.out.println("Current Trainer's chance of catching pokemon: " + Trainer.getChanceOfCatchingPokemon());
+            System.out.println("To which number would you like to change it?: ");
+            scanner.nextLine();
+            boolean test = scanner.hasNextInt();
+            if(test) {
+                int catchChance = scanner.nextInt();
+                Trainer.setChanceOfCatchingPokemon(catchChance);
                 break;
             }
             else{
