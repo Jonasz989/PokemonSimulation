@@ -3,80 +3,38 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.lang.Math;
 public class Trainer {
-
     static Random rand = new Random();
-    //trainer's id and level
-    private static int ID = 0;
-    public static int getIDofPokemonTrainer (){return ID;}
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //VARIABLES
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private static String nameOfPokemonsTrainer= "Ash";
+    private static float trainersWinningBaseChance = 1f;
+    private static float trainersCriticalHitBaseChance = 0.02f;
+    private static String typeOfTrainersPokemon = "F";
+    private int level;
+    private int HowManyBattlesLost;
+    private int HowManyPokemonsKilled;
+    private int Xposition = 0;
+    private int Yposition = 0;
+    static int chanceOfCatchingPokemon = 2;
 
 
-    private static int level = 1;
-    public static int getLevelOfPokemonTrainer() {return level;}
-    public static void setLevelOfPokemonTrainer(int level) {Trainer.level=level;}
-
-
-    private int HowManyBattlesLost=0;
-    public int getHowManyBattlesLost() {return HowManyBattlesLost;}
-    public void setHowManyBattlesLost(int howManyBattlesLost) {HowManyBattlesLost = howManyBattlesLost;}
-
-
-
-    //constructor for the trainer
     Trainer (String nameOfPokemonsTrainer, float trainersWinningBaseChance, float trainersCriticalHitBaseChance, String typeOfTrainersPokemon) {
         Trainer.nameOfPokemonsTrainer = nameOfPokemonsTrainer;
         Trainer.trainersWinningBaseChance = trainersWinningBaseChance;
         Trainer.trainersCriticalHitBaseChance = trainersCriticalHitBaseChance;
         Trainer.typeOfTrainersPokemon = typeOfTrainersPokemon;
-        ID = 0;
         level = 1;
         HowManyPokemonsKilled = 0;
         HowManyBattlesLost = 0;
-
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //METHODS
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //variable, getter and setter for trainer's winning base chance
-    private static float trainersWinningBaseChance = 1f;
-    public static float getTrainersWinningBaseChance() {
-        return trainersWinningBaseChance;
-    }
-    public static void setTrainersWinningBaseChance(float newTrainersWinningBaseChance) {trainersWinningBaseChance = newTrainersWinningBaseChance;}
-
-
-    //variable, getter and setter for trainer's critical hit base chance
-    private static float trainersCriticalHitBaseChance = 0.02f;
-    public static float getTrainersCriticalHitBaseChance() {return trainersCriticalHitBaseChance;}
-    public static void setTrainersCriticalHitBaseChance(float newTrainersCriticalHitBaseChance) {trainersCriticalHitBaseChance = newTrainersCriticalHitBaseChance;}
-
-
-    //variable, getter and setter for trainer pokemon's type
-    private static String typeOfTrainersPokemon="fire";
-    public static String getTypeOfTrainersPokemon() {return typeOfTrainersPokemon;}
-    public static void setTypeOfTrainersPokemon(String newTypeOfTrainersPokemon) {typeOfTrainersPokemon = newTypeOfTrainersPokemon;}
-
-
-    //variable, getter and setter for pokemons trainer's name
-    private static String nameOfPokemonsTrainer= "Ash";
-    public static String getNameOfPokemonsTrainer() {return nameOfPokemonsTrainer;}
-    public static void setNameOfPokemonsTrainer(String newNameOfPokemonsTrainer) {nameOfPokemonsTrainer = newNameOfPokemonsTrainer;}
-
-
-    //variable, getter and setter for how many pokemons trainer has killed so far
-    private int HowManyPokemonsKilled = 0;
-    public int getHowManyPokemonsKilled(){return HowManyPokemonsKilled;}
-    public void setHowManyPokemonsKilled(int newHowManyPokemonsKilled){HowManyPokemonsKilled = newHowManyPokemonsKilled;}
-
-
-    //variables, getters and setters for trainer's X and Y position
-    private int Xposition = 0;
-    public int getXposition(){return Xposition;}
-    public void setXposition(int newXposition){Xposition = newXposition;}
-    private int Yposition = 0;
-    public int getYposition(){return Yposition;}
-    public void setYposition(int newYposition){Yposition = newYposition;}
-
-
-    //moving trainer through the map
     public void moveTrainer(Field[][] flatMap, ArrayList<Pokemon> arrayOfPokemons) {
         int[] pairOfXY = checkDistance(arrayOfPokemons);
         if ((pairOfXY[0] == this.getXposition() + 1 || pairOfXY[0] == this.getXposition() - 1) && (this.getYposition() - pairOfXY[1] < 2 && this.getYposition() - pairOfXY[1] > -2) || ((pairOfXY[1] == this.getYposition() - 1 || pairOfXY[1] == this.getYposition() + 1)) && (this.getXposition() - pairOfXY[0] < 2 && this.getXposition() - pairOfXY[0] > -2)) {
@@ -127,24 +85,15 @@ public class Trainer {
         return (Math.abs(y - aimedY) + Math.abs(x - aimedX));
     }
 
-    public static int getChanceOfCatchingPokemon() {
-        return chanceOfCatchingPokemon;
-    }
 
-    public static void setChanceOfCatchingPokemon(int chanceOfCatchingPokemon) {
-        Trainer.chanceOfCatchingPokemon = chanceOfCatchingPokemon;
-    }
-    static int chanceOfCatchingPokemon = 2;
+
 
     //method checking is pokemon is catched - true if is, false if is not
     public boolean catchPokemon(int levelOfPokemon){
         if(level > levelOfPokemon) {
             int chance = rand.nextInt(100)+1;
-            if (chance <= getChanceOfCatchingPokemon()){
-                return true;
-            }
+            if (chance <= getChanceOfCatchingPokemon()){ return true; }
         }
-
         return false;
     }
 
@@ -205,5 +154,30 @@ public class Trainer {
     public float theDifferenceInPokemonType(Pokemon pox) {
         return 0;
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //GETTERS AND SETTERS
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static String getNameOfPokemonsTrainer() {return nameOfPokemonsTrainer;}
+    public static void setNameOfPokemonsTrainer(String newNameOfPokemonsTrainer) { nameOfPokemonsTrainer = newNameOfPokemonsTrainer; }
+    public static float getTrainersWinningBaseChance() { return trainersWinningBaseChance;}
+    public static void setTrainersWinningBaseChance(float newTrainersWinningBaseChance) {trainersWinningBaseChance = newTrainersWinningBaseChance;}
+    public static float getTrainersCriticalHitBaseChance() {return trainersCriticalHitBaseChance;}
+    public static void setTrainersCriticalHitBaseChance(float newTrainersCriticalHitBaseChance) {trainersCriticalHitBaseChance = newTrainersCriticalHitBaseChance;}
+    public static String getTypeOfTrainersPokemon() {return typeOfTrainersPokemon;}
+    public static void setTypeOfTrainersPokemon(String newTypeOfTrainersPokemon) {typeOfTrainersPokemon = newTypeOfTrainersPokemon;}
+    public int getLevelOfPokemonTrainer() {return level;}
+    public void setLevelOfPokemonTrainer(int level) { this.level=level;}
+    public int getHowManyBattlesLost() { return HowManyBattlesLost;}
+    public void setHowManyBattlesLost(int howManyBattlesLost) { HowManyBattlesLost = howManyBattlesLost;}
+    public int getHowManyPokemonsKilled(){return HowManyPokemonsKilled;}
+    public void setHowManyPokemonsKilled(int newHowManyPokemonsKilled){HowManyPokemonsKilled = newHowManyPokemonsKilled;}
+    public int getXposition(){return Xposition;}
+    public void setXposition(int newXposition){Xposition = newXposition;}
+    public int getYposition(){return Yposition;}
+    public void setYposition(int newYposition){Yposition = newYposition;}
+    public static int getChanceOfCatchingPokemon() { return chanceOfCatchingPokemon;}
+    public static void setChanceOfCatchingPokemon(int chanceOfCatchingPokemon) { Trainer.chanceOfCatchingPokemon = chanceOfCatchingPokemon;}
 
 }
