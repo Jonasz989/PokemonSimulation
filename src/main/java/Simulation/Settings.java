@@ -6,6 +6,18 @@ import java.util.Scanner;
 public class Settings{
     static Scanner scanner = new Scanner(System.in);
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //VARIABLES
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    static int expChoice1 = -1, expChoice2 = -1, expChoice3 = -1;
+    static int choice0=-1, choice1=-1, choice2=-1, choice3=-1, choice4=-1;
+    static float choice5=-1;
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //METHODS
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     //printing current settings for the user
     public static void printSettings() {
 
@@ -430,16 +442,16 @@ public class Settings{
             }
             switch (choice) {
                 case 1:
-                    Trainer.setTypeOfTrainersPokemon("fire");
+                    Trainer.setTypeOfTrainersPokemon("F");
                     return;
                 case 2:
-                    Trainer.setTypeOfTrainersPokemon("water");
+                    Trainer.setTypeOfTrainersPokemon("W");
                     return;
                 case 3:
-                    Trainer.setTypeOfTrainersPokemon("ground");
+                    Trainer.setTypeOfTrainersPokemon("G");
                     return;
                 case 4:
-                    Trainer.setTypeOfTrainersPokemon("grass");
+                    Trainer.setTypeOfTrainersPokemon("g");
                     return;
                 case 0:
                     System.out.println("Returning to the settings menu");
@@ -451,14 +463,13 @@ public class Settings{
         }
     }
 
-    static int expChoice1 = -1, expChoice2 = -1, expChoice3 = -1;
-
+    //method that allows user to change exp's choices
     public static void savingExpChoices (){
         if (expChoice1==-1) expChoice1 = Trainer.getExpFor2Level();
         if (expChoice2==-1) expChoice2 = Trainer.getExpFor3Level();
         if (expChoice3==-1) expChoice3 = Trainer.getExpFor4Level();
 
-        if (expChoice1<expChoice2 && expChoice2<expChoice3 && expChoice1<expChoice3){
+        if (expChoice1<expChoice2 && expChoice2<expChoice3){
             Trainer.setExpFor2Level(expChoice1);
             Trainer.setExpFor3Level(expChoice2);
             Trainer.setExpFor4Level(expChoice3);
@@ -470,6 +481,7 @@ public class Settings{
 
     }
 
+    //method that allows user to change required exp to get 2. level
     public static void changeTrainersExpToGet2Level (){
         while(true) {
             System.out.println("Current Trainer's exp to get 2. level: " + Trainer.getExpFor2Level());
@@ -490,6 +502,7 @@ public class Settings{
         }
     }
 
+    //method that allows user to change required exp to get 3. level
     public static void changeTrainersExpToGet3Level (){
         while(true) {
             System.out.println("Current Trainer's exp to get 3. level: " + Trainer.getExpFor3Level());
@@ -510,6 +523,7 @@ public class Settings{
         }
     }
 
+    //method that allows user to change required exp to win the simulation
     public static void changeTrainersExpToGet4Level (){
         while(true) {
             System.out.println("Current Trainer's exp to get 4. level: " + Trainer.getExpFor4Level());
@@ -590,10 +604,9 @@ public class Settings{
             }
         }
     }
+    //START OF METHODS FOR THE POKEMONS' SETTINGS////////////////////////////
 
     //method that saves pokemons' settings if possible
-    static int choice0=-1, choice1=-1, choice2=-1, choice3=-1, choice4=-1;
-    static float choice5=-1;
     public static void savingPokemonsSettings (){
         if (choice0==-1) choice0 = Pokemon.getHowManyPokemonsShouldBeOnTheMap();
         if (choice1==-1) choice1 = PokemonWater.getHowManyWaterPokemonsOnTheMap();
@@ -618,7 +631,6 @@ public class Settings{
             System.out.println("Please adjust your preferences accordingly.");
         }
     }
-
 
 
     //method that allows user to change how many pokemons should be on the map
@@ -758,6 +770,8 @@ public class Settings{
             }
         }
     }
+
+    //END OF METHODS FOR THE POKEMONS' SETTINGS////////////////////////////
 }
 
 
