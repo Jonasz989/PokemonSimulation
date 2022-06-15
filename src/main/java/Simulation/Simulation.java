@@ -308,20 +308,9 @@ public class Simulation {
     public static int getLevelOfDeletedPokemon() {
         return levelOfDeletedPokemon;
     }
-
-    public static void setLevelOfDeletedPokemon(int levelOfDeletedPokemon) {
-        Simulation.levelOfDeletedPokemon = levelOfDeletedPokemon;
-    }
-    public static String getTypeOfDeletedPokemon() {
-        return typeOfDeletedPokemon;
-    }
-    public static void setTypeOfDeletedPokemon(String typeOfDeletedPokemon){
-        Simulation.typeOfDeletedPokemon=typeOfDeletedPokemon;
-    }
-    public static String getTypeOfDeletedPokemonsField(){
-        return typeOfDeletedPokemonsField;
-    }
-    public static void setTypeOfDeletedPokemonsField(String typeOfDeletedPokemonsField){
-        Simulation.typeOfDeletedPokemonsField=typeOfDeletedPokemonsField;
-    }
+    public static void setLevelOfDeletedPokemon(int levelOfDeletedPokemon) {Simulation.levelOfDeletedPokemon = levelOfDeletedPokemon;}
+    public static String getTypeOfDeletedPokemon() {return typeOfDeletedPokemon;}
+    public static void setTypeOfDeletedPokemon(String typeOfDeletedPokemon){Simulation.typeOfDeletedPokemon=typeOfDeletedPokemon;}
+    public static String getTypeOfDeletedPokemonsField(){return typeOfDeletedPokemonsField;}
+    public static void setTypeOfDeletedPokemonsField(String typeOfDeletedPokemonsField){Simulation.typeOfDeletedPokemonsField=typeOfDeletedPokemonsField;}
 }
