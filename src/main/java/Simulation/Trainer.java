@@ -10,7 +10,7 @@ public class Trainer {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private static String nameOfPokemonsTrainer= "Ash";
-    private static float trainersWinningBaseChance = 1f;
+    private static float trainersWinningBaseChance = 0.5f;
     private static float trainersCriticalHitBaseChance = 0.02f;
     private static String typeOfTrainersPokemon = "F";
     private int level;
@@ -121,13 +121,88 @@ public class Trainer {
         return true;
     }
 
-    public boolean fight(int level, String typeOfEnemyPokemon) {
-        float trainerWinningChance = (getTrainersWinningBaseChance() + getTrainersCriticalHitBaseChance()) * 100;
+    public boolean fight(int level, String typeOfEnemyPokemon, String typeOfEnemyPokemonsField, Field[][] flatMap) {
+        float trainerWinningChance = (getTrainersWinningBaseChance() + getTrainersCriticalHitBaseChance()) * 100 +theDifferenceInPokemonType(typeOfEnemyPokemon) + theDifferenceInFieldType(flatMap, typeOfEnemyPokemonsField);
         float generatedNumberWhoWon = rand.nextFloat() * 100;
-        return generatedNumberWhoWon <= trainerWinningChance;
+        if (generatedNumberWhoWon<=trainerWinningChance) return true;
+        else return false;
     }
 
-    public float theDifferenceInPokemonType(Pokemon pox) {
+
+    public float theDifferenceInPokemonType(String pokemonType) {
+        String fightingTrainersPokemonType = typeOfTrainersPokemon;
+
+        if (fightingTrainersPokemonType.equals("F")) {
+            if (pokemonType.equals("W")) {
+                return -5;
+            }
+            if (pokemonType.equals("g")) {
+                return 5;
+            }
+        }
+        if (fightingTrainersPokemonType.equals("W")) {
+            if (pokemonType.equals("G")) {
+                return -5;
+            }
+            if (pokemonType.equals("F")) {
+                return 5;
+            }
+        }
+        if (fightingTrainersPokemonType.equals("G")) {
+            if (pokemonType.equals("g")) {
+                return -5;
+            }
+            if (pokemonType.equals("W")) {
+                return 5;
+            }
+        }
+        if (fightingTrainersPokemonType.equals("g")) {
+            if (pokemonType.equals("F")) {
+                return -5;
+            }
+            if (pokemonType.equals("G")) {
+                return 5;
+            }
+        }
+        return 0;
+    }
+
+    public float theDifferenceInFieldType(Field[][] flatMap, String PokemonFieldType) {
+        String trainerFieldType = flatMap[this.getYposition()][this.getXposition()].getFieldType();
+        String pokemonFieldType = PokemonFieldType;
+
+        if (trainerFieldType.equals("F")) {
+            if (pokemonFieldType.equals("W")) {
+                return -5;
+            }
+            if (pokemonFieldType.equals("g")) {
+                return 5;
+            }
+        }
+        if (trainerFieldType.equals("W")) {
+            if (pokemonFieldType.equals("G")) {
+                return -5;
+            }
+            if (pokemonFieldType.equals("F")) {
+                return 5;
+            }
+        }
+        if (trainerFieldType.equals("G")) {
+            if (pokemonFieldType.equals("g")) {
+                return -5;
+            }
+            if (pokemonFieldType.equals("W")) {
+                return 5;
+            }
+        }
+        if (trainerFieldType.equals("g")) {
+            if (pokemonFieldType.equals("F")) {
+                return -5;
+            }
+            if (pokemonFieldType.equals("G")) {
+                return 5;
+            }
+        }
         return 0;
     }
 
