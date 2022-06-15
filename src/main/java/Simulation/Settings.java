@@ -458,7 +458,7 @@ public class Settings{
         if (expChoice2==-1) expChoice2 = Trainer.getExpFor3Level();
         if (expChoice3==-1) expChoice3 = Trainer.getExpFor4Level();
 
-        if (expChoice1<expChoice2 && expChoice2<expChoice3){
+        if (expChoice1<expChoice2 && expChoice2<expChoice3 && expChoice1<expChoice3){
             Trainer.setExpFor2Level(expChoice1);
             Trainer.setExpFor3Level(expChoice2);
             Trainer.setExpFor4Level(expChoice3);
