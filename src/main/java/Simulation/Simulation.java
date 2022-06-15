@@ -19,6 +19,7 @@ public class Simulation {
 
     private static ArrayList<Pokemon> arrayOfPokemons = new ArrayList<>();
     static int levelOfDeletedPokemon = 0;
+    static int howManyPokemonsOffTheMap = 0;
     static String typeOfDeletedPokemon;
     static String typeOfDeletedPokemonsField;
     static Random rand = new Random();
@@ -26,6 +27,10 @@ public class Simulation {
     static String FIRE = "F";
     static String GROUND = "G";
     static String GRASS = "g";
+    static int howManyRounds = 0;
+    private static boolean WinByKillingEverything = false;
+    private static boolean WinByLevel = false;
+    private static boolean Defeat = false;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //STARTING SIMULATION
@@ -64,8 +69,15 @@ public class Simulation {
             }
 
             printCurrentSimulationState(flatMap);
+            howManyRounds++;
+
         } while (trainer.checkingProgress() && !(arrayOfPokemons.isEmpty()));
 
+        if (trainer.getHowManyBattlesLost() >= 3)  Defeat = true;
+        if (trainer.getLevelOfPokemonTrainer()>=4) WinByLevel = true;
+        if(arrayOfPokemons.isEmpty()) WinByKillingEverything = true;
+        if(Settings.getSavingOptionChoice()==1) Saving.SaveToFileOnlyNumbers();
+        if (Settings.getSavingOptionChoice()==2) Saving.SaveToFile();
 
     }
 
@@ -82,6 +94,8 @@ public class Simulation {
                 arrayOfPokemons.get(i).setYposition(-100);
                 arrayOfPokemons.get(i).setXposition(-100);
                 arrayOfPokemons.remove(i);
+                howManyPokemonsOffTheMap++;
+                Trainer.setHowManyPokemonsKilled2(Trainer.getHowManyPokemonsKilled2()+1);
                 return true;
             }
         }
@@ -313,4 +327,9 @@ public class Simulation {
     public static void setTypeOfDeletedPokemon(String typeOfDeletedPokemon){Simulation.typeOfDeletedPokemon=typeOfDeletedPokemon;}
     public static String getTypeOfDeletedPokemonsField(){return typeOfDeletedPokemonsField;}
     public static void setTypeOfDeletedPokemonsField(String typeOfDeletedPokemonsField){Simulation.typeOfDeletedPokemonsField=typeOfDeletedPokemonsField;}
+    public static int getHowManyPokemonsOffTheMap() {return howManyPokemonsOffTheMap;}
+    public static int getHowManyRounds () {return howManyRounds;}
+    public static boolean getWinByKillingEverything () {return WinByKillingEverything;}
+    public static boolean getWinByLevel () {return WinByLevel;}
+    public static boolean getDefeat () {return Defeat;}
 }

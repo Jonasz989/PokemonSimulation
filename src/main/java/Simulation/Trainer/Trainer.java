@@ -14,18 +14,22 @@ public class Trainer {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private static String nameOfPokemonsTrainer= "Ash";
-    private static float trainersWinningBaseChance = 0.5f;
+    private static float trainersWinningBaseChance = 0.7f;
     private static float trainersCriticalHitBaseChance = 0.02f;
     private static String typeOfTrainersPokemon = "F";
     private int level;
     private int HowManyBattlesLost;
     private int HowManyPokemonsKilled;
+    private static int HowManyPokemonsKilled2 = 0;
+    private static int HowManyPokemonsCaught =0;
     private int Xposition = 0;
     private int Yposition = 0;
     static int chanceOfCatchingPokemon = 2;
     private static int expFor2Level = 3;
     private static int expFor3Level = 5;
     private static int expFor4Level = 7;
+    private static boolean WinByLevel = false;
+    private static boolean Defeat = false;
 
 
     public Trainer(String nameOfPokemonsTrainer, float trainersWinningBaseChance, float trainersCriticalHitBaseChance, String typeOfTrainersPokemon) {
@@ -95,7 +99,12 @@ public class Trainer {
     public boolean catchPokemon(int levelOfPokemon){
         if(level > levelOfPokemon) {
             int chance = rand.nextInt(100)+1;
-            return chance <= getChanceOfCatchingPokemon();
+            HowManyPokemonsCaught++;
+            if(chance <= getChanceOfCatchingPokemon()){
+                HowManyPokemonsCaught++;
+                return true;
+            }
+            return false;
         }
         return false;
     }
@@ -115,10 +124,12 @@ public class Trainer {
     //method checking if the trainer should get a level up
     public boolean checkingProgress(){
         if (getHowManyBattlesLost() >= 3){
+            Defeat = true;
             System.out.println("Simulation ended. Trainer lost.");
             return false;
         }
         if (getLevelOfPokemonTrainer() == 4){
+            WinByLevel = true;
             System.out.println("Simulation ended. Trainer won.");
             return false;
         }
@@ -240,5 +251,9 @@ public class Trainer {
     public static void setExpFor3Level (int expFor3Level) {Trainer.expFor3Level=expFor3Level;}
     public static int getExpFor4Level () {return expFor4Level;}
     public static void setExpFor4Level (int expFor4Level) {Trainer.expFor4Level=expFor4Level;}
-
+    public static int getHowManyPokemonsCaught () {return HowManyPokemonsCaught;}
+    public static boolean getWinByLevel () {return WinByLevel;}
+    public static boolean getDefeat () {return Defeat;}
+    public static int getHowManyPokemonsKilled2 () {return HowManyPokemonsKilled2;}
+    public static void setHowManyPokemonsKilled2 (int HowManyPokemonsKilled2) {Trainer.HowManyPokemonsKilled2 = HowManyPokemonsKilled2;}
 }

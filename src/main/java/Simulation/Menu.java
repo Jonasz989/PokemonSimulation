@@ -1,7 +1,7 @@
 package Simulation;
 
 import Simulation.Settings.*;
-import Simulation.Trainer.Trainer;
+import Simulation.Trainer.*;
 
 import java.util.Scanner;
 import java.lang.*;
@@ -14,6 +14,7 @@ public class Menu {
             System.out.println("1. Start simulation");
             System.out.println("2. Show current settings");
             System.out.println("3. Change existing settings");
+            System.out.println("4. Load settings from file");
             System.out.println("0. Exit");
             choiceMenu = scanner.next();
             switch (choiceMenu) {
@@ -27,6 +28,9 @@ public class Menu {
                     break;
                 case "3":
                     Settings.changeSettings();
+                    break;
+                case"4":
+                    Saving.ReadFromFile();
                     break;
                 case "0":
                     System.exit(0);
