@@ -1,4 +1,4 @@
-package Simulation;
+package Simulation.Settings;
 
 public class Map {
 
@@ -9,8 +9,8 @@ public class Map {
     private static int W = 10;
     static int FireFieldsOnTheMap = 5;
     private static int WaterFieldsOnTheMap = 5;
-    static int GroundFieldsOnTheMap = 5;
-    static int GrassFieldsOnTheMap = 5;
+    private static int GroundFieldsOnTheMap = 5;
+    private static int GrassFieldsOnTheMap = 5;
 
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,22 +39,22 @@ public class Map {
         return WaterFieldsOnTheMap;
     }
     public static void setWaterFieldsOnTheMap(int newWaterFieldsOnTheMap) {WaterFieldsOnTheMap = newWaterFieldsOnTheMap;}
-    static int getFireFieldsOnTheMap() {
+    public static int getFireFieldsOnTheMap() {
         return FireFieldsOnTheMap;
     }
-    static void setFireFieldsOnTheMap(int newFireFieldsOnTheMap) {
+    public static void setFireFieldsOnTheMap(int newFireFieldsOnTheMap) {
         FireFieldsOnTheMap = newFireFieldsOnTheMap;
     }
-    static int getGroundFieldsOnTheMap() {
+    public static int getGroundFieldsOnTheMap() {
         return GroundFieldsOnTheMap;
     }
-    static void setGroundFieldsOnTheMap(int newGroundFieldsOnTheMap) {
+    public static void setGroundFieldsOnTheMap(int newGroundFieldsOnTheMap) {
         GroundFieldsOnTheMap = newGroundFieldsOnTheMap;
     }
-    static int getGrassFieldsOnTheMap() {
+    public static int getGrassFieldsOnTheMap() {
         return GrassFieldsOnTheMap;
     }
-    static void setGrassFieldsOnTheMap(int newGrassFieldsOnTheMap) {
+    public static void setGrassFieldsOnTheMap(int newGrassFieldsOnTheMap) {
          GrassFieldsOnTheMap = newGrassFieldsOnTheMap;
     }
 }

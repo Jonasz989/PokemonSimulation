@@ -1,5 +1,8 @@
 package Simulation;
 
+import Simulation.Settings.*;
+import Simulation.Trainer.Trainer;
+
 import java.util.Scanner;
 import java.lang.*;
 public class Menu {

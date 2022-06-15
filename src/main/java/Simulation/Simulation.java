@@ -1,4 +1,13 @@
 package Simulation;
+
+import Simulation.Pokemon.FromPokemon.PokemonFire;
+import Simulation.Pokemon.FromPokemon.PokemonGrass;
+import Simulation.Pokemon.FromPokemon.PokemonGround;
+import Simulation.Pokemon.FromPokemon.PokemonWater;
+import Simulation.Pokemon.Pokemon;
+import Simulation.Settings.*;
+import Simulation.Trainer.Trainer;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,7 +17,7 @@ public class Simulation {
     //ALL VARIABLES IN SIMULATION
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static ArrayList<Pokemon> arrayOfPokemons = new ArrayList<>();
+    private static ArrayList<Pokemon> arrayOfPokemons = new ArrayList<>();
     static int levelOfDeletedPokemon = 0;
     static String typeOfDeletedPokemon;
     static String typeOfDeletedPokemonsField;

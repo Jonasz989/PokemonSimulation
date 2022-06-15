@@ -1,4 +1,11 @@
-package Simulation;
+package Simulation.Settings;
+
+import Simulation.Pokemon.*;
+import Simulation.Pokemon.FromPokemon.PokemonFire;
+import Simulation.Pokemon.FromPokemon.PokemonGrass;
+import Simulation.Pokemon.FromPokemon.PokemonGround;
+import Simulation.Pokemon.FromPokemon.PokemonWater;
+import Simulation.Trainer.Trainer;
 
 import java.util.Scanner;
 
@@ -10,8 +17,8 @@ public class Settings{
     //VARIABLES
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static int expChoice1 = -1, expChoice2 = -1, expChoice3 = -1;
-    static int choice0=-1, choice1=-1, choice2=-1, choice3=-1, choice4=-1;
-    static float choice5=-1;
+    static int choice0 = -1, choice1 = -1, choice2 = -1, choice3 = -1, choice4 = -1;
+    static float choice5 = -1;
 
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -135,7 +142,7 @@ public class Settings{
     //START OF METHODS FOR THE MAP'S SETTINGS////////////////////////////
 
     //method that allows user to change size of the map
-    static void changeSizeOfTheMap() {
+    public static void changeSizeOfTheMap() {
         while(true) {
             System.out.println("Current height is " + Map.getH() + ".");
             System.out.println("Type your new height: ");
@@ -171,7 +178,7 @@ public class Settings{
     }
 
     //method that allows user to change field settings
-    static void changeFieldSettings() {
+    public static void changeFieldSettings() {
         while (true) {
             int choiceInPoolSettings;
             while(true){
@@ -216,7 +223,7 @@ public class Settings{
     }
 
     //method that allows user to change chance for generating fire fields
-    static void changeChanceOfGeneratingFireField() {
+    public static void changeChanceOfGeneratingFireField() {
         while(true) {
             System.out.println("Current chance of generating fire pool is" + Map.getFireFieldsOnTheMap());
             System.out.println("Type new chance: ");
@@ -236,7 +243,7 @@ public class Settings{
     }
 
     //method that allows user to change chance for generating water fields
-    static void changeChanceOfGeneratingWaterPool() {
+    public static void changeChanceOfGeneratingWaterPool() {
         while(true) {
             System.out.println("Current chance of generating water pool is" + Map.getWaterFieldsOnTheMap());
             System.out.println("Type new chance: ");
@@ -256,7 +263,7 @@ public class Settings{
     }
 
     //method that allows user to change chance for generating ground fields
-    static void changeChanceOfGeneratingGroundPool() {
+    public static void changeChanceOfGeneratingGroundPool() {
         while(true) {
             System.out.println("Current chance of generating ground pool is" + Map.getGroundFieldsOnTheMap());
             System.out.println("Type new chance: ");
@@ -276,7 +283,7 @@ public class Settings{
     }
 
     //method that allows user to change chance for generating grass fields
-    static void changeChanceOfGeneratingGrassPool() {
+    public static void changeChanceOfGeneratingGrassPool() {
         while(true){
         System.out.println("Current chance of generating grass pool is" + Map.getGrassFieldsOnTheMap());
         System.out.println("Type new chance: ");

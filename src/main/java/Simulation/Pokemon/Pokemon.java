@@ -1,21 +1,26 @@
-package Simulation;
+package Simulation.Pokemon;
+
+import Simulation.Pokemon.FromPokemon.*;
+import Simulation.Settings.Field;
+import Simulation.Settings.Map;
+import Simulation.Trainer.Trainer;
 
 import java.util.Random;
 
-public abstract class Pokemon implements PokemonMethods{
+public abstract class Pokemon implements PokemonMethods {
 
     Random rand = new Random();
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //VARIABLES
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    static int howManyPokemonsShouldBeOnTheMap = 12;
+    private static int howManyPokemonsShouldBeOnTheMap = 12;
     private static int CountOfPokemonsOnTheMap = 0;
-    static float pokemonsCriticalHitBaseChance = 0.01f;
-    int level;
-    int currentX;
-    int currentY;
-    String pokemonType;
+    private static float pokemonsCriticalHitBaseChance = 0.01f;
+    private int level;
+    private int currentX;
+    private int currentY;
+    private String pokemonType;
     @Override
     public String getPokemonType() {
         return pokemonType;
@@ -25,7 +30,7 @@ public abstract class Pokemon implements PokemonMethods{
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //CONTRUCTOR
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    Pokemon (int level, int currentX, int currentY) {
+    public Pokemon (int level, int currentX, int currentY) {
         this.level = level;
         this.currentX = currentX;
         this.currentY = currentY;
@@ -138,11 +143,9 @@ public abstract class Pokemon implements PokemonMethods{
     public static void setHowManyPokemonsShouldBeOnTheMap(int newHowManyPokemonsShouldBeOnTheMap) {
         Pokemon.howManyPokemonsShouldBeOnTheMap = newHowManyPokemonsShouldBeOnTheMap;
     }
-
     public int getLevel() {
         return level;
     }
-
     public int getXposition() {
         return currentX;
     }

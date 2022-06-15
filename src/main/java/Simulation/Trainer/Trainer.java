@@ -1,7 +1,11 @@
-package Simulation;
+package Simulation.Trainer;
+
+import Simulation.Settings.Field;
+import Simulation.Pokemon.Pokemon;
+import Simulation.Settings.Map;
+
 import java.util.ArrayList;
 import java.util.Random;
-import java.lang.Math;
 public class Trainer {
     static Random rand = new Random();
 
@@ -24,7 +28,7 @@ public class Trainer {
     private static int expFor4Level = 7;
 
 
-    Trainer (String nameOfPokemonsTrainer, float trainersWinningBaseChance, float trainersCriticalHitBaseChance, String typeOfTrainersPokemon) {
+    public Trainer(String nameOfPokemonsTrainer, float trainersWinningBaseChance, float trainersCriticalHitBaseChance, String typeOfTrainersPokemon) {
         Trainer.nameOfPokemonsTrainer = nameOfPokemonsTrainer;
         Trainer.trainersWinningBaseChance = trainersWinningBaseChance;
         Trainer.trainersCriticalHitBaseChance = trainersCriticalHitBaseChance;

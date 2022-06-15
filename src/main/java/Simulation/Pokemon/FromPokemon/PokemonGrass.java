@@ -1,18 +1,19 @@
-package Simulation;
+package Simulation.Pokemon.FromPokemon;
 
-public class PokemonFire extends Pokemon{
+import Simulation.Pokemon.Pokemon;
+
+public class PokemonGrass extends Pokemon {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //VARIABLES FOR POKEMON FIRE
+    //VARIABLES FOR POKEMON GRASS
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private static int howManyFirePokemonsOnTheMap = 4;
+    static int howManyGrassPokemonsOnTheMap = 2;
     final private String pokemonType;
-
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //CONSTRUCTOR
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    PokemonFire (int level, int currentX, int currentY, String pokemonType) {
+    public PokemonGrass(int level, int currentX, int currentY, String pokemonType) {
         super(level, currentX, currentY);
         this.pokemonType = pokemonType;
         Pokemon.setCountOfPokemonsOnTheMap(getCountOfPokemonsOnTheMap() + 1);
@@ -29,10 +30,9 @@ public class PokemonFire extends Pokemon{
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //GETTERS AND SETTERS
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static int getHowManyFirePokemonsOnTheMap() {
-        return howManyFirePokemonsOnTheMap;
+    public static int getHowManyGrassPokemonsOnTheMap() {
+        return howManyGrassPokemonsOnTheMap;
     }
-    public static void setHowManyFirePokemonsOnTheMap(int howManyFirePokemonsOnTheMap) {
-        PokemonFire.howManyFirePokemonsOnTheMap = howManyFirePokemonsOnTheMap;
-    }
+    public static void setHowManyGrassPokemonsOnTheMap(int howManyGrassPokemonsOnTheMap) { PokemonGrass.howManyGrassPokemonsOnTheMap = howManyGrassPokemonsOnTheMap;}
 }
+
