@@ -46,6 +46,7 @@ public class Settings{
                 System.out.println("3. Pokemons'");
                 System.out.println("4. Saving options");
                 System.out.println("0. Exit");
+                //scanner.nextLine();
                 boolean test = scanner.hasNextInt();
                 if(test){
                     choiceInSettings = scanner.nextInt();
@@ -55,7 +56,6 @@ public class Settings{
                     System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                     System.out.println(" ");
                 }
-                scanner.nextLine();
             }
             switch(choiceInSettings) {
                 case 1:
@@ -90,6 +90,7 @@ public class Settings{
                 System.out.println("1. Size of the map");
                 System.out.println("2. % chance of generating pool");
                 System.out.println("0. Exit");
+                scanner.nextLine();
                 boolean isOutputProper = scanner.hasNextInt();
                 if(isOutputProper){
                     choiceInMapSettings = scanner.nextInt();
@@ -99,7 +100,6 @@ public class Settings{
                     System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                     System.out.println(" ");
                 }
-                scanner.nextLine();
 
             }
             switch (choiceInMapSettings) {
@@ -126,6 +126,7 @@ public class Settings{
         while(true) {
             System.out.println("Current height is " + Map.getH() + ".");
             System.out.println("Type your new height: ");
+            scanner.nextLine();
             boolean test = scanner.hasNextInt();
             int newH;
             if(test) {
@@ -137,11 +138,11 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
         }
         while(true) {
             System.out.println("Current width is " + Map.getW() + ".");
             System.out.println("Type your new width: ");
+            scanner.nextLine();
             boolean test = scanner.hasNextInt();
             int newW;
             if(test){
@@ -153,7 +154,6 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
         }
     }
 
@@ -168,6 +168,7 @@ public class Settings{
                 System.out.println("3. Ground");
                 System.out.println("4. Grass");
                 System.out.println("0. Exit");
+                scanner.nextLine();
                 boolean test = scanner.hasNextInt();
                 if(test){
                     choiceInPoolSettings = scanner.nextInt();
@@ -177,7 +178,6 @@ public class Settings{
                     System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                     System.out.println(" ");
                 }
-                scanner.nextLine();
             }
             switch (choiceInPoolSettings) {
                 case 1:
@@ -207,6 +207,7 @@ public class Settings{
         while(true) {
             System.out.println("Current chance of generating fire pool is" + Map.getFireFieldsOnTheMap());
             System.out.println("Type new chance: ");
+            scanner.nextLine();
             int newFireFieldsOnTheMap;
             boolean test = scanner.hasNextInt();
             if(test){
@@ -218,7 +219,6 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
         }
     }
 
@@ -227,6 +227,7 @@ public class Settings{
         while(true) {
             System.out.println("Current chance of generating water pool is" + Map.getWaterFieldsOnTheMap());
             System.out.println("Type new chance: ");
+            scanner.nextLine();
             int newWaterFieldsOnTheMap;
             boolean test = scanner.hasNextInt();
             if(test){
@@ -238,7 +239,6 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
         }
     }
 
@@ -247,6 +247,7 @@ public class Settings{
         while(true) {
             System.out.println("Current chance of generating ground pool is" + Map.getGroundFieldsOnTheMap());
             System.out.println("Type new chance: ");
+            scanner.nextLine();
             int newGroundFieldsOnTheMap;
             boolean test = scanner.hasNextInt();
             if (test){
@@ -258,7 +259,6 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
         }
     }
 
@@ -267,6 +267,7 @@ public class Settings{
         while(true){
         System.out.println("Current chance of generating grass pool is" + Map.getGrassFieldsOnTheMap());
         System.out.println("Type new chance: ");
+        scanner.nextLine();
         int newGrassFieldsOnTheMap;
         boolean test = scanner.hasNextInt();
             if (test){
@@ -278,7 +279,6 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
 
         }
     }
@@ -301,6 +301,7 @@ public class Settings{
                 System.out.println("7. Trainer's exp to get 4. level");
                 System.out.println("8. Save exp's choices");
                 System.out.println("0. Exit");
+                scanner.nextLine();
                 boolean test = scanner.hasNextInt();
                 if(test){
                     choiceInTrainersSettings = scanner.nextInt();
@@ -310,7 +311,6 @@ public class Settings{
                     System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                     System.out.println(" ");
                 }
-                scanner.nextLine();
 
             }
             switch (choiceInTrainersSettings) {
@@ -370,8 +370,11 @@ public class Settings{
     public static void changeTrainersWinningBaseChance() {
         float choice;
         while(true) {
-            boolean test = scanner.hasNextFloat();
-            if(test) {
+            System.out.println("Current Trainer's base winning chance: " +Trainer.getTrainersWinningBaseChance());
+            System.out.println("To which number would you like to change it?: ");
+            scanner.nextLine();
+            boolean test2 = scanner.hasNextFloat();
+            if(test2) {
                 choice = scanner.nextFloat();
                 Trainer.setTrainersWinningBaseChance(choice);
                 break;
@@ -387,6 +390,9 @@ public class Settings{
     public static void changeTrainersCriticalHitBaseChance() {
         float choice;
         while(true) {
+            System.out.println("Current Trainer's critical hit base chance: " +Trainer.getTrainersCriticalHitBaseChance());
+            System.out.println("To which number would you like to change it?: ");
+            scanner.nextLine();
             boolean test = scanner.hasNextFloat();
             if(test) {
                 choice = scanner.nextFloat();
@@ -397,7 +403,6 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
         }
     }
 
@@ -412,6 +417,7 @@ public class Settings{
                 System.out.println("3. Ground");
                 System.out.println("4. Grass");
                 System.out.println("0. Exit");
+                scanner.nextLine();
                 boolean test = scanner.hasNextInt();
                 if(test){
                     choice = scanner.nextInt();
@@ -421,7 +427,6 @@ public class Settings{
                     System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                     System.out.println(" ");
                 }
-                scanner.nextLine();
             }
             switch (choice) {
                 case 1:
@@ -453,7 +458,7 @@ public class Settings{
         if (expChoice2==-1) expChoice2 = Trainer.getExpFor3Level();
         if (expChoice3==-1) expChoice3 = Trainer.getExpFor4Level();
 
-        if (expChoice1<expChoice2 && expChoice2<expChoice3 && expChoice1<expChoice3){
+        if (expChoice1<expChoice2 && expChoice2<expChoice3){
             Trainer.setExpFor2Level(expChoice1);
             Trainer.setExpFor3Level(expChoice2);
             Trainer.setExpFor4Level(expChoice3);
@@ -469,6 +474,7 @@ public class Settings{
         while(true) {
             System.out.println("Current Trainer's exp to get 2. level: " + Trainer.getExpFor2Level());
             System.out.println("To which value would you like to change it? :");
+            scanner.nextLine();
             boolean test = scanner.hasNextInt();
             if (test) {
                 expChoice1 = scanner.nextInt();
@@ -481,7 +487,6 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
         }
     }
 
@@ -489,6 +494,7 @@ public class Settings{
         while(true) {
             System.out.println("Current Trainer's exp to get 3. level: " + Trainer.getExpFor3Level());
             System.out.println("To which value would you like to change it? :");
+            scanner.nextLine();
             boolean test = scanner.hasNextInt();
             if (test) {
                 expChoice2 = scanner.nextInt();
@@ -501,7 +507,6 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
         }
     }
 
@@ -509,6 +514,7 @@ public class Settings{
         while(true) {
             System.out.println("Current Trainer's exp to get 4. level: " + Trainer.getExpFor4Level());
             System.out.println("To which value would you like to change it? :");
+            scanner.nextLine();
             boolean test = scanner.hasNextInt();
             if (test) {
                 expChoice3 = scanner.nextInt();
@@ -521,7 +527,6 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
         }
     }
 
@@ -543,6 +548,7 @@ public class Settings{
                 System.out.println("6. Pokemons' critical base chance");
                 System.out.println("7. Save");
                 System.out.println("0. Exit");
+                scanner.nextLine();
                 boolean test = scanner.hasNextInt();
                 if(test){
                     choiceInPokemonsSettings = scanner.nextInt();
@@ -552,7 +558,6 @@ public class Settings{
                     System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                     System.out.println(" ");
                 }
-                scanner.nextLine();
             }
             switch (choiceInPokemonsSettings) {
                 case 1:
@@ -587,7 +592,8 @@ public class Settings{
     }
 
     //method that saves pokemons' settings if possible
-    static int choice0=-1, choice1=-1, choice2=-1, choice3=-1, choice4=-1, choice5;
+    static int choice0=-1, choice1=-1, choice2=-1, choice3=-1, choice4=-1;
+    static float choice5=-1;
     public static void savingPokemonsSettings (){
         if (choice0==-1) choice0 = Pokemon.getHowManyPokemonsShouldBeOnTheMap();
         if (choice1==-1) choice1 = PokemonWater.getHowManyWaterPokemonsOnTheMap();
@@ -620,6 +626,7 @@ public class Settings{
         while(true) {
             System.out.println("Pokemons on the map: " + Pokemon.getHowManyPokemonsShouldBeOnTheMap());
             System.out.println("How many should be then?");
+            scanner.nextLine();
             boolean test = scanner.hasNextInt();
             if(test) {
                 choice0 = scanner.nextInt();
@@ -633,7 +640,6 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
         }
     }
 
@@ -643,6 +649,7 @@ public class Settings{
         while(true) {
             System.out.println("Water pokemons on the map: " + PokemonWater.getHowManyWaterPokemonsOnTheMap());
             System.out.println("How many should be then?");
+            scanner.nextLine();
             boolean test = scanner.hasNextInt();
             if(test) {
                 choice1 = scanner.nextInt();
@@ -656,7 +663,6 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
         }
     }
 
@@ -666,6 +672,7 @@ public class Settings{
         while(true) {
             System.out.println("Fire pokemons on the map: " + PokemonFire.getHowManyFirePokemonsOnTheMap());
             System.out.println("How many should be then?");
+            scanner.nextLine();
             boolean test = scanner.hasNextInt();
             if(test) {
                 choice2 = scanner.nextInt();
@@ -679,7 +686,6 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
         }
     }
 
@@ -689,6 +695,7 @@ public class Settings{
         while(true) {
             System.out.println("Ground pokemons on the map: " + PokemonGround.getHowManyGroundPokemonsOnTheMap());
             System.out.println("How many should be then?");
+            scanner.nextLine();
             boolean test = scanner.hasNextInt();
             if(test) {
                 choice3 = scanner.nextInt();
@@ -702,7 +709,6 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
         }
     }
 
@@ -712,6 +718,7 @@ public class Settings{
         while(true) {
             System.out.println("Grass pokemons on the map: " + PokemonGrass.getHowManyGrassPokemonsOnTheMap());
             System.out.println("How many should be then?");
+            scanner.nextLine();
             boolean test = scanner.hasNextInt();
             if(test) {
                 choice4 = scanner.nextInt();
@@ -725,7 +732,6 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
         }
     }
 
@@ -735,9 +741,10 @@ public class Settings{
         while(true) {
             System.out.println("Pokemons' critical hit base chance: " + Pokemon.getPokemonsCriticalHitBaseChance());
             System.out.println("How many should be then?");
-            boolean test = scanner.hasNextInt();
+            scanner.nextLine();
+            boolean test = scanner.hasNextFloat();
             if(test) {
-                choice5 = scanner.nextInt();
+                choice5 = scanner.nextFloat();
                 if (choice5 > 0) {
                     Pokemon.setPokemonsCriticalHitBaseChance(choice5);
                 } else {
@@ -749,7 +756,6 @@ public class Settings{
                 System.out.println("You've entered a String variable instead of an Integer. Please try again.");
                 System.out.println(" ");
             }
-            scanner.nextLine();
         }
     }
 }
