@@ -4,10 +4,12 @@ import java.util.Random;
 
 public class Simulation {
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //ALL VARIABLES IN SIMULATION
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public static ArrayList<Pokemon> arrayOfPokemons = new ArrayList<>();
-
     static int levelOfDeletedPokemon = 0;
-
     static String typeOfDeletedPokemon;
     static Random rand = new Random();
     static String WATER = "W";
@@ -15,20 +17,20 @@ public class Simulation {
     static String GROUND = "G";
     static String GRASS = "g";
 
-
-    //starting the simulation
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //STARTING SIMULATION
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void start(Field[][] flatMap, Trainer trainer) {
         arrayOfPokemons.clear();
         fillMap(flatMap);
-        zerowanieMapyITrenera(flatMap,trainer);
+        clearingMapAndTrainer(flatMap,trainer);
         generateMapFields(flatMap);
         System.out.println("Where are the special fields on the map:");
         printMap(flatMap);
         generatingTrainerOnTheMap(flatMap, trainer);
         generatingPokemons(flatMap);
         printCurrentSimulationState(flatMap);
-
-
+        //WHOLE SIMULATION PROCESS
         do{
             trainer.moveTrainer(flatMap, arrayOfPokemons);
 
@@ -67,6 +69,9 @@ public class Simulation {
 
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //REMOVING POKEMON AFTER FIGHTING/CATCHING HIM AND GETTING HIS LEVEL AND TYPE
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static boolean pokemonRemover(Field[][] flatMap, Trainer trainer) {
         for (int i = 0; i < arrayOfPokemons.size(); i++) {
             if (arrayOfPokemons.get(i).getYposition() == trainer.getYposition() && arrayOfPokemons.get(i).getXposition() == trainer.getXposition()) {
@@ -83,7 +88,7 @@ public class Simulation {
     }
 
 
-    public static void zerowanieMapyITrenera(Field[][] flatMap, Trainer trainer) {
+    public static void clearingMapAndTrainer(Field[][] flatMap, Trainer trainer) {
         for (int i = 0; i < Map.getH(); i++) {
             for (int j = 0; j < Map.getW(); j++) {
                 flatMap[i][j].setFieldType(".");
@@ -94,8 +99,9 @@ public class Simulation {
             trainer.setYposition(0);
         }
     }
-
-    //printing empty map
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //PRINTING MAP WITH FIELD TYPES
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void printMap(Field[][] flatMap) {
         //System.out.println("\nACTUAL MAP3");
         for (int i = 0; i < Map.getH(); i++) {
@@ -105,8 +111,9 @@ public class Simulation {
             System.out.println();
         }
     }
-
-    //printing current state of the simulation
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //PRINTING CURRENT SIMULATION STATE
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void printCurrentSimulationState(Field[][] flatMap) {
         System.out.println("\nCURRENT STATE");
         for (int i = 0; i < Map.getH(); i++) {
@@ -126,7 +133,9 @@ public class Simulation {
         }
     }
 
-    //filling map with normal fields
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //CREATING OUR MAP
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void fillMap(Field[][] flatMap) {
         for (int i = 0; i < Map.getH(); i++) {
             for (int j = 0; j < Map.getW(); j++) {
@@ -135,7 +144,9 @@ public class Simulation {
         }
     }
 
-    //filling map with special fields
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //GENERATING FIELD TYPES IN MAP
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void generateMapFields(Field[][] flatMap) {
         int zmienna = Map.getSumOfSpecialFields();
         int actualNumberOfWaterFields = Map.getWaterFieldsOnTheMap();
@@ -202,8 +213,9 @@ public class Simulation {
             }
         }
     }
-
-    //generating pokemons on the map
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //GENERATING POKEMONS
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void generatingPokemons(Field[][] flatMap) {
         int howManyPokemons = Pokemon.getSumOfHowManyPokemonsThereShouldBe();
         int createdPokemons = 0;
@@ -275,7 +287,9 @@ public class Simulation {
         }
     }
 
-    //generating trainer on the map
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //GENERATING TRAINER
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void generatingTrainerOnTheMap(Field[][] flatMap, Trainer trainer) {
         int generatedI;
         int generatedJ;
@@ -287,6 +301,9 @@ public class Simulation {
     }
 
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //GETTERS AND SETTERS FOR VARIABLES
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static int getLevelOfDeletedPokemon() {
         return levelOfDeletedPokemon;
     }
@@ -294,12 +311,7 @@ public class Simulation {
     public static void setLevelOfDeletedPokemon(int levelOfDeletedPokemon) {
         Simulation.levelOfDeletedPokemon = levelOfDeletedPokemon;
     }
-
     public static String getTypeOfDeletedPokemon() {
         return typeOfDeletedPokemon;
-    }
-
-    public static void setTypeOfDeletedPokemon(String typeOfDeletedPokemon) {
-        Simulation.typeOfDeletedPokemon = typeOfDeletedPokemon;
     }
 }
