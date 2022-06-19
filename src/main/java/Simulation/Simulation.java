@@ -36,6 +36,7 @@ public class Simulation {
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_YELLOW = "\u001B[33m";
+    public static int currentStateCount = 1;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //STARTING SIMULATION
@@ -57,14 +58,14 @@ public class Simulation {
             if(pokemonRemover(flatMap, trainer)){
                 if (trainer.catchPokemon(getLevelOfDeletedPokemon())){
                     trainer.giveExperience(2);
-                    System.out.println("zlapany poks");
+                    System.out.println("Pokemon has been caught.");
                 }
                 else if(trainer.fight(getLevelOfDeletedPokemon(), getTypeOfDeletedPokemon(), getTypeOfDeletedPokemonsField(), flatMap)) {
                     trainer.giveExperience(1);
-                    System.out.println("zabity poks");
+                    System.out.println("Pokemon has been killed.");
                 } else {
                     trainer.setHowManyBattlesLost(trainer.getHowManyBattlesLost() + 1);
-                    System.out.println("przegrana");
+                    System.out.println("Trainer has lost the battle.");
                 }
             }
             trainer.levelUp();
@@ -74,6 +75,7 @@ public class Simulation {
             }
 
             printCurrentSimulationState(flatMap);
+            currentStateCount++;
             howManyRounds++;
 
         } while (trainer.checkingProgress() && !(arrayOfPokemons.isEmpty()));
@@ -83,7 +85,7 @@ public class Simulation {
         if(arrayOfPokemons.isEmpty()) WinByKillingEverything = true;
         if(Settings.getSavingOptionChoice()==1) Saving.SaveToFileOnlyNumbers(trainer);
         if (Settings.getSavingOptionChoice()==2) Saving.SaveToFile(trainer);
-
+        System.out.println();
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -135,6 +137,10 @@ public class Simulation {
             for (int j = 0; j < Map.getW(); j++) {
                 System.out.print(flatMap[i][j].fieldType + " ");
             }
+            if (i==0) System.out.print("   W - water field");
+            if (i==1) System.out.print("   F - fire field");
+            if (i==2) System.out.print("   G - grass field");
+            if (i==3) System.out.print("   g - ground field");
             System.out.println();
         }
     }
@@ -142,7 +148,7 @@ public class Simulation {
     //PRINTING CURRENT SIMULATION STATE
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void printCurrentSimulationState(Field[][] flatMap) {
-        System.out.println("\nCURRENT STATE");
+        System.out.println("\nCURRENT STATE " + Simulation.currentStateCount);
         for (int i = 0; i < Map.getH(); i++) {
             for (int j = 0; j < Map.getW(); j++) {
                 if (flatMap[i][j].isOccupiedByTrainer() && flatMap[i][j].isOccupied()) {
@@ -174,6 +180,12 @@ public class Simulation {
                     System.out.print(". ");
                 }
             }
+            if (i==0) System.out.print(ANSI_RED + "  P - fire pokemon" +ANSI_RESET);
+            if (i==1) System.out.print(ANSI_BLUE + "  P - water pokemon" +ANSI_RESET);
+            if (i==2) System.out.print(ANSI_GREEN + "  P - grass pokemon" +ANSI_RESET);
+            if (i==3) System.out.print(ANSI_YELLOW + "  P - ground pokemon" +ANSI_RESET);
+            if (i==4) System.out.print("  T - trainer");
+
             System.out.println();
         }
     }
