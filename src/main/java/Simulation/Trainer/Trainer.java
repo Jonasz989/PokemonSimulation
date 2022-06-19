@@ -14,7 +14,7 @@ public class Trainer {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private static String nameOfPokemonsTrainer= "Ash";
-    private static float trainersWinningBaseChance = 0.7f;
+    private static float trainersWinningBaseChance = 0.0f;
     private static float trainersCriticalHitBaseChance = 0.02f;
     private static String typeOfTrainersPokemon = "F";
     private int level;
@@ -73,6 +73,7 @@ public class Trainer {
             flatMap[this.getYposition()][this.getXposition()].setOccupiedByTrainer(true);
         }
     }
+
 
      //checking trainer's distance to the nearest pokemon
      public int[] checkDistance(ArrayList<Pokemon> arrayOfPokemons) {

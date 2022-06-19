@@ -124,6 +124,8 @@ public class Simulation {
         setDefeat(false);
         setWinByLevel(false);
         setWinByKillingEverything(false);
+        setHowManyRounds(0);
+
 
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -395,5 +397,9 @@ public class Simulation {
 
     public static void setDefeat(boolean defeat) {
         Defeat = defeat;
+    }
+
+    public static void setHowManyRounds(int howManyRounds) {
+        Simulation.howManyRounds = howManyRounds;
     }
 }
