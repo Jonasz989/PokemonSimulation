@@ -28,8 +28,9 @@ public class Trainer {
     private static int expFor2Level = 3;
     private static int expFor3Level = 5;
     private static int expFor4Level = 7;
-    private static boolean WinByLevel = false;
-    private static boolean Defeat = false;
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
 
 
     public Trainer(String nameOfPokemonsTrainer, float trainersWinningBaseChance, float trainersCriticalHitBaseChance, String typeOfTrainersPokemon) {
@@ -108,9 +109,13 @@ public class Trainer {
         }
         return false;
     }
+
+    //grating trainer experience
     public void giveExperience(int howMany) {
         setHowManyPokemonsKilled(getHowManyPokemonsKilled() + howMany);
     }
+
+    //checking if level up's been earned
     public void levelUp() {
         if(getHowManyPokemonsKilled() >= expFor4Level) {
             setLevelOfPokemonTrainer(4);
@@ -124,18 +129,19 @@ public class Trainer {
     //method checking if the trainer should get a level up
     public boolean checkingProgress(){
         if (getHowManyBattlesLost() >= 3){
-            Defeat = true;
-            System.out.println("Simulation ended. Trainer lost.");
+            //Defeat = true;
+            System.out.println("Simulation ended. Trainer " + ANSI_RED + "lost" + ANSI_RESET + ".");
             return false;
         }
         if (getLevelOfPokemonTrainer() == 4){
-            WinByLevel = true;
-            System.out.println("Simulation ended. Trainer won.");
+            //WinByLevel = true;
+            System.out.println("Simulation ended. Trainer "+ ANSI_GREEN +"won" +ANSI_RESET + ".");
             return false;
         }
         return true;
     }
 
+    //method that states if trainer lost or won
     public boolean fight(int level, String typeOfEnemyPokemon, String typeOfEnemyPokemonsField, Field[][] flatMap) {
         float trainerWinningChance = (getTrainersWinningBaseChance() + getTrainersCriticalHitBaseChance()) * 100 +theDifferenceInPokemonType(typeOfEnemyPokemon) + theDifferenceInFieldType(flatMap, typeOfEnemyPokemonsField);
         float generatedNumberWhoWon = rand.nextFloat() * 100;
@@ -143,7 +149,7 @@ public class Trainer {
         else return false;
     }
 
-
+    //method checking the difference in pokemons' type for trainer's benefit or trainer's disadvantage
     public float theDifferenceInPokemonType(String pokemonType) {
         String fightingTrainersPokemonType = typeOfTrainersPokemon;
 
@@ -252,8 +258,8 @@ public class Trainer {
     public static int getExpFor4Level () {return expFor4Level;}
     public static void setExpFor4Level (int expFor4Level) {Trainer.expFor4Level=expFor4Level;}
     public static int getHowManyPokemonsCaught () {return HowManyPokemonsCaught;}
-    public static boolean getWinByLevel () {return WinByLevel;}
-    public static boolean getDefeat () {return Defeat;}
+    //public static boolean getWinByLevel () {return WinByLevel;}
+    //public static boolean getDefeat () {return Defeat;}
     public static int getHowManyPokemonsKilled2 () {return HowManyPokemonsKilled2;}
     public static void setHowManyPokemonsKilled2 (int HowManyPokemonsKilled2) {Trainer.HowManyPokemonsKilled2 = HowManyPokemonsKilled2;}
 }

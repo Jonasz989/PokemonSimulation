@@ -36,7 +36,6 @@ public class Simulation {
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_YELLOW = "\u001B[33m";
-    public static int currentStateCount = 1;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //STARTING SIMULATION
@@ -75,14 +74,13 @@ public class Simulation {
             }
 
             printCurrentSimulationState(flatMap);
-            currentStateCount++;
             howManyRounds++;
 
         } while (trainer.checkingProgress() && !(arrayOfPokemons.isEmpty()));
 
-        if (trainer.getHowManyBattlesLost() >= 3)  Defeat = true;
-        if (trainer.getLevelOfPokemonTrainer()>=4) WinByLevel = true;
-        if(arrayOfPokemons.isEmpty()) WinByKillingEverything = true;
+        if (trainer.getHowManyBattlesLost() >= 3)  setDefeat(true);
+        if (trainer.getLevelOfPokemonTrainer()>=4) setWinByLevel(true);
+        if(arrayOfPokemons.isEmpty()) setWinByKillingEverything(true);
         if(Settings.getSavingOptionChoice()==1) Saving.SaveToFileOnlyNumbers(trainer);
         if (Settings.getSavingOptionChoice()==2) Saving.SaveToFile(trainer);
         System.out.println();
@@ -148,7 +146,7 @@ public class Simulation {
     //PRINTING CURRENT SIMULATION STATE
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void printCurrentSimulationState(Field[][] flatMap) {
-        System.out.println("\nCURRENT STATE " + Simulation.currentStateCount);
+        System.out.println("\nCURRENT STATE " + Simulation.howManyRounds);
         for (int i = 0; i < Map.getH(); i++) {
             for (int j = 0; j < Map.getW(); j++) {
                 if (flatMap[i][j].isOccupiedByTrainer() && flatMap[i][j].isOccupied()) {
