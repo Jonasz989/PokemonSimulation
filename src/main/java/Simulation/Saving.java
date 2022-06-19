@@ -15,7 +15,8 @@ public class Saving {
     public static void SaveToFileOnlyNumbers (Trainer trainer){
 
         try{
-            File file = new File("Results.txt");
+            int i=0;
+            File file = new File("Results" +i+".txt");
             file.createNewFile();
             PrintWriter pw = new PrintWriter(file);
             pw.print(Pokemon.getHowManyPokemonsShouldBeOnTheMap()+";");
@@ -35,8 +36,7 @@ public class Saving {
 
     }
 
-    public static void SaveToFile (){
-        Trainer trainer = new Trainer(Trainer.getNameOfPokemonsTrainer(), Trainer.getTrainersWinningBaseChance(), Trainer.getTrainersCriticalHitBaseChance(), Trainer.getTypeOfTrainersPokemon());
+    public static void SaveToFile (Trainer trainer){
         try{
         File file = new File("Results.txt");
         file.createNewFile();
@@ -50,13 +50,13 @@ public class Saving {
         pw.println("How many pokemons were killed: " + trainer.getHowManyPokemonsKilled2());
         pw.println("How many pokemons got caught: " + trainer.getHowManyPokemonsCaught());
         pw.println("How many rounds were in the simulation: " + Simulation.getHowManyRounds());
-        if (Trainer.getDefeat()){
+        if (Simulation.isDefeat()){
             pw.println("Trainer lost");
         }
-        else if (Trainer.getWinByLevel()) {
+        if (Simulation.isWinByLevel()) {
             pw.println("Trainer won by reaching 4. level");
         }
-        else if (Simulation.getWinByKillingEverything()) {
+        if (Simulation.isWinByKillingEverything()) {
             pw.println("Trainer won because of no more pokemons on the map");
         }
         pw.close();
