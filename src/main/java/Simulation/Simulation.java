@@ -47,8 +47,17 @@ public class Simulation {
         generateMapFields(flatMap);
         System.out.println("Where are the special fields on the map:");
         printMap(flatMap);
+        try{Thread.sleep(50);}
+        catch(InterruptedException e){
+        }
         generatingTrainerOnTheMap(flatMap, trainer);
+        try{Thread.sleep(50);}
+        catch(InterruptedException e){
+        }
         generatingPokemons(flatMap);
+        try{Thread.sleep(50);}
+        catch(InterruptedException e){
+        }
         printCurrentSimulationState(flatMap);
         //WHOLE SIMULATION PROCESS
         do{
@@ -73,8 +82,13 @@ public class Simulation {
                 pox.movePokemon(flatMap, trainer);
             }
 
-            printCurrentSimulationState(flatMap);
-            howManyRounds++;
+            try{Thread.sleep(50);}
+            catch(InterruptedException e){
+            }
+
+        howManyRounds++;
+        printCurrentSimulationState(flatMap);
+
 
         } while (trainer.checkingProgress() && !(arrayOfPokemons.isEmpty()));
 
@@ -172,10 +186,6 @@ public class Simulation {
                     if(flatMap[i][j].getPokemonTypeOnField().equals("g")) {
                         System.out.print(ANSI_YELLOW + "P " +ANSI_RESET);
                     }
-
-
-
-
                 } else {
                     System.out.print(". ");
                 }
