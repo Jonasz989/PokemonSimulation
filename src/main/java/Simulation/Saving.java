@@ -42,7 +42,7 @@ public class Saving {
         pw.println("Map's width: " + Map.getW());
         pw.println("How many special fields on the map: " + Map.getSumOfSpecialFields());
         pw.println("How many pokemons should be on the map: " + Pokemon.getHowManyPokemonsShouldBeOnTheMap());
-        pw.println("trainer's winning base chance: " + trainer.getTrainersWinningBaseChance());
+        pw.println("Trainer's winning base chance: " + trainer.getTrainersWinningBaseChance());
         pw.println("How many pokemons left on the map: " + (Pokemon.getHowManyPokemonsShouldBeOnTheMap()-Simulation.getHowManyPokemonsOffTheMap()));
         pw.println("How many pokemons were killed: " + trainer.getHowManyPokemonsKilled2());
         pw.println("How many pokemons got caught: " + trainer.getHowManyPokemonsCaught());
