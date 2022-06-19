@@ -5,6 +5,7 @@ import Simulation.Settings.Map;
 import Simulation.Trainer.Trainer;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -13,11 +14,8 @@ public class Saving {
     //height, width, special fields, pokemons count, trainer's chance of winning, how many pokemons left on the map,
     // how many pokemons killed, how many pokemons caught, how many rounds, what outcome (win/lose and wich type)
     public static void SaveToFileOnlyNumbers (Trainer trainer){
-
         try{
-            int i=0;
-            File file = new File("Results" +i+".txt");
-            file.createNewFile();
+            FileOutputStream file = new FileOutputStream("Results.txt", true);
             PrintWriter pw = new PrintWriter(file);
             pw.print(Pokemon.getHowManyPokemonsShouldBeOnTheMap()+";");
             pw.print(trainer.getTrainersWinningBaseChance()+";");
@@ -26,7 +24,6 @@ public class Saving {
             if (Simulation.isDefeat()) pw.print(0);
             if (Simulation.isWinByLevel()) pw.print(1);
             if (Simulation.isWinByKillingEverything()) pw.print(2);
-            i++;
             pw.println();
             pw.close();
 
