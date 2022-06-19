@@ -52,7 +52,7 @@ public class Simulation {
             if(pokemonRemover(flatMap, trainer)){
                 if (trainer.catchPokemon(getLevelOfDeletedPokemon())){
                     trainer.giveExperience(2);
-                    System.out.println("zlkapany poks");
+                    System.out.println("zlapany poks");
                 }
                 else if(trainer.fight(getLevelOfDeletedPokemon(), getTypeOfDeletedPokemon(), getTypeOfDeletedPokemonsField(), flatMap)) {
                     trainer.giveExperience(1);
@@ -146,7 +146,25 @@ public class Simulation {
                 if (flatMap[i][j].isOccupiedByTrainer() && !flatMap[i][j].isOccupied()) {
                     System.out.print("T ");
                 } else if(flatMap[i][j].isOccupied() && !flatMap[i][j].isOccupiedByTrainer()) {
-                    System.out.print("P ");
+                    if(flatMap[i][j].getPokemonTypeOnField().equals("F")) {
+                        System.out.print("F-");
+                    }
+
+                    if(flatMap[i][j].getPokemonTypeOnField().equals("W")) {
+                        System.out.print("W-");
+                    }
+
+                    if(flatMap[i][j].getPokemonTypeOnField().equals("G")) {
+                        System.out.print("G-");
+                    }
+
+                    if(flatMap[i][j].getPokemonTypeOnField().equals("g")) {
+                        System.out.print("g-");
+                    }
+
+
+
+
                 } else {
                     System.out.print(". ");
                 }
@@ -256,6 +274,7 @@ public class Simulation {
                 while(flatMap[generatedI][generatedJ].isOccupied() || flatMap[generatedI][generatedJ].isOccupiedByTrainer());
                 Pokemon poks = new PokemonWater(rand.nextInt(3)+1, generatedJ, generatedI, "W");
                 flatMap[generatedI][generatedJ].setOccupied(true);
+                flatMap[generatedI][generatedJ].setPokemonTypeOnField("W");
                 arrayOfPokemons.add(poks);
                 createdPokemons++;
                 actualNumberOfWaterPokemons--;
@@ -271,6 +290,7 @@ public class Simulation {
                 while(flatMap[generatedI][generatedJ].isOccupied() || flatMap[generatedI][generatedJ].isOccupiedByTrainer());
                 Pokemon poks = new PokemonFire(rand.nextInt(3)+1, generatedJ, generatedI, "W");
                 flatMap[generatedI][generatedJ].setOccupied(true);
+                flatMap[generatedI][generatedJ].setPokemonTypeOnField("F");
                 arrayOfPokemons.add(poks);
                 createdPokemons++;
                 actualNumberOfFirePokemons--;
@@ -286,6 +306,7 @@ public class Simulation {
                 while(flatMap[generatedI][generatedJ].isOccupied() || flatMap[generatedI][generatedJ].isOccupiedByTrainer());
                 Pokemon poks = new PokemonGround(rand.nextInt(3)+1, generatedJ, generatedI, "G");
                 flatMap[generatedI][generatedJ].setOccupied(true);
+                flatMap[generatedI][generatedJ].setPokemonTypeOnField("G");
                 arrayOfPokemons.add(poks);
                 createdPokemons++;
                 actualNumberOfGroundPokemons--;
@@ -301,6 +322,7 @@ public class Simulation {
                 while(flatMap[generatedI][generatedJ].isOccupied() || flatMap[generatedI][generatedJ].isOccupiedByTrainer());
                 Pokemon poks = new PokemonGrass(rand.nextInt(3)+1, generatedJ, generatedI, "g");
                 flatMap[generatedI][generatedJ].setOccupied(true);
+                flatMap[generatedI][generatedJ].setPokemonTypeOnField("g");
                 arrayOfPokemons.add(poks);
                 createdPokemons++;
                 actualNumberOfGrassPokemons--;

@@ -60,7 +60,6 @@ public abstract class Pokemon implements PokemonMethods {
 
             if ((this.getXposition() + horizontalMove) == trainer.getXposition() && (this.getYposition() + verticalMove) == trainer.getYposition()) {
                 flatMap[this.getYposition()][this.getXposition()].setOccupied(false);
-                //DO ZROBIENIA
                 System.out.print("Pokemon's fight with the trainer\n");
                 return;
             }
@@ -69,6 +68,7 @@ public abstract class Pokemon implements PokemonMethods {
                 this.setXposition(this.getXposition() + horizontalMove);
                 this.setYposition(this.getYposition() + verticalMove);
                 flatMap[this.getYposition()][this.getXposition()].setOccupied(true);
+        flatMap[this.getYposition()][this.getXposition()].setPokemonTypeOnField(getPokemonType());
     }
 
     public static float theDifferenceInLevels(int trainerLevel, int pokemonLevel) {
