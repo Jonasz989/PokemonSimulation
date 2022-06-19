@@ -31,6 +31,11 @@ public class Simulation {
     private static boolean WinByKillingEverything = false;
     private static boolean WinByLevel = false;
     private static boolean Defeat = false;
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //STARTING SIMULATION
@@ -147,19 +152,19 @@ public class Simulation {
                     System.out.print("T ");
                 } else if(flatMap[i][j].isOccupied() && !flatMap[i][j].isOccupiedByTrainer()) {
                     if(flatMap[i][j].getPokemonTypeOnField().equals("F")) {
-                        System.out.print("F-");
+                        System.out.print(ANSI_RED + "P " +ANSI_RESET);
                     }
 
                     if(flatMap[i][j].getPokemonTypeOnField().equals("W")) {
-                        System.out.print("W-");
+                        System.out.print(ANSI_BLUE + "P " +ANSI_RESET);
                     }
 
                     if(flatMap[i][j].getPokemonTypeOnField().equals("G")) {
-                        System.out.print("G-");
+                        System.out.print(ANSI_GREEN + "P " +ANSI_RESET);
                     }
 
                     if(flatMap[i][j].getPokemonTypeOnField().equals("g")) {
-                        System.out.print("g-");
+                        System.out.print(ANSI_YELLOW + "P " +ANSI_RESET);
                     }
 
 
@@ -288,7 +293,7 @@ public class Simulation {
                     generatedJ = rand.nextInt(Map.getW());
                 }
                 while(flatMap[generatedI][generatedJ].isOccupied() || flatMap[generatedI][generatedJ].isOccupiedByTrainer());
-                Pokemon poks = new PokemonFire(rand.nextInt(3)+1, generatedJ, generatedI, "W");
+                Pokemon poks = new PokemonFire(rand.nextInt(3)+1, generatedJ, generatedI, "F");
                 flatMap[generatedI][generatedJ].setOccupied(true);
                 flatMap[generatedI][generatedJ].setPokemonTypeOnField("F");
                 arrayOfPokemons.add(poks);

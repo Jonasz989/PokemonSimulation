@@ -68,7 +68,7 @@ public abstract class Pokemon implements PokemonMethods {
                 this.setXposition(this.getXposition() + horizontalMove);
                 this.setYposition(this.getYposition() + verticalMove);
                 flatMap[this.getYposition()][this.getXposition()].setOccupied(true);
-        flatMap[this.getYposition()][this.getXposition()].setPokemonTypeOnField(getPokemonType());
+                flatMap[this.getYposition()][this.getXposition()].setPokemonTypeOnField(getPokemonType());
     }
 
     public static float theDifferenceInLevels(int trainerLevel, int pokemonLevel) {
