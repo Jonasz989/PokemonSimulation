@@ -1,10 +1,10 @@
 package Simulation;
+
 import Simulation.Pokemon.Pokemon;
 import Simulation.Settings.Map;
 import Simulation.Trainer.Trainer;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -12,26 +12,21 @@ public class Saving {
     static Scanner scanner = new Scanner(System.in);
     //height, width, special fields, pokemons count, trainer's chance of winning, how many pokemons left on the map,
     // how many pokemons killed, how many pokemons caught, how many rounds, what outcome (win/lose and wich type)
-    public static void SaveToFileOnlyNumbers (){
-        Trainer trainer = new Trainer(Trainer.getNameOfPokemonsTrainer(), Trainer.getTrainersWinningBaseChance(), Trainer.getTrainersCriticalHitBaseChance(), Trainer.getTypeOfTrainersPokemon());
+    public static void SaveToFileOnlyNumbers (Trainer trainer){
 
         try{
             File file = new File("Results.txt");
             file.createNewFile();
             PrintWriter pw = new PrintWriter(file);
-            pw.println(Map.getH());
-            pw.println(Map.getW());
-            pw.println(Map.getSumOfSpecialFields());
-            pw.println(Pokemon.getHowManyPokemonsShouldBeOnTheMap());
-            pw.println(Trainer.getTrainersWinningBaseChance());
-            pw.println(Pokemon.getHowManyPokemonsShouldBeOnTheMap()-Simulation.getHowManyPokemonsOffTheMap());
-            pw.println(Trainer.getHowManyPokemonsKilled2());
-            pw.println(Trainer.getHowManyPokemonsCaught());
-            pw.println(Simulation.getHowManyRounds());
+            pw.print(Pokemon.getHowManyPokemonsShouldBeOnTheMap()+";");
+            pw.print(trainer.getTrainersWinningBaseChance()+";");
+            pw.print(Simulation.getHowManyRounds()+";");
             //defeat = 0, win by level = 1, win by killing everyone = 2
-            if (Simulation.getDefeat()) pw.println(0);
-            if (Simulation.getWinByLevel()) pw.println(1);
-            if (Simulation.getWinByKillingEverything()) pw.println(2);
+            if (Simulation.isDefeat()) pw.print(0);
+            if (Simulation.isWinByLevel()) pw.print(1);
+            if (Simulation.isWinByKillingEverything()) pw.print(2);
+            i++;
+            pw.println();
             pw.close();
 
         }catch (Exception e){
@@ -50,10 +45,10 @@ public class Saving {
         pw.println("Map's width: " + Map.getW());
         pw.println("How many special fields on the map: " + Map.getSumOfSpecialFields());
         pw.println("How many pokemons should be on the map: " + Pokemon.getHowManyPokemonsShouldBeOnTheMap());
-        pw.println("Trainer's winning base chance: " + Trainer.getTrainersWinningBaseChance());
+        pw.println("Trainer's winning base chance: " + trainer.getTrainersWinningBaseChance());
         pw.println("How many pokemons left on the map: " + (Pokemon.getHowManyPokemonsShouldBeOnTheMap()-Simulation.getHowManyPokemonsOffTheMap()));
         pw.println("How many pokemons were killed: " + trainer.getHowManyPokemonsKilled2());
-        pw.println("How many pokemons got caught: " + Trainer.getHowManyPokemonsCaught());
+        pw.println("How many pokemons got caught: " + trainer.getHowManyPokemonsCaught());
         pw.println("How many rounds were in the simulation: " + Simulation.getHowManyRounds());
         if (Trainer.getDefeat()){
             pw.println("Trainer lost");

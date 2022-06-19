@@ -76,8 +76,8 @@ public class Simulation {
         if (trainer.getHowManyBattlesLost() >= 3)  Defeat = true;
         if (trainer.getLevelOfPokemonTrainer()>=4) WinByLevel = true;
         if(arrayOfPokemons.isEmpty()) WinByKillingEverything = true;
-        if(Settings.getSavingOptionChoice()==1) Saving.SaveToFileOnlyNumbers();
-        if (Settings.getSavingOptionChoice()==2) Saving.SaveToFile();
+        if(Settings.getSavingOptionChoice()==1) Saving.SaveToFileOnlyNumbers(trainer);
+        if (Settings.getSavingOptionChoice()==2) Saving.SaveToFile(trainer);
 
     }
 
@@ -110,9 +110,16 @@ public class Simulation {
                 flatMap[i][j].setOccupied(false);
                 flatMap[i][j].setOccupiedByTrainer(false);
             }
-            trainer.setXposition(0);
-            trainer.setYposition(0);
         }
+        trainer.setXposition(0);
+        trainer.setYposition(0);
+        trainer.setHowManyBattlesLost(0);
+        trainer.setLevelOfPokemonTrainer(1);
+        trainer.setHowManyPokemonsKilled(0);
+        setDefeat(false);
+        setWinByLevel(false);
+        setWinByKillingEverything(false);
+
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //PRINTING MAP WITH FIELD TYPES
@@ -329,7 +336,27 @@ public class Simulation {
     public static void setTypeOfDeletedPokemonsField(String typeOfDeletedPokemonsField){Simulation.typeOfDeletedPokemonsField=typeOfDeletedPokemonsField;}
     public static int getHowManyPokemonsOffTheMap() {return howManyPokemonsOffTheMap;}
     public static int getHowManyRounds () {return howManyRounds;}
-    public static boolean getWinByKillingEverything () {return WinByKillingEverything;}
-    public static boolean getWinByLevel () {return WinByLevel;}
-    public static boolean getDefeat () {return Defeat;}
+    public static boolean isWinByLevel() {
+        return WinByLevel;
+    }
+
+    public static void setWinByLevel(boolean winByLevel) {
+        WinByLevel = winByLevel;
+    }
+
+    public static boolean isWinByKillingEverything() {
+        return WinByKillingEverything;
+    }
+
+    public static void setWinByKillingEverything(boolean winByKillingEverything) {
+        WinByKillingEverything = winByKillingEverything;
+    }
+
+    public static boolean isDefeat() {
+        return Defeat;
+    }
+
+    public static void setDefeat(boolean defeat) {
+        Defeat = defeat;
+    }
 }

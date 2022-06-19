@@ -30,7 +30,7 @@ test {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'Menu'
+                'Main-Class': 'Simulation.Menu'
         )
     }
 }

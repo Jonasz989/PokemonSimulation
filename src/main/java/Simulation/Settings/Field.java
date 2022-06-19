@@ -5,6 +5,7 @@ public class Field {
     boolean OccupiedByTrainer;
     public String fieldType;
 
+    public String pokemonTypeOnField;
     int poolID;
     static int staticPoolID = 0;
 
@@ -15,6 +16,7 @@ public class Field {
         fieldType = ".";
         Occupied = false;
         OccupiedByTrainer = false;
+        pokemonTypeOnField = ".";
     }
 
 
@@ -46,5 +48,12 @@ public class Field {
         OccupiedByTrainer = occupied;
     }
 
+    public String getPokemonTypeOnField() {
+        return pokemonTypeOnField;
+    }
+
+    public void setPokemonTypeOnField(String pokemonTypeOnField) {
+        this.pokemonTypeOnField = pokemonTypeOnField;
+    }
 
 }
