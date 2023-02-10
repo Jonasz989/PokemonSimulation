@@ -1,5 +1,4 @@
 # PokemonSimulation
 Simulation of Pokemons
 
-University project, where we will test how variables will affect the simulation outputs  
-Currently under work
+University project, where we test how given variables will affect the simulation outputs
